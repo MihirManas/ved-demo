@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Mail, Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { MapPin, Mail, MessageCircle, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import { submitCallback } from '../services/api';
 import { validateEmail, validatePhone } from '../utils/formUtils';
@@ -80,15 +80,15 @@ const ContactView = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-6 sm:space-x-10 group">
-                  <div className="mt-1 text-gray-400 dark:text-white/20 group-hover:text-[#E6C875] dark:group-hover:text-[#E6C875] transition-colors duration-700">
-                    <Phone size={40} strokeWidth={1} />
+                <a href="https://api.whatsapp.com/send/?phone=916361233567&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="flex items-start space-x-6 sm:space-x-10 group cursor-pointer block">
+                  <div className="mt-1 text-gray-400 dark:text-white/20 group-hover:text-[#25D366] dark:group-hover:text-[#25D366] transition-colors duration-700">
+                    <MessageCircle size={40} strokeWidth={1} />
                   </div>
                   <div>
-                    <h4 className="text-gray-900 dark:text-white font-medium text-2xl sm:text-3xl tracking-wide mb-4">Direct Line</h4>
-                    <p className="text-gray-600 dark:text-white/50 font-light text-base sm:text-xl leading-relaxed">+91 (800) 123-4567</p>
+                    <h4 className="text-gray-900 dark:text-white font-medium text-2xl sm:text-3xl tracking-wide mb-4 group-hover:text-[#25D366] transition-colors duration-500">WhatsApp Us</h4>
+                    <p className="text-gray-600 dark:text-white/50 font-light text-base sm:text-xl leading-relaxed">+91 63612 33567</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </ScrollReveal>
