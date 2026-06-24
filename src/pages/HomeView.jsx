@@ -211,10 +211,10 @@ const HomeView = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="relative w-full mb-24 rounded-[2.5rem] overflow-hidden bg-white dark:bg-[#F8F9FA] border border-gray-200 dark:border-white/20 shadow-xl dark:shadow-[0_0_50px_rgba(255,255,255,0.07)] p-2 sm:p-4">
-              <div className="w-full overflow-hidden flex py-8 sm:py-10 relative group bg-transparent rounded-3xl">
-                <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-white dark:from-[#F8F9FA] to-transparent z-10 pointer-events-none rounded-l-3xl"></div>
-                <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-white dark:from-[#F8F9FA] to-transparent z-10 pointer-events-none rounded-r-3xl"></div>
+            <div className="relative w-full mb-24 rounded-[2.5rem] overflow-hidden bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-[0_0_50px_rgba(255,255,255,0.02)] p-2 sm:p-4">
+              <div className="w-full overflow-hidden flex py-10 sm:py-12 relative group bg-transparent rounded-3xl">
+                <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-white dark:from-[#0a0a0a] to-transparent z-10 pointer-events-none rounded-l-3xl"></div>
+                <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-white dark:from-[#0a0a0a] to-transparent z-10 pointer-events-none rounded-r-3xl"></div>
                 
                 <div className="flex animate-marquee whitespace-nowrap min-w-full items-center justify-around shrink-0">
                   {[
@@ -226,7 +226,7 @@ const HomeView = () => {
                     { name: 'Wipro', url: '/logos/wipro.png' },
                     { name: 'Cognizant', url: '/logos/cognizant.png' }
                   ].map((logo, idx) => (
-                    <img key={`logo-1-${idx}`} src={logo.url} alt={logo.name} className="h-6 sm:h-8 md:h-10 lg:h-12 w-auto object-contain mx-8 md:mx-14 filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
+                    <img key={`logo-1-${idx}`} src={logo.url} alt={logo.name} className="h-10 sm:h-14 md:h-16 lg:h-20 w-auto object-contain mx-8 md:mx-14 filter grayscale dark:invert opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
                   ))}
                 </div>
                 <div className="flex animate-marquee whitespace-nowrap min-w-full items-center justify-around shrink-0" aria-hidden="true">
@@ -239,7 +239,7 @@ const HomeView = () => {
                     { name: 'Wipro', url: '/logos/wipro.png' },
                     { name: 'Cognizant', url: '/logos/cognizant.png' }
                   ].map((logo, idx) => (
-                    <img key={`logo-2-${idx}`} src={logo.url} alt={logo.name} className="h-6 sm:h-8 md:h-10 lg:h-12 w-auto object-contain mx-8 md:mx-14 filter grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
+                    <img key={`logo-2-${idx}`} src={logo.url} alt={logo.name} className="h-10 sm:h-14 md:h-16 lg:h-20 w-auto object-contain mx-8 md:mx-14 filter grayscale dark:invert opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-500" />
                   ))}
                 </div>
               </div>
