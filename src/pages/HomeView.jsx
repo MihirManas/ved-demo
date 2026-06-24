@@ -192,19 +192,28 @@ const HomeView = () => {
       <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row justify-between items-end mb-24">
-              <div className="max-w-3xl">
+            <div className="flex flex-col mb-16">
+              <div className="max-w-4xl mb-16">
                 <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Proven Trajectories.</h2>
                 <p className="text-gray-600 dark:text-white/60 text-2xl font-light leading-relaxed">Our candidates don't just find jobs; their verified portfolios allow them to dictate terms and bypass standard technical screening entirely.</p>
               </div>
-              <div className="mt-12 lg:mt-0 flex space-x-6 sm:space-x-12 text-[#E6C875]">
-                <div className="text-right">
-                  <p className="text-4xl sm:text-6xl font-medium tracking-tighter">1.2K</p>
-                  <p className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-[0.2em] mt-3 font-semibold">Verified Portfolios</p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 bg-black/[0.02] dark:bg-white/[0.02] rounded-3xl border border-gray-200 dark:border-white/5 py-10 md:py-12 backdrop-blur-md shadow-sm">
+                <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                  <p className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-[#E6C875]">25+</p>
+                  <p className="text-gray-600 dark:text-white/70 text-xs sm:text-sm uppercase tracking-widest mt-4 font-semibold">Emerging Domains</p>
                 </div>
-                <div className="text-right">
-                  <p className="text-4xl sm:text-6xl font-medium tracking-tighter">85+</p>
-                  <p className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-[0.2em] mt-3 font-semibold">Recruiting Partners</p>
+                <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                  <p className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-[#E6C875]">60+</p>
+                  <p className="text-gray-600 dark:text-white/70 text-xs sm:text-sm uppercase tracking-widest mt-4 font-semibold">Industry Live Projects</p>
+                </div>
+                <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                  <p className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-[#E6C875]">1200+</p>
+                  <p className="text-gray-600 dark:text-white/70 text-xs sm:text-sm uppercase tracking-widest mt-4 font-semibold">Students Enrolled</p>
+                </div>
+                <div className="text-center px-4">
+                  <p className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-[#E6C875]">4.9+</p>
+                  <p className="text-gray-600 dark:text-white/70 text-xs sm:text-sm uppercase tracking-widest mt-4 font-semibold">Students Rating</p>
                 </div>
               </div>
             </div>
