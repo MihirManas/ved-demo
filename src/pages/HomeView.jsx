@@ -255,10 +255,12 @@ const HomeView = () => {
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-10">
-            {reviews.slice(0, showAllReviews ? 4 : 2).map((review, idx) => (
-              <ReviewCard key={idx} review={review} delay={(idx % 2 + 1) * 100} />
-            ))}
+          <div className={`transition-all duration-1000 ease-in-out ${showAllReviews ? 'max-h-[850px] overflow-y-auto pr-2 sm:pr-4 custom-scrollbar rounded-3xl' : ''}`}>
+            <div className="grid md:grid-cols-2 gap-10">
+              {reviews.slice(0, showAllReviews ? reviews.length : 2).map((review, idx) => (
+                <ReviewCard key={idx} review={review} delay={!showAllReviews ? (idx % 2 + 1) * 100 : 0} />
+              ))}
+            </div>
           </div>
 
           {!showAllReviews && (
@@ -267,7 +269,7 @@ const HomeView = () => {
                 onClick={() => setShowAllReviews(true)}
                 className="bg-transparent text-gray-900 dark:text-white border border-gray-300 dark:border-white/20 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-gray-100 dark:hover:bg-white/5 transition-colors duration-500 ease-out"
               >
-                Read More Reviews
+                View More
               </button>
             </div>
           )}
