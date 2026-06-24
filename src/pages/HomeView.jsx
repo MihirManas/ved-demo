@@ -98,9 +98,6 @@ const HomeView = () => {
                   </h1>
                 </div>
 
-                <p className="text-xl md:text-2xl text-gray-600 dark:text-white/60 mb-12 font-light leading-relaxed tracking-wide max-w-xl">
-                  Degrees are poor signals. We help engineering students build cryptographically verifiable project portfolios that tech recruiters actually trust.
-                </p>
 
                 <div className="flex flex-col sm:flex-row gap-5">
                   <button
