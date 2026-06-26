@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Code, Zap, ShieldCheck, Users, LayoutDashboard, Quote } from 'lucide-react';
+import { ArrowRight, Code, Zap, ShieldCheck, Users, LayoutDashboard, Quote, Target, TrendingUp, Code2, Briefcase, GraduationCap, Building2 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ReviewCard from '../components/ReviewCard';
 import { reviews } from '../constants/reviews';
@@ -78,7 +78,7 @@ const HomeView = () => {
 
   return (
     <div className="animate-in fade-in duration-1000 ease-out">
-      <div className="relative min-h-screen flex flex-col justify-center pt-32 pb-20">
+      <div className="relative min-h-screen flex flex-col justify-center pt-16 md:pt-20 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal delay={100}>
@@ -88,7 +88,7 @@ const HomeView = () => {
                   <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Admissions Open 2026</span>
                 </div>
 
-                <div className="relative mb-8 h-[220px] sm:h-[200px] md:h-[240px] lg:h-[280px]">
+                <div className="relative mb-8 min-h-[200px] sm:min-h-[180px] md:min-h-[220px] lg:min-h-[250px]">
                   <h1 className="w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-white tracking-tighter leading-[1.05]">
                     <Typewriter 
                       key={heroIndex} 
@@ -252,7 +252,7 @@ const HomeView = () => {
             </div>
           </ScrollReveal>
 
-          <div className={`transition-all duration-1000 ease-in-out ${showAllReviews ? 'max-h-[850px] overflow-y-auto pr-2 sm:pr-4 custom-scrollbar rounded-3xl' : ''}`}>
+          <div className="transition-all duration-1000 ease-in-out">
             <div className="grid md:grid-cols-2 gap-10">
               {reviews.slice(0, showAllReviews ? reviews.length : 2).map((review, idx) => (
                 <ReviewCard key={idx} review={review} delay={!showAllReviews ? (idx % 2 + 1) * 100 : 0} />
@@ -271,28 +271,53 @@ const HomeView = () => {
             </div>
           )}
 
-          {/* AI SEO Semantic Content Block */}
-          <div className="mt-20 pt-20 border-t border-gray-200 dark:border-white/5 opacity-80 hover:opacity-100 transition-opacity duration-500">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-gray-900 dark:text-white mb-6">Program Overview & Career Outcomes</h2>
-            <div className="prose prose-sm dark:prose-invert max-w-none text-gray-500 dark:text-white/40 font-light columns-1 md:columns-2 lg:columns-3 gap-12">
-              <p className="mb-4">
-                <strong className="text-gray-700 dark:text-white/60">Who this program is for:</strong> Ved Upskilling is designed for engineering students, recent graduates, and working professionals who want to transition into elite tech roles. It is ideal for individuals seeking to bypass traditional resume screening and prove their competence directly.
-              </p>
-              <p className="mb-4">
-                <strong className="text-gray-700 dark:text-white/60">Career outcomes:</strong> Graduates of our technical programs secure roles as Software Engineers, Data Scientists, VLSI Engineers, and Full Stack Developers at top multinational corporations. We focus exclusively on high-paying, high-growth career trajectories.
-              </p>
-              <p className="mb-4">
-                <strong className="text-gray-700 dark:text-white/60">Required skills & Tools covered:</strong> Programs range from beginner to advanced. Depending on your domain, you will master tools like React, Node.js, Python, TensorFlow, Django, MongoDB, Verilog, and embedded C.
-              </p>
-              <p className="mb-4">
-                <strong className="text-gray-700 dark:text-white/60">Industry demand & Expected salary ranges:</strong> The demand for cryptographically verified engineers is at an all-time high. Our alumni typically see starting salaries significantly above the industry average, directly reflecting the enterprise-level skills they acquire.
-              </p>
-              <p className="mb-4">
-                <strong className="text-gray-700 dark:text-white/60">Placement & Internship support:</strong> Every candidate on the Placement Track receives intensive interview preparation, resume building, and direct visibility to our 85+ recruiting partners. The Internship Track provides real-world production environment experience.
-              </p>
-              <p>
-                <strong className="text-gray-700 dark:text-white/60">Target companies:</strong> Our recruitment network spans FAANG-tier companies, hyper-growth startups, and global enterprise leaders actively seeking verified talent.
-              </p>
+          {/* Program Overview & Outcomes */}
+          <div className="mt-32 pt-20 border-t border-gray-200 dark:border-white/5 relative z-10">
+            <ScrollReveal>
+              <div className="text-center max-w-3xl mx-auto mb-20">
+                <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Program Overview <span className="text-[#E6C875]">& Outcomes</span></h2>
+                <p className="text-gray-600 dark:text-white/60 text-xl font-light leading-relaxed">Everything you need to know about the journey from student to an elite engineering professional.</p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                
+                <ScrollReveal delay={100} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 rounded-[2rem] hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all duration-500 group shadow-lg dark:shadow-none">
+                  <Target className="text-[#E6C875] w-8 h-8 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500" strokeWidth={1.5} />
+                  <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-3">Who this program is for</h4>
+                  <p className="text-gray-600 dark:text-white/60 font-light leading-relaxed">Ved Upskilling is designed for engineering students, recent graduates, and working professionals who want to transition into elite tech roles by bypassing traditional resume screening.</p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={200} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 rounded-[2rem] hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all duration-500 group shadow-lg dark:shadow-none">
+                  <TrendingUp className="text-[#E6C875] w-8 h-8 mb-6 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                  <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-3">Career Outcomes</h4>
+                  <p className="text-gray-600 dark:text-white/60 font-light leading-relaxed">Secure roles as Software Engineers, Data Scientists, and VLSI Engineers at top corporations focusing on high-growth trajectories.</p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={300} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 rounded-[2rem] hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all duration-500 group shadow-lg dark:shadow-none">
+                  <Code2 className="text-[#E6C875] w-8 h-8 mb-6 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                  <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-3">Skills & Tools</h4>
+                  <p className="text-gray-600 dark:text-white/60 font-light leading-relaxed">Master enterprise tools like React, Node.js, Python, TensorFlow, MongoDB, and Embedded C depending on your specific domain track.</p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={400} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 rounded-[2rem] hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all duration-500 group shadow-lg dark:shadow-none">
+                  <Briefcase className="text-[#E6C875] w-8 h-8 mb-6 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                  <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-3">Industry Demand</h4>
+                  <p className="text-gray-600 dark:text-white/60 font-light leading-relaxed">The demand for cryptographically verified engineers is peak. Alumni see starting salaries significantly above the industry average.</p>
+                </ScrollReveal>
+                
+                <ScrollReveal delay={500} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 rounded-[2rem] hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all duration-500 group shadow-lg dark:shadow-none">
+                  <GraduationCap className="text-[#E6C875] w-8 h-8 mb-6 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                  <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-3">Placement Support</h4>
+                  <p className="text-gray-600 dark:text-white/60 font-light leading-relaxed">Intensive interview prep, resume building, and direct visibility to 85+ recruiting partners. Real-world production experience guaranteed.</p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={600} className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 p-8 rounded-[2rem] hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all duration-500 group shadow-lg dark:shadow-none">
+                  <Building2 className="text-[#E6C875] w-8 h-8 mb-6 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+                  <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-3">Target Companies</h4>
+                  <p className="text-gray-600 dark:text-white/60 font-light leading-relaxed">Our recruitment network spans FAANG-tier companies, hyper-growth startups, and global enterprise leaders actively seeking verified talent.</p>
+                </ScrollReveal>
+
             </div>
           </div>
 
