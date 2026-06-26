@@ -1,7 +1,7 @@
 // Google Sheets submission service via Apps Script Webhook
 
 // IMPORTANT: Replace this URL with your deployed Google Apps Script Web App URL
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwXuyQEgxHQKk3rs5sJ3woWr1rJnXq1Pv_1QuY5b-3_mHKAahO_etd0GXi-TtbTTFNT/exec';
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwO7zTMuKkmjLDXqQyy9kKIDu-qZw7oOO88m2IkSjIaFa94xTwuHrCKVNV5HaBLJc0H/exec';
 
 export const submitApplication = async (formData, leadScore) => {
   const payload = {
