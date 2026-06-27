@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 import Analytics from "@/components/Analytics";
 import FloatingWhatsApp from "@/components/ui/floating-whatsapp";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import VedTracker from "@/components/VedTracker";
 
 export default function RootLayout({
   children,
@@ -76,6 +77,7 @@ export default function RootLayout({
           <main>{children}</main>
           <FloatingWhatsApp />
         </ThemeProvider>
+        <VedTracker />
         <Analytics />
       </body>
     </html>

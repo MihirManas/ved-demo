@@ -1,33 +1,39 @@
-﻿import React from 'react';
+import React from 'react';
 import { Metadata } from 'next';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import ScrollReveal from '@/components/ui/scroll-reveal';
+import ApplyForm from '@/components/forms/ApplyForm';
+import { getAllDepartments, getAllPrograms } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Apply - Ved Upskilling',
-  description: 'Explore our Apply to enhance your knowledge and career in tech.',
+  title: 'Apply Now - Ved Upskilling',
+  description: 'Apply for Ved\'s elite programs. Build your verifiable portfolio and get hired.',
 };
 
-export default function Page() {
+export default function ApplyPage() {
+  // Read MDX files on the server
+  const departments = getAllDepartments();
+  const programs = getAllPrograms();
+
   return (
-    <main className="min-h-screen pt-40 pb-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="mb-24">
-          <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">
-            Apply
-          </h1>
-          <p className="text-gray-600 dark:text-white/60 text-xl md:text-2xl font-light max-w-4xl leading-relaxed">
-            Content coming soon.
-          </p>
-        </header>
+    <div className="min-h-screen pt-40 pb-40">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Placeholder for future LLM-optimized content */}
-        <section className="prose prose-lg dark:prose-invert max-w-none">
-          <article>
-            <h2>Overview</h2>
-            <p>Details about Apply will be available here.</p>
-          </article>
-        </section>
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">
+              Start Your Verification Track.
+            </h1>
+            <p className="text-gray-600 dark:text-white/60 text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+              Admission is selective. We only work with engineers serious about building verifiable proof of competence.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <ApplyForm departmentsData={departments} programsData={programs} />
+        </ScrollReveal>
+
       </div>
-    </main>
+    </div>
   );
 }
