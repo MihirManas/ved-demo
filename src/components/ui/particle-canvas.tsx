@@ -56,7 +56,7 @@ export default function ParticleCanvas() {
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 2.0 + 1.0;
+        this.size = Math.random() * 3.0 + 1.5; // Slightly larger to compensate for fewer particles
         this.baseSpeedX = (Math.random() - 0.5) * 0.5;
         this.baseSpeedY = (Math.random() - 0.5) * 0.5;
         this.speedX = this.baseSpeedX;
@@ -131,7 +131,8 @@ export default function ParticleCanvas() {
 
     const initParticles = () => {
       particles = [];
-      const numParticles = window.innerWidth < 768 ? 160 : 450;
+      // Drastically reduced particle count to fix lag, while preserving the design
+      const numParticles = window.innerWidth < 768 ? 50 : 120;
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
       }
