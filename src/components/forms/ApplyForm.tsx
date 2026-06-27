@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { CheckCircle, ChevronRight, ChevronLeft, AlertCircle, ArrowRight, Loader2, Target, Briefcase, GraduationCap } from 'lucide-react';
-import ScrollReveal from '@/components/ui/scroll-reveal';
+import { CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Department, Program } from '@/lib/content';
 
 // ─── Constants ───

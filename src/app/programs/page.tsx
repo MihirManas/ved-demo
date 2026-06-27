@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Cpu, Database, Code, Network, Zap, BookOpen, ChevronRight, Book } from 'lucide-react';
+import { BookOpen, ChevronRight, Book } from 'lucide-react';
 import { getAllPrograms, getAllDepartments } from '@/lib/content';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Metadata } from 'next';

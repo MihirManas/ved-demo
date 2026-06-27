@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { getAllPrograms } from '@/lib/content';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { Metadata } from 'next';
