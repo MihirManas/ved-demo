@@ -41,7 +41,6 @@ export async function POST(req: NextRequest) {
       const geoReader = await getGeoReader();
       if (geoReader && ip !== '127.0.0.1' && ip !== '::1') {
         try {
-          // @ts-ignore: Bypass 'Property does not exist on type Reader' error
           const response = (geoReader as any).city(ip);
           city = response.city?.names.en || city;
           state = response.subdivisions?.[0]?.names.en || state;
