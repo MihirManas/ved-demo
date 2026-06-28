@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export default function BootSequence({ onComplete, theme }: { onComplete: () => void, theme: string }) {
+export default function BootSequence({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState(0);
   const [targetTransform, setTargetTransform] = useState('translate(0px, 0px) scale(1)');
 
@@ -42,7 +42,7 @@ export default function BootSequence({ onComplete, theme }: { onComplete: () => 
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center transition-colors duration-1000 ${theme === 'dark' ? 'bg-black' : 'bg-[#F8F9FA]'} ${phase === 4 ? 'bg-transparent pointer-events-none' : ''}`}
+      className={`fixed inset-0 z-[100] flex items-center justify-center transition-colors duration-1000 bg-[#F8F9FA] dark:bg-black ${phase === 4 ? 'bg-transparent pointer-events-none' : ''}`}
     >
       <div
         id="boot-logo"
@@ -53,7 +53,7 @@ export default function BootSequence({ onComplete, theme }: { onComplete: () => 
         className={`flex items-center text-5xl md:text-7xl font-medium tracking-tight transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]`}
       >
         <div
-          className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${phase >= 2 ? 'translate-x-0 opacity-100' : '-translate-x-[150%] opacity-0'} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+          className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${phase >= 2 ? 'translate-x-0 opacity-100' : '-translate-x-[150%] opacity-0'} text-gray-900 dark:text-white`}
         >
           Ved
         </div>
@@ -65,7 +65,7 @@ export default function BootSequence({ onComplete, theme }: { onComplete: () => 
         </div>
 
         <div
-          className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${phase >= 2 ? 'translate-x-0 opacity-100' : 'translate-x-[150%] opacity-0'} ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+          className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${phase >= 2 ? 'translate-x-0 opacity-100' : 'translate-x-[150%] opacity-0'} text-gray-900 dark:text-white`}
         >
           Upskilling
         </div>

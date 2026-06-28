@@ -14,26 +14,52 @@ import { domainsData } from "@/constants/domainsData";
 
 export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
+  const [typedText, setTypedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const heroContent = [
+  const heroData = [
     {
-      text: <span key="0">Stop Sending Resumes. <span className="text-[#E6C875]">Start Proving</span> Competence.</span>,
+      fullText: "Stop Sending Resumes. Start Proving Competence.",
+      highlight: "Start Proving",
       buttonText: "Build Your Proof",
       route: "/domains"
     },
     {
-      text: <span key="1">Stop applying randomly. <span className="text-[#E6C875]">Find out exactly</span> why you are not getting interview calls.</span>,
+      fullText: "Stop applying randomly. Find out exactly why you are not getting interview calls.",
+      highlight: "Find out exactly",
       buttonText: "Analyse Your Resume",
       route: "/verify"
     }
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setHeroIndex((prev) => (prev + 1) % 2);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    const current = heroData[heroIndex];
+    let typingSpeed = isDeleting ? 15 : 40;
+    let timeout: NodeJS.Timeout;
+    
+    if (!isDeleting && typedText === current.fullText) {
+      timeout = setTimeout(() => setIsDeleting(true), 3000);
+    } else if (isDeleting && typedText === "") {
+      setIsDeleting(false);
+      setHeroIndex((prev) => (prev + 1) % heroData.length);
+      timeout = setTimeout(() => {}, 500);
+    } else {
+      timeout = setTimeout(() => {
+        setTypedText(current.fullText.substring(0, typedText.length + (isDeleting ? -1 : 1)));
+      }, typingSpeed);
+    }
+    return () => clearTimeout(timeout);
+  }, [typedText, isDeleting, heroIndex]);
+
+  const renderHighlightedText = (text: string, highlight: string) => {
+    if (!text.includes(highlight)) return text;
+    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+    return parts.map((part, i) => 
+      part.toLowerCase() === highlight.toLowerCase() 
+        ? <span key={i} className="text-[#E6C875]">{part}</span> 
+        : part
+    );
+  };
 
   const reviews = [
     { name: "Siddharth V.", role: "Lead AI Engineer", initials: "SV", bg: "from-[#E6C875] to-yellow-800", quote: "The curriculum bridges the gap between academic theory and hardcore industry execution. Within 4 months of the Applied AI program, I spearheaded a machine learning transition at my firm." },
@@ -66,23 +92,19 @@ export default function Home() {
                   <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Admissions Open 2026</span>
                 </div>
 
-                <div className="grid relative mb-12 items-start">
-                  {heroContent.map((item, idx) => (
-                    <h1 
-                      key={idx}
-                      className={`col-start-1 row-start-1 w-full text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-white tracking-tighter leading-[1.05] transition-all duration-700 ease-in-out ${idx === heroIndex ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
-                    >
-                      {item.text}
-                    </h1>
-                  ))}
+                <div className="grid relative mb-12 items-start h-[160px] md:h-[180px] lg:h-[220px]">
+                  <h1 className="col-start-1 row-start-1 w-full text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-white tracking-tighter leading-[1.05]">
+                    {renderHighlightedText(typedText, heroData[heroIndex].highlight)}
+                    <span className="w-1 h-[0.9em] bg-gray-900 dark:bg-white inline-block ml-2 animate-pulse align-middle opacity-50"></span>
+                  </h1>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-5">
                   <Link
-                    href={heroContent[heroIndex].route}
+                    href={heroData[heroIndex].route}
                     className="bg-black dark:bg-white text-white dark:text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm flex items-center justify-center space-x-3 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 ease-out shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
                   >
-                    <span className="transition-all duration-500">{heroContent[heroIndex].buttonText}</span>
+                    <span className="transition-all duration-500">{heroData[heroIndex].buttonText}</span>
                     <ArrowRight size={20} />
                   </Link>
                   <Link

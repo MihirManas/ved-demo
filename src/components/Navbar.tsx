@@ -52,10 +52,10 @@ export default function Navbar() {
 
             {mounted && (
               <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors mr-2">
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 -translate-x-10 opacity-0 -rotate-90' : 'translate-y-0 translate-x-0 opacity-100 rotate-0'}`}>
+                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 opacity-0 -rotate-180' : 'translate-y-0 opacity-100 rotate-0'}`}>
                   <Sun size={20} className="text-[#E6C875]" />
                 </div>
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-0 translate-x-0 opacity-100 rotate-0' : 'translate-y-10 translate-x-10 opacity-0 rotate-90'}`}>
+                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-0 opacity-100 rotate-0' : 'translate-y-10 opacity-0 rotate-180'}`}>
                   <Moon size={20} className="text-gray-500 dark:text-white/80" />
                 </div>
               </button>
@@ -71,10 +71,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center space-x-2">
             {mounted && (
               <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 -translate-x-10 opacity-0 -rotate-90' : 'translate-y-0 translate-x-0 opacity-100 rotate-0'}`}>
+                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 opacity-0 -rotate-180' : 'translate-y-0 opacity-100 rotate-0'}`}>
                   <Sun size={24} className="text-[#E6C875]" />
                 </div>
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-0 translate-x-0 opacity-100 rotate-0' : 'translate-y-10 translate-x-10 opacity-0 rotate-90'}`}>
+                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-0 opacity-100 rotate-0' : 'translate-y-10 opacity-0 rotate-180'}`}>
                   <Moon size={24} className="text-gray-500 dark:text-white/80" />
                 </div>
               </button>
