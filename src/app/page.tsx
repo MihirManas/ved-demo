@@ -333,7 +333,7 @@ export default function Home() {
                   maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
                 }}
               >
-                <div className="flex w-max animate-marquee">
+                <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
                   {[...Array(2)].map((_, i) => (
                     <div key={i} className="flex justify-around items-center gap-10 md:gap-20 px-5 md:px-10">
                       {[
@@ -344,11 +344,11 @@ export default function Home() {
                         { name: 'Wipro', src: '/companies/wipro.webp' },
                         { name: 'Genpact', src: '/companies/genpact.webp' }
                       ].map((company) => (
-                        <div key={`${i}-${company.name}`} className="relative group flex items-center justify-center">
+                        <div key={`${i}-${company.name}`} className="relative group flex items-center justify-center w-24 h-12 md:w-36 md:h-16">
                           <img
                             src={company.src}
                             alt={company.name}
-                            className="h-8 md:h-12 w-auto object-contain transition-all duration-300 ease-in-out filter grayscale brightness-0 opacity-40 dark:invert dark:opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 group-hover:scale-110 cursor-pointer drop-shadow-sm group-hover:drop-shadow-xl"
+                            className="max-h-full max-w-full object-contain transition-all duration-300 ease-in-out filter grayscale brightness-0 opacity-40 dark:invert dark:opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 group-hover:scale-110 cursor-pointer drop-shadow-sm group-hover:drop-shadow-xl"
                           />
                         </div>
                       ))}

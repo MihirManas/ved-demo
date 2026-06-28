@@ -76,7 +76,7 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "float-delayed": "float 6s ease-in-out 3s infinite",
-        "marquee": "marquee 30s linear infinite",
+        "marquee": "marquee 20s linear infinite",
       },
     },
   },
