@@ -75,8 +75,8 @@ export default function Domains() {
 
         <div className="flex flex-col lg:flex-row gap-16 relative">
           {/* Left Sidebar - Table of Contents */}
-          <div className="lg:w-1/4 flex-shrink-0 hidden lg:block">
-            <div className="sticky top-32">
+          <div className="lg:w-1/4 flex-shrink-0 hidden lg:block relative">
+            <div className="fixed top-40 w-[22%] xl:w-[280px]">
               <h3 className="text-gray-900 dark:text-white font-bold tracking-[0.2em] uppercase text-sm mb-8">Table of Contents</h3>
               <nav className="flex flex-col space-y-2 relative">
                 <div className="absolute -left-12 top-0 w-64 h-64 bg-[#E6C875]/5 rounded-full blur-[80px] pointer-events-none z-0"></div>
