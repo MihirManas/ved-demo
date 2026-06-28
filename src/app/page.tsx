@@ -313,6 +313,27 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
+          <ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 mb-24 py-12 border-y border-gray-200 dark:border-white/10">
+              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">25+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Emerging Domains</p>
+              </div>
+              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">60+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Industry Live Projects</p>
+              </div>
+              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">1200+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Students Enrolled</p>
+              </div>
+              <div className="text-center px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">4.9+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Students Rating</p>
+              </div>
+            </div>
+          </ScrollReveal>
+
           <div className="grid md:grid-cols-2 gap-10">
             {reviews.map((review, idx) => (
               <ScrollReveal key={idx} delay={(idx % 2 + 1) * 100}>
