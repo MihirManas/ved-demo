@@ -334,6 +334,31 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
+          <ScrollReveal>
+            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-8 md:p-12 mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Our Alumni Architect The Future At</p>
+              <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+                {[
+                  { name: 'Intel', src: '/companies/intel.png' },
+                  { name: 'TCS', src: '/companies/tcs.png' },
+                  { name: 'Dell', src: '/companies/dell.png' },
+                  { name: 'Cognizant', src: '/companies/cognizant.png' },
+                  { name: 'Wipro', src: '/companies/wipro.png' },
+                  { name: 'Capgemini', src: '/companies/capgemini.png' },
+                  { name: 'Genpact', src: '/companies/genpact.png' }
+                ].map((company) => (
+                  <div key={company.name} className="relative group flex items-center justify-center">
+                    <img
+                      src={company.src}
+                      alt={company.name}
+                      className="h-8 md:h-12 w-auto object-contain transition-all duration-300 ease-in-out filter grayscale brightness-0 opacity-40 dark:invert dark:opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 group-hover:scale-110 cursor-pointer drop-shadow-sm group-hover:drop-shadow-xl"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
           <div className="grid md:grid-cols-2 gap-10">
             {reviews.map((review, idx) => (
               <ScrollReveal key={idx} delay={(idx % 2 + 1) * 100}>
