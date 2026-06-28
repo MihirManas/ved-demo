@@ -324,25 +324,37 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-8 md:p-12 mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
-              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Our Alumni Architect The Future At</p>
-              <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
-                {[
-                  { name: 'Intel', src: '/companies/intel.webp' },
-                  { name: 'TCS', src: '/companies/tcs.webp' },
-                  { name: 'Dell', src: '/companies/dell.webp' },
-                  { name: 'Cognizant', src: '/companies/cognizant.webp' },
-                  { name: 'Wipro', src: '/companies/wipro.webp' },
-                  { name: 'Capgemini', src: '/companies/capgemini.webp' },
-                  { name: 'Genpact', src: '/companies/genpact.webp' }
-                ].map((company) => (
-                  <div key={company.name} className="relative group flex items-center justify-center">
-                    <img
-                      src={company.src}
-                      alt={company.name}
-                      className="h-8 md:h-12 w-auto object-contain transition-all duration-300 ease-in-out filter grayscale brightness-0 opacity-40 dark:invert dark:opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 group-hover:scale-110 cursor-pointer drop-shadow-sm group-hover:drop-shadow-xl"
-                    />
-                  </div>
-                ))}
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Our alumni are working at</p>
+              
+              <div 
+                className="w-full overflow-hidden relative"
+                style={{ 
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', 
+                  maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
+                }}
+              >
+                <div className="flex w-max animate-marquee">
+                  {[...Array(2)].map((_, i) => (
+                    <div key={i} className="flex justify-around items-center gap-10 md:gap-20 px-5 md:px-10">
+                      {[
+                        { name: 'Intel', src: '/companies/intel.webp' },
+                        { name: 'TCS', src: '/companies/tcs.webp' },
+                        { name: 'Dell', src: '/companies/dell.webp' },
+                        { name: 'Cognizant', src: '/companies/cognizant.webp' },
+                        { name: 'Wipro', src: '/companies/wipro.webp' },
+                        { name: 'Genpact', src: '/companies/genpact.webp' }
+                      ].map((company) => (
+                        <div key={`${i}-${company.name}`} className="relative group flex items-center justify-center">
+                          <img
+                            src={company.src}
+                            alt={company.name}
+                            className="h-8 md:h-12 w-auto object-contain transition-all duration-300 ease-in-out filter grayscale brightness-0 opacity-40 dark:invert dark:opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 group-hover:scale-110 cursor-pointer drop-shadow-sm group-hover:drop-shadow-xl"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </ScrollReveal>
