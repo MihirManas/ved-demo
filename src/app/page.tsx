@@ -334,7 +334,7 @@ export default function Home() {
                   maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
                 }}
               >
-                <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+                <div className="flex w-max animate-marquee hover:[animation-play-state:paused] will-change-transform transform-gpu">
                   {[...Array(2)].map((_, i) => (
                     <div key={i} className="flex justify-around items-center gap-10 md:gap-20 px-5 md:px-10">
                       {[
@@ -384,14 +384,24 @@ export default function Home() {
             ))}
           </div>
 
-          {reviews.length > 2 && (
-            <div className="mt-16 flex justify-center">
-              <button
-                onClick={() => setShowAllReviews(!showAllReviews)}
-                className="inline-flex items-center space-x-2 text-[#E6C875] hover:text-[#B8860B] transition-colors font-medium text-lg group"
+          {!showAllReviews && reviews.length > 2 && (
+            <div className="flex justify-center mt-12">
+              <button 
+                onClick={() => setShowAllReviews(true)}
+                className="px-8 py-3 bg-transparent border border-gray-300 dark:border-white/20 rounded-full text-gray-700 dark:text-white/80 font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
               >
-                <span>{showAllReviews ? 'Read Less' : 'Read More'}</span>
-                <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${showAllReviews ? '-rotate-90' : 'rotate-90 group-hover:translate-y-1'}`} />
+                Read More Reviews
+              </button>
+            </div>
+          )}
+
+          {showAllReviews && (
+            <div className="flex justify-center mt-12">
+              <button 
+                onClick={() => setShowAllReviews(false)}
+                className="px-8 py-3 bg-transparent border border-gray-300 dark:border-white/20 rounded-full text-gray-700 dark:text-white/80 font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+              >
+                Show Less
               </button>
             </div>
           )}
