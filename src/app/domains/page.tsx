@@ -73,13 +73,19 @@ export default function Domains() {
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col lg:flex-row-reverse gap-16 relative">
-          {/* Right Sidebar - Table of Contents */}
+        <div className="flex flex-col lg:flex-row gap-16 relative">
+          {/* Left Sidebar - Table of Contents */}
           <div className="lg:w-1/4 flex-shrink-0 hidden lg:block relative">
-            <div className="sticky top-40">
+            <div className="sticky top-40 h-[calc(100vh-120px)]">
               <h3 className="text-gray-900 dark:text-white font-bold tracking-[0.2em] uppercase text-sm mb-8">Table of Contents</h3>
-              <nav className="flex flex-col space-y-2 relative">
+              <nav className="flex flex-col relative border-l border-gray-200 dark:border-white/10">
                 <div className="absolute -left-12 top-0 w-64 h-64 bg-[#E6C875]/5 rounded-full blur-[80px] pointer-events-none z-0"></div>
+                
+                {/* Buttery Smooth Floating Highlight */}
+                <div 
+                  className="absolute left-[-1px] w-[calc(100%+1px)] h-[60px] bg-gradient-to-r from-[#E6C875]/10 to-transparent border-l-[3px] border-[#E6C875] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0"
+                  style={{ transform: `translateY(${categories.indexOf(activeCategory) * 60}px)` }}
+                />
                 
                 {categories.map((category, idx) => {
                   const isActive = activeCategory === category;
@@ -87,10 +93,10 @@ export default function Domains() {
                     <button
                       key={category}
                       onClick={() => scrollToSection(idx)}
-                      className={`relative z-10 text-left px-6 py-4 font-light text-lg transition-all duration-500 ease-out flex items-center justify-between group ${
+                      className={`relative z-10 w-full h-[60px] text-left px-6 font-light text-[15px] xl:text-lg transition-colors duration-500 ease-out flex items-center justify-between group ${
                         isActive 
-                          ? "text-[#E6C875] border-l-[3px] border-[#E6C875] bg-gradient-to-r from-[#E6C875]/5 to-transparent font-medium" 
-                          : "text-gray-500 dark:text-white/40 border-l-[3px] border-transparent hover:text-gray-900 dark:hover:text-white/80 hover:border-gray-200 dark:hover:border-white/20"
+                          ? "text-[#E6C875] font-medium" 
+                          : "text-gray-500 dark:text-white/40 hover:text-gray-900 dark:hover:text-white/80"
                       }`}
                     >
                       <span>
