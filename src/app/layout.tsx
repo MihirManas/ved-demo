@@ -86,7 +86,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <BootSequenceWrapper>
-            <div className="relative min-h-screen bg-[#F8F9FA] dark:bg-black text-gray-900 dark:text-white overflow-x-clip transition-colors duration-1000">
+            <div className="relative min-h-screen bg-[#F8F9FA] dark:bg-black text-gray-900 dark:text-white overflow-x-clip transition-colors duration-500">
               
               {/* Background Overlays */}
               <div className="fixed inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out z-0 bg-gradient-to-tr from-[#E6C875]/10 via-[#F8F9FA]/50 to-white/80 dark:opacity-0 opacity-100" />
