@@ -16,6 +16,7 @@ export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   const heroData = [
     {
@@ -360,7 +361,7 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-10">
-            {reviews.map((review, idx) => (
+            {(showAllReviews ? reviews : reviews.slice(0, 2)).map((review, idx) => (
               <ScrollReveal key={idx} delay={(idx % 2 + 1) * 100}>
                 <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] p-12 rounded-[3rem] shadow-xl dark:shadow-none hover:shadow-2xl dark:hover:bg-white/[0.03] transition-all backdrop-blur-xl h-full flex flex-col justify-between">
                   <div>
@@ -382,6 +383,18 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
+
+          {reviews.length > 2 && (
+            <div className="mt-16 flex justify-center">
+              <button
+                onClick={() => setShowAllReviews(!showAllReviews)}
+                className="inline-flex items-center space-x-2 text-[#E6C875] hover:text-[#B8860B] transition-colors font-medium text-lg group"
+              >
+                <span>{showAllReviews ? 'Read Less' : 'Read More'}</span>
+                <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${showAllReviews ? '-rotate-90' : 'rotate-90 group-hover:translate-y-1'}`} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
