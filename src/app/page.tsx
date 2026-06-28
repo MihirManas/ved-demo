@@ -295,21 +295,9 @@ export default function Home() {
       <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="flex flex-col lg:flex-row justify-between items-end mb-24">
-              <div className="max-w-3xl">
-                <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Proven Trajectories.</h2>
-                <p className="text-gray-600 dark:text-white/60 text-2xl font-light leading-relaxed">Our alumni don't just find jobs; they dictate the architectural decisions at the world's leading technological firms.</p>
-              </div>
-              <div className="mt-12 lg:mt-0 flex space-x-12 text-[#E6C875]">
-                <div className="text-right">
-                  <p className="text-6xl font-medium tracking-tighter">94%</p>
-                  <p className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-[0.2em] mt-3 font-semibold">Placement Rate</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-6xl font-medium tracking-tighter">2.4x</p>
-                  <p className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-[0.2em] mt-3 font-semibold">Avg Salary Bump</p>
-                </div>
-              </div>
+            <div className="mb-24 max-w-3xl">
+              <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Proven Trajectories.</h2>
+              <p className="text-gray-600 dark:text-white/60 text-2xl font-light leading-relaxed">Our alumni don't just find jobs; they dictate the architectural decisions at the world's leading technological firms.</p>
             </div>
           </ScrollReveal>
 
@@ -339,13 +327,13 @@ export default function Home() {
               <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Our Alumni Architect The Future At</p>
               <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
                 {[
-                  { name: 'Intel', src: '/companies/intel.png' },
-                  { name: 'TCS', src: '/companies/tcs.png' },
-                  { name: 'Dell', src: '/companies/dell.png' },
-                  { name: 'Cognizant', src: '/companies/cognizant.png' },
-                  { name: 'Wipro', src: '/companies/wipro.png' },
-                  { name: 'Capgemini', src: '/companies/capgemini.png' },
-                  { name: 'Genpact', src: '/companies/genpact.png' }
+                  { name: 'Intel', src: '/companies/intel.webp' },
+                  { name: 'TCS', src: '/companies/tcs.webp' },
+                  { name: 'Dell', src: '/companies/dell.webp' },
+                  { name: 'Cognizant', src: '/companies/cognizant.webp' },
+                  { name: 'Wipro', src: '/companies/wipro.webp' },
+                  { name: 'Capgemini', src: '/companies/capgemini.webp' },
+                  { name: 'Genpact', src: '/companies/genpact.webp' }
                 ].map((company) => (
                   <div key={company.name} className="relative group flex items-center justify-center">
                     <img
