@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, Code, ShieldCheck, Zap, Users, LayoutDashboard, Quote } from "lucide-react";
+import { ArrowRight, Code, ShieldCheck, Zap, Users, LayoutDashboard, Quote, Cpu, Database, Network, ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
   Accordion,
@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { domainsData } from "@/constants/domainsData";
 
 export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
@@ -40,6 +41,18 @@ export default function Home() {
     { name: "Rahul D.", role: "Embedded Systems Lead", initials: "RD", bg: "from-[#E6C875]/60 to-yellow-900", quote: "The rigorous focus on actual hardware architecture rather than just theory allowed me to confidently clear the technical rounds at a top semiconductor firm. Unmatched quality." },
     { name: "Ananya K.", role: "Data Scientist", initials: "AK", bg: "from-gray-200 dark:from-gray-300 to-gray-400 dark:to-gray-600", quote: "I transitioned from a basic analytics role to building highly scalable PyTorch models. The Execution Protocol is intense, but the resulting career trajectory is undeniable." }
   ];
+
+  const featuredCourses = [domainsData["fullstack"], domainsData["ai-python"]];
+
+  const IconComponent = ({ id }: { id: string }) => {
+    if (id === 'cpu') return <Cpu size={120} strokeWidth={1} />;
+    if (id === 'database') return <Database size={120} strokeWidth={1} />;
+    if (id === 'code') return <Code size={120} strokeWidth={1} />;
+    if (id === 'network') return <Network size={120} strokeWidth={1} />;
+    if (id === 'zap') return <Zap size={120} strokeWidth={1} />;
+    if (id === 'users') return <Users size={120} strokeWidth={1} />;
+    return <Cpu size={120} strokeWidth={1} />;
+  };
 
   return (
     <div className="animate-in fade-in duration-1000 ease-out">
@@ -125,6 +138,68 @@ export default function Home() {
                 </div>
               </div>
             </ScrollReveal>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Courses Section */}
+      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+              <div>
+                <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Flagship Architectures.</h2>
+                <p className="text-gray-600 dark:text-white/60 text-xl font-light max-w-2xl leading-relaxed">Our most rigorous, high-demand execution protocols. Designed specifically for enterprise-level scaling.</p>
+              </div>
+              <Link
+                href="/domains"
+                className="mt-8 md:mt-0 group flex items-center text-gray-900 dark:text-white font-bold uppercase tracking-widest text-sm hover:text-[#E6C875] dark:hover:text-[#E6C875] transition-colors duration-300"
+              >
+                View More Architecture <ChevronRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {featuredCourses.map((course, idx) => (
+              <ScrollReveal key={course.id} delay={idx * 150}>
+                <Link
+                  href={`/domains/${course.id}`}
+                  className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
+                >
+                  <div className="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
+                    <div className="text-gray-200 dark:text-white/5 transform group-hover:scale-125 group-hover:text-[#E6C875]/20 transition-all duration-1000 ease-out">
+                      <IconComponent id={course.iconId} />
+                    </div>
+                    <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center">
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-10 relative z-20 flex-grow flex flex-col justify-between">
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E6C875] mb-4">{course.tag}</div>
+                      <h3 className="text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-4 group-hover:text-black dark:group-hover:text-white transition-colors duration-500">{course.title}</h3>
+                      <p className="text-gray-600 dark:text-white/50 font-light text-base mb-8 leading-relaxed line-clamp-3">{course.about}</p>
+
+                      <div className="flex flex-wrap gap-2 mb-8">
+                        {course.techs.map((tech: string) => (
+                          <div key={tech} className="px-4 py-1.5 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-gray-600 dark:text-white/70 group-hover:border-[#E6C875]/30 transition-colors duration-500">
+                            {tech}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-end border-t border-gray-200 dark:border-white/10 pt-8 mt-2">
+                      <span className="text-gray-900 dark:text-white group-hover:text-[#E6C875] dark:group-hover:text-[#E6C875] font-bold text-sm uppercase tracking-widest flex items-center transition-colors duration-300">
+                        Explore Syllabus <ChevronRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </div>
