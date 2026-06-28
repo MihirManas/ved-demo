@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Circular dark background for perfect tab contrast -->
+  <circle cx="32" cy="32" r="30" fill="#0A0A0B"/>
+  
+  <!-- Stylized V in white representing 'Ved' -->
+  <path d="M18 22 L27 41 L36 22" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Stylized Slash / in Gold (#E6C875) representing the brand separator -->
+  <path d="M37 43 L45 21" stroke="#E6C875" stroke-width="5.5" stroke-linecap="round"/>
+</svg>
