@@ -69,6 +69,10 @@ const config: Config = {
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
         }
       },
       backdropBlur: {
@@ -84,6 +88,7 @@ const config: Config = {
         "float": "float 6s ease-in-out infinite",
         "float-delayed": "float 6s ease-in-out 3s infinite",
         "marquee": "marquee 20s linear infinite",
+        "marquee-reverse": "marquee-reverse 20s linear infinite",
       },
     },
   },
