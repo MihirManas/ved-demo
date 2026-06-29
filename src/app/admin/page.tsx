@@ -33,7 +33,7 @@ export default function AdminPage() {
 
   if (isAuthenticated) {
     return (
-      <div className="fixed inset-0 z-[100] bg-black overflow-y-auto text-white">
+      <div className="relative w-full min-h-[80vh] z-50 bg-black overflow-y-auto text-white mt-8 rounded-3xl">
         <Dashboard onLogout={() => {
           setIsAuthenticated(false);
           sessionStorage.removeItem("admin_auth");
@@ -43,7 +43,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center p-4">
+    <div className="relative w-full min-h-[80vh] z-50 bg-black flex items-center justify-center p-4 rounded-3xl overflow-hidden mt-8">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black"></div>
       
       <div className="relative z-10 w-full max-w-md">
