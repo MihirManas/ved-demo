@@ -1,23 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Background -->
-  <circle cx="50" cy="50" r="50" fill="#0A0A0B" />
+  <defs>
+    <clipPath id="circleClip">
+      <circle cx="50" cy="50" r="50" />
+    </clipPath>
+  </defs>
   
-  <g stroke="#E6C875" stroke-width="3" fill="#0A0A0B" stroke-linejoin="round">
-    <!-- Right Ribbon (Behind) -->
-    <polygon points="58,2 89,2 70,50 45,45" />
+  <g clip-path="url(#circleClip)">
+    <!-- Circular Background -->
+    <circle cx="50" cy="50" r="50" fill="#0A0A0B" />
     
-    <!-- Left Ribbon (In Front) -->
-    <polygon points="11,2 42,2 55,45 30,50" />
+    <g stroke="#E6C875" stroke-width="3" fill="#0A0A0B" stroke-linejoin="round">
+      <!-- Right Ribbon (Behind) -->
+      <polygon points="58,2 89,2 70,50 45,45" />
+      
+      <!-- Left Ribbon (In Front) -->
+      <polygon points="11,2 42,2 55,45 30,50" />
+      
+      <!-- Medal Circle (On Top of Ribbons) -->
+      <circle cx="50" cy="65" r="26" />
+    </g>
     
-    <!-- Medal Circle (On Top of Ribbons) -->
-    <circle cx="50" cy="65" r="26" />
-  </g>
-  
-  <!-- Inner Lines of Medal -->
-  <g stroke="#E6C875" stroke-width="3" stroke-linecap="round">
-    <!-- Top inner line (shorter) -->
-    <line x1="42" y1="58" x2="58" y2="58" />
-    <!-- Bottom inner line (longer) -->
-    <line x1="34" y1="68" x2="66" y2="68" />
+    <!-- Inner Lines of Medal -->
+    <g stroke="#E6C875" stroke-width="3" stroke-linecap="round">
+      <!-- Top inner line (shorter) -->
+      <line x1="42" y1="58" x2="58" y2="58" />
+      <!-- Bottom inner line (longer) -->
+      <line x1="34" y1="68" x2="66" y2="68" />
+    </g>
   </g>
 </svg>
