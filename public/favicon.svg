@@ -4,20 +4,20 @@
   
   <g stroke="#E6C875" stroke-width="3" fill="#0A0A0B" stroke-linejoin="round">
     <!-- Right Ribbon (Behind) -->
-    <polygon points="58,4 88,4 70,54 45,49" />
+    <polygon points="58,2 89,2 70,50 45,45" />
     
     <!-- Left Ribbon (In Front) -->
-    <polygon points="12,4 42,4 55,49 30,54" />
+    <polygon points="11,2 42,2 55,45 30,50" />
     
     <!-- Medal Circle (On Top of Ribbons) -->
-    <circle cx="50" cy="69" r="26" />
+    <circle cx="50" cy="65" r="26" />
   </g>
   
   <!-- Inner Lines of Medal -->
   <g stroke="#E6C875" stroke-width="3" stroke-linecap="round">
     <!-- Top inner line (shorter) -->
-    <line x1="42" y1="62" x2="58" y2="62" />
+    <line x1="42" y1="58" x2="58" y2="58" />
     <!-- Bottom inner line (longer) -->
-    <line x1="34" y1="72" x2="66" y2="72" />
+    <line x1="34" y1="68" x2="66" y2="68" />
   </g>
 </svg>
