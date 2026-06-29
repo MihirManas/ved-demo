@@ -20,8 +20,8 @@ export default function ParticleCanvas() {
     
     let animationFrameId: number;
     let particles: Particle[] = [];
-    // Mouse has tiny mass representing 0.0001% influence compared to heavy particle clusters
-    const mouse = { x: null as number | null, y: null as number | null, mass: 0.05 }; 
+    // Mouse has a weak mass to act as a gentle gravity well
+    const mouse = { x: null as number | null, y: null as number | null, mass: 15.0 }; 
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
@@ -48,10 +48,10 @@ export default function ParticleCanvas() {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2.5 + 2.0; // Increased size: 2.0px to 4.5px
-        this.vx = (Math.random() - 0.5) * 1.0; 
-        this.vy = (Math.random() - 0.5) * 1.0;
-        this.mass = this.size; // Mass proportional to visual size
+        this.size = Math.random() * 2.5 + 2.0; 
+        this.vx = (Math.random() - 0.5) * 2.0; // Increased initial nudge
+        this.vy = (Math.random() - 0.5) * 2.0;
+        this.mass = this.size; 
       }
 
       update() {
@@ -62,20 +62,20 @@ export default function ParticleCanvas() {
           const distSq = dx * dx + dy * dy;
           const distance = Math.sqrt(distSq);
           
-          if (distance > 5 && distance < 300) {
-            const force = (0.5 * mouse.mass) / (distSq + 50);
+          if (distance > 5 && distance < 400) {
+            const force = (50.0 * mouse.mass) / (distSq + 200);
             this.vx += (dx / distance) * force;
             this.vy += (dy / distance) * force;
           }
         }
 
-        // Apply friction/damping to prevent infinite speeds and keep it "moderate"
-        this.vx *= 0.94;
-        this.vy *= 0.94;
+        // Apply much lighter friction so they actually move
+        this.vx *= 0.99;
+        this.vy *= 0.99;
 
         // Soft velocity clamp to prevent slingshot glitches
         const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-        const maxSpeed = 1.8;
+        const maxSpeed = 2.2; // 10% faster than before
         if (speed > maxSpeed) {
           this.vx = (this.vx / speed) * maxSpeed;
           this.vy = (this.vy / speed) * maxSpeed;
@@ -96,7 +96,6 @@ export default function ParticleCanvas() {
       }
 
       draw() {
-        // Dominant Golden color
         ctx!.fillStyle = '#E6C875';
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -106,7 +105,6 @@ export default function ParticleCanvas() {
 
     const initParticles = () => {
       particles = [];
-      // Significantly decreased amount for aesthetic & O(n^2) performance
       const numParticles = window.innerWidth < 768 ? 50 : 120;
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
@@ -128,12 +126,10 @@ export default function ParticleCanvas() {
           const distSq = dx * dx + dy * dy;
           const distance = Math.sqrt(distSq);
 
-          // Connection lines for the constellation aesthetic
           if (distance < 160) {
             ctx.beginPath();
             const opacity = 1 - (distance / 160);
             
-            // Theme wise black or white connecting network
             ctx.strokeStyle = themeRef.current === 'light'
               ? `rgba(0, 0, 0, ${opacity * 0.15})`
               : `rgba(255, 255, 255, ${opacity * 0.15})`;
@@ -144,24 +140,19 @@ export default function ParticleCanvas() {
             ctx.stroke();
           }
 
-          // N-Body Gravity calculation
           if (distance > 0 && distance < 250) {
-            // Gravitational constant G (tuned for aesthetics)
-            const G = 0.8;
+            // Increased G constant significantly so they actually attract
+            const G = 25.0;
             
-            // Softened gravity F = G / (r^2 + softening)
             let force = G / (distSq + 200);
             
-            // Short-range repulsion to prevent singular black holes
             if (distance < 30) {
-                force -= (30 - distance) * 0.002;
+                force -= (30 - distance) * 0.05; // Stronger repulsion
             }
             
             const ax = (dx / distance) * force;
             const ay = (dy / distance) * force;
             
-            // Newton's 3rd law: Equal and opposite forces
-            // Acceleration is inversely proportional to own mass, so we multiply by the *other* particle's mass
             p1.vx += ax * p2.mass;
             p1.vy += ay * p2.mass;
             
