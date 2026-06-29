@@ -8,6 +8,7 @@ import BootSequenceWrapper from "@/components/BootSequenceWrapper";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import Script from "next/script";
+import TrackVisit from "@/components/TrackVisit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,9 +79,9 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'PLACEHOLDER_GA4_ID');
           `}
-        </Script>
       </head>
       <body className={inter.className}>
+        <TrackVisit />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

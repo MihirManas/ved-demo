@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model TrafficLog {
+  id           Int      @id @default(autoincrement())
+  source       String   // e.g., 'direct', 'instagram', 'whatsapp', 'google'
+  state        String?  // e.g., 'Maharashtra'
+  cityCategory String?  // e.g., 'Tier 1', 'Tier 2', 'Tier 3', 'Other'
+  createdAt    DateTime @default(now())
+}
