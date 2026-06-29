@@ -16,7 +16,7 @@ export default function ParticleCanvas() {
     
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const mouse = { x: null as number | null, y: null as number | null, radius: 250, active: true };
+    const mouse = { x: null as number | null, y: null as number | null, radius: 350, active: true };
 
     const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -50,8 +50,8 @@ export default function ParticleCanvas() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2.5 + 1.5;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
         this.fx = 0;
         this.fy = 0;
         
@@ -98,16 +98,16 @@ export default function ParticleCanvas() {
           const dy = particles[j].y - particles[i].y;
           const distSq = dx * dx + dy * dy;
           
-          if (distSq < 32400) { // 180px distance max
+          if (distSq < 48400) { // 220px distance max
             const distance = Math.sqrt(distSq);
             if (distance === 0) continue;
             
-            // Repulsion < 60px, Attraction 60-180px
+            // Repulsion < 70px, Attraction 70-220px
             let forceMag = 0;
-            if (distance < 60) {
-              forceMag = -0.06 * (1 - distance / 60); // Push apart to avoid clustering
+            if (distance < 70) {
+              forceMag = -0.05 * (1 - distance / 70); // Push apart to avoid clustering
             } else {
-              forceMag = 0.002 * (1 - (distance - 60) / 120); // Pull together to form constellations
+              forceMag = 0.015 * (1 - (distance - 70) / 150); // Pull together to form constellations
             }
 
             const fx = (dx / distance) * forceMag;
@@ -119,12 +119,12 @@ export default function ParticleCanvas() {
             particles[j].fy -= fy;
 
             // Draw line
-            if (distance < 160) {
+            if (distance < 200) {
               ctx.beginPath();
               ctx.strokeStyle = themeRef.current === 'light'
-                ? `rgba(0, 0, 0, ${0.15 - distance / 1066})`
-                : `rgba(230, 200, 117, ${0.2 - distance / 800})`; // Golden constellation lines
-              ctx.lineWidth = 0.6;
+                ? `rgba(0, 0, 0, ${0.25 - distance / 800})`
+                : `rgba(230, 200, 117, ${0.35 - distance / 570})`; // Golden constellation lines, more opaque
+              ctx.lineWidth = 0.8;
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
               ctx.stroke();
@@ -132,13 +132,13 @@ export default function ParticleCanvas() {
           }
         }
 
-        // Apply ultra-weak cursor gravity (0.001% effect)
+        // Apply mouse gravity
         if (mouse.active && mouse.x != null && mouse.y != null) {
           const dx = mouse.x - particles[i].x;
           const dy = mouse.y - particles[i].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < mouse.radius && distance > 0) {
-             const forceMag = 0.008 * (1 - distance / mouse.radius);
+             const forceMag = 0.08 * (1 - distance / mouse.radius);
              particles[i].fx += (dx / distance) * forceMag;
              particles[i].fy += (dy / distance) * forceMag;
           }
@@ -161,9 +161,9 @@ export default function ParticleCanvas() {
         }
         
         // Max speed cap
-        if (speed > 1.5) {
-            p.vx = (p.vx / speed) * 1.5;
-            p.vy = (p.vy / speed) * 1.5;
+        if (speed > 1.2) {
+            p.vx = (p.vx / speed) * 1.2;
+            p.vy = (p.vy / speed) * 1.2;
         }
 
         p.x += p.vx;
