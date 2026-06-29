@@ -1,11 +1,12 @@
 "use client";
 
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
 
 const COLORS = {
   'Tier 1': '#3b82f6',
   'Tier 2': '#8b5cf6',
   'Tier 3': '#ec4899',
+  'International': '#14b8a6',
   'Other': '#64748b'
 };
 
@@ -34,6 +35,7 @@ export default function CityCategoriesChart({ data }: { data: { name: string, va
             {sortedData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[entry.name as keyof typeof COLORS] || COLORS['Other']} />
             ))}
+            <LabelList dataKey="value" position="right" fill="#aaa" fontSize={13} />
           </Bar>
         </BarChart>
       </ResponsiveContainer>

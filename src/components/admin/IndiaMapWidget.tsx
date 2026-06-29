@@ -4,8 +4,8 @@ import React, { useMemo, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { scaleLinear } from "d3-scale";
 
-// Reliable TopoJSON for India states
-const INDIA_TOPO_JSON = "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/india/india-states.json";
+// Reliable GeoJSON for India states
+const INDIA_GEO_JSON = "https://raw.githubusercontent.com/geohacker/india/master/state/india_state.geojson";
 
 export default function IndiaMapWidget({ data }: { data: { name: string, value: number }[] }) {
   const [tooltipContent, setTooltipContent] = useState("");
@@ -44,7 +44,7 @@ export default function IndiaMapWidget({ data }: { data: { name: string, value: 
           }}
           className="w-full h-full max-h-[500px]"
         >
-          <Geographies geography={INDIA_TOPO_JSON}>
+          <Geographies geography={INDIA_GEO_JSON}>
             {({ geographies }) =>
               geographies.map(geo => {
                 const stateName = geo.properties.NAME_1 || geo.properties.name || "";

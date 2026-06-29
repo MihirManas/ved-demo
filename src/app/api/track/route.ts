@@ -4,7 +4,8 @@ import prisma from '@/lib/prisma';
 const TIER_1_CITIES = ['Mumbai', 'Delhi', 'New Delhi', 'Bangalore', 'Bengaluru', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Surat', 'Pune'];
 const TIER_2_CITIES = ['Jaipur', 'Lucknow', 'Kanpur', 'Nagpur', 'Indore', 'Thane', 'Bhopal', 'Visakhapatnam', 'Patna', 'Vadodara', 'Ghaziabad', 'Ludhiana', 'Agra', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Navi Mumbai', 'Allahabad', 'Prayagraj', 'Howrah', 'Ranchi', 'Gwalior', 'Jabalpur', 'Coimbatore', 'Vijayawada', 'Jodhpur', 'Madurai', 'Raipur', 'Chandigarh', 'Guwahati', 'Solapur', 'Hubli', 'Dharwad', 'Bareilly', 'Moradabad', 'Mysore', 'Gurgaon', 'Gurugram', 'Aligarh', 'Jalandhar', 'Tiruchirappalli', 'Bhubaneswar', 'Salem', 'Warangal', 'Thiruvananthapuram', 'Noida', 'Kochi'];
 
-function getCityCategory(city: string | null): string {
+function getCityCategory(city: string | null, country: string | null): string {
+  if (country && country !== 'India') return 'International';
   if (!city) return 'Other';
   if (TIER_1_CITIES.includes(city)) return 'Tier 1';
   if (TIER_2_CITIES.includes(city)) return 'Tier 2';
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
     
     let state = null;
     let city = null;
+    let country = null;
 
     try {
       // Use a dummy IP if local, otherwise use the real IP
@@ -57,13 +59,14 @@ export async function POST(req: NextRequest) {
         if (geoData.status === 'success') {
           state = geoData.regionName;
           city = geoData.city;
+          country = geoData.country;
         }
       }
     } catch (geoipError) {
       console.log("GeoIP API Error:", geoipError);
     }
 
-    const cityCategory = getCityCategory(city);
+    const cityCategory = getCityCategory(city, country);
     const source = getTrafficSource(referer, userAgent);
 
     // Save to database
