@@ -11,8 +11,6 @@ export default function ContentProtection({ children }: { children: React.ReactN
   const isProtected = !excludedPaths.includes(pathname);
 
   useEffect(() => {
-    if (!isProtected) return;
-
     // Helper to check if event originated from an input element
     const isInputTarget = (e: Event) => {
       const target = e.target as HTMLElement;
@@ -24,18 +22,17 @@ export default function ContentProtection({ children }: { children: React.ReactN
     };
 
     const handleContextMenu = (e: MouseEvent) => {
+      // Globally prevent right-click everywhere to hide source and inspect
       e.preventDefault();
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Allow default actions if typing in an input field
-      if (isInputTarget(e)) return;
-
       const isMac = navigator.userAgent.includes("Mac");
       const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
 
-      // Prevent copy(c), save(s), print(p), view source(u)
-      if (cmdOrCtrl && ["c", "s", "p", "u"].includes(e.key.toLowerCase())) {
+      // 1. GLOBAL BLOCKS (Always prevent, regardless of page or input)
+      // Prevent save(s), print(p), view source(u)
+      if (cmdOrCtrl && ["s", "p", "u"].includes(e.key.toLowerCase())) {
         e.preventDefault();
       }
 
@@ -50,17 +47,27 @@ export default function ContentProtection({ children }: { children: React.ReactN
 
       // Deter PrintScreen
       if (e.key === "PrintScreen") {
-        navigator.clipboard.writeText(""); // Clear clipboard to prevent pasting screenshot
+        navigator.clipboard.writeText(""); // Clear clipboard
         e.preventDefault();
+      }
+
+      // 2. CONDITIONAL BLOCKS
+      // Prevent copy(c) ONLY if on a protected page AND not in an input
+      if (cmdOrCtrl && e.key.toLowerCase() === "c") {
+        if (isProtected && !isInputTarget(e)) {
+          e.preventDefault();
+        }
       }
     };
 
     const handleClipboard = (e: ClipboardEvent) => {
-      if (isInputTarget(e)) return;
-      e.preventDefault();
+      // Prevent clipboard events ONLY if on protected page and not in an input
+      if (isProtected && !isInputTarget(e)) {
+        e.preventDefault();
+      }
     };
 
-    // Attach listeners
+    // Attach listeners globally
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("copy", handleClipboard);
