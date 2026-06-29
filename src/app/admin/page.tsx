@@ -33,7 +33,7 @@ export default function AdminPage() {
 
   if (isAuthenticated) {
     return (
-      <div className="relative w-full min-h-[80vh] z-50 bg-black overflow-y-auto text-white mt-8 rounded-3xl">
+      <div className="relative w-full z-50 bg-black text-white mt-8 rounded-3xl">
         <Dashboard onLogout={() => {
           setIsAuthenticated(false);
           sessionStorage.removeItem("admin_auth");
