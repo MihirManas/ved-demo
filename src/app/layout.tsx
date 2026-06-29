@@ -79,6 +79,7 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'PLACEHOLDER_GA4_ID');
           `}
+        </Script>
       </head>
       <body className={inter.className}>
         <TrackVisit />

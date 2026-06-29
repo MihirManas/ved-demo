@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Reader } from '@maxmind/geoip2-node';
 import prisma from '@/lib/prisma';
-import path from 'path';
 
 const TIER_1_CITIES = ['Mumbai', 'Delhi', 'New Delhi', 'Bangalore', 'Bengaluru', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Surat', 'Pune'];
 const TIER_2_CITIES = ['Jaipur', 'Lucknow', 'Kanpur', 'Nagpur', 'Indore', 'Thane', 'Bhopal', 'Visakhapatnam', 'Patna', 'Vadodara', 'Ghaziabad', 'Ludhiana', 'Agra', 'Nashik', 'Faridabad', 'Meerut', 'Rajkot', 'Varanasi', 'Srinagar', 'Aurangabad', 'Dhanbad', 'Amritsar', 'Navi Mumbai', 'Allahabad', 'Prayagraj', 'Howrah', 'Ranchi', 'Gwalior', 'Jabalpur', 'Coimbatore', 'Vijayawada', 'Jodhpur', 'Madurai', 'Raipur', 'Chandigarh', 'Guwahati', 'Solapur', 'Hubli', 'Dharwad', 'Bareilly', 'Moradabad', 'Mysore', 'Gurgaon', 'Gurugram', 'Aligarh', 'Jalandhar', 'Tiruchirappalli', 'Bhubaneswar', 'Salem', 'Warangal', 'Thiruvananthapuram', 'Noida', 'Kochi'];
@@ -47,25 +45,22 @@ export async function POST(req: NextRequest) {
     let city = null;
 
     try {
-      // In a real deployed Next.js app, finding the mmdb file path might be tricky.
-      // process.cwd() usually points to the root of the project.
-      const dbPath = path.join(process.cwd(), 'GeoLite2-City.mmdb');
-      
-      const reader = await Reader.open(dbPath);
-      // '122.161.73.195' is a dummy IP for testing (Delhi, India) 
-      // If localhost (127.0.0.1 or ::1), we use a dummy IP so we get some data locally.
+      // Use a dummy IP if local, otherwise use the real IP
       const lookupIp = (ip === '127.0.0.1' || ip === '::1') ? '122.161.73.195' : ip;
       
-      const response = reader.city(lookupIp);
+      // We use ip-api.com to avoid the 66MB mmdb file on Vercel
+      // This is a free, fast, no-auth API for server-to-server IP resolution
+      const geoRes = await fetch(`http://ip-api.com/json/${lookupIp}`);
       
-      if (response.subdivisions && response.subdivisions.length > 0) {
-        state = response.subdivisions[0].names.en;
-      }
-      if (response.city && response.city.names) {
-        city = response.city.names.en;
+      if (geoRes.ok) {
+        const geoData = await geoRes.json();
+        if (geoData.status === 'success') {
+          state = geoData.regionName;
+          city = geoData.city;
+        }
       }
     } catch (geoipError) {
-      console.log("GeoIP Error (could be a local IP or missing DB):", geoipError);
+      console.log("GeoIP API Error:", geoipError);
     }
 
     const cityCategory = getCityCategory(city);
