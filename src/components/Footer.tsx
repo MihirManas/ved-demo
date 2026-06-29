@@ -27,9 +27,9 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 dark:text-white font-bold tracking-[0.2em] uppercase text-sm mb-10">Legal Ledger</h4>
             <ul className="space-y-6 text-gray-600 dark:text-white/50 font-light text-lg">
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer">Privacy Protocol</li>
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer">Terms of Service</li>
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer">Refund Policy</li>
+              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/privacy">Privacy Protocol</Link></li>
+              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/terms">Terms of Service</Link></li>
+              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/refund">Refund Policy</Link></li>
             </ul>
           </div>
         </div>
