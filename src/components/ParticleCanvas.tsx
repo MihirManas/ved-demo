@@ -20,7 +20,8 @@ export default function ParticleCanvas() {
     
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const mouse = { x: null as number | null, y: null as number | null, radius: 180 };
+    // Mouse has tiny mass representing 0.0001% influence compared to heavy particle clusters
+    const mouse = { x: null as number | null, y: null as number | null, mass: 0.05 }; 
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
@@ -38,141 +39,141 @@ export default function ParticleCanvas() {
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-    const initParticles = () => {
-      particles = [];
-      // Decreased amount of particles
-      const numParticles = window.innerWidth < 768 ? 40 : 100;
-      for (let i = 0; i < numParticles; i++) {
-        particles.push(new Particle());
-      }
+      initParticles();
     };
 
     class Particle {
-      x: number; y: number; size: number; speedX: number; speedY: number; colorType: number; mass: number;
+      x: number; y: number; size: number; vx: number; vy: number; mass: number;
       
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        // Increased size
-        this.size = Math.random() * 3.0 + 2.0;
-        this.speedX = 0;
-        this.speedY = 0;
-        // Make golden dominant (70% chance)
-        const rand = Math.random();
-        this.colorType = rand > 0.3 ? 0 : (rand > 0.15 ? 1 : 2);
-        // Mass proportional to size
-        this.mass = this.size * 2;
+        this.size = Math.random() * 2.5 + 2.0; // Increased size: 2.0px to 4.5px
+        this.vx = (Math.random() - 0.5) * 1.0; 
+        this.vy = (Math.random() - 0.5) * 1.0;
+        this.mass = this.size; // Mass proportional to visual size
       }
 
       update() {
-        // Gravity towards cursor (cursor mass is 0.0001% of average particle mass)
-        // Average particle mass is around 7 (size 3.5 * 2)
-        // Cursor mass = 7 * 0.000001 = 0.000007
-        const cursorMass = 0.000007;
-        const G = 0.5; // Gravitational constant for the simulation
-
+        // Micro-gravity towards cursor
         if (mouse.x != null && mouse.y != null) {
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
-          const distanceSq = dx * dx + dy * dy;
-          const distance = Math.sqrt(distanceSq);
-
-          // Add a minimum distance to prevent infinite forces
-          if (distance > 5) {
-             const force = (G * this.mass * cursorMass) / distanceSq;
-             const forceX = force * (dx / distance);
-             const forceY = force * (dy / distance);
-             
-             // F = ma -> a = F/m
-             this.speedX += forceX / this.mass;
-             this.speedY += forceY / this.mass;
+          const distSq = dx * dx + dy * dy;
+          const distance = Math.sqrt(distSq);
+          
+          if (distance > 5 && distance < 300) {
+            const force = (0.5 * mouse.mass) / (distSq + 50);
+            this.vx += (dx / distance) * force;
+            this.vy += (dy / distance) * force;
           }
         }
 
-        // Apply slight friction
-        this.speedX *= 0.99;
-        this.speedY *= 0.99;
+        // Apply friction/damping to prevent infinite speeds and keep it "moderate"
+        this.vx *= 0.94;
+        this.vy *= 0.94;
 
-        this.x += this.speedX;
-        this.y += this.speedY;
+        // Soft velocity clamp to prevent slingshot glitches
+        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        const maxSpeed = 1.8;
+        if (speed > maxSpeed) {
+          this.vx = (this.vx / speed) * maxSpeed;
+          this.vy = (this.vy / speed) * maxSpeed;
+        }
 
-        // Bounce off walls
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Elastic bounce off walls to keep particles in frame
         if (this.x < 0 || this.x > canvas.width) {
-          this.speedX *= -1;
+          this.vx *= -0.8;
           this.x = Math.max(0, Math.min(this.x, canvas.width));
         }
         if (this.y < 0 || this.y > canvas.height) {
-          this.speedY *= -1;
+          this.vy *= -0.8;
           this.y = Math.max(0, Math.min(this.y, canvas.height));
         }
       }
 
       draw() {
-        // 0: Gold, 1: Theme Dark/Light, 2: Theme Muted
-        const currentColors = themeRef.current === 'light'
-          ? ['#E6C875', '#000000', '#555555']
-          : ['#E6C875', '#ffffff', '#444444'];
-        
-        ctx!.fillStyle = currentColors[this.colorType];
+        // Dominant Golden color
+        ctx!.fillStyle = '#E6C875';
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx!.fill();
       }
     }
 
+    const initParticles = () => {
+      particles = [];
+      // Significantly decreased amount for aesthetic & O(n^2) performance
+      const numParticles = window.innerWidth < 768 ? 50 : 120;
+      for (let i = 0; i < numParticles; i++) {
+        particles.push(new Particle());
+      }
+    };
+
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const G = 0.05; // Gravity between particles
-
+      
+      // Update physics for all particles
       for (let i = 0; i < particles.length; i++) {
-        // Calculate gravity from all other particles
-        for (let j = 0; j < particles.length; j++) {
-           if (i === j) continue;
-           const dx = particles[j].x - particles[i].x;
-           const dy = particles[j].y - particles[i].y;
-           const distanceSq = dx * dx + dy * dy;
-           const distance = Math.sqrt(distanceSq);
-
-           // Apply gravity only if they are relatively close to form patterns, but not too close
-           if (distance > 10 && distance < 150) {
-              const force = (G * particles[i].mass * particles[j].mass) / distanceSq;
-              const forceX = force * (dx / distance);
-              const forceY = force * (dy / distance);
-              
-              particles[i].speedX += forceX / particles[i].mass;
-              particles[i].speedY += forceY / particles[i].mass;
-           }
-        }
-
-        particles[i].update();
-        particles[i].draw();
-
-        // Draw connecting lines based on distance and mass to emphasize patterns
+        const p1 = particles[i];
+        
+        // Calculate N-body gravity with every other particle
         for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const p2 = particles[j];
+          const dx = p2.x - p1.x;
+          const dy = p2.y - p1.y;
+          const distSq = dx * dx + dy * dy;
+          const distance = Math.sqrt(distSq);
 
-          // Increased connection distance for more pattern visibility with fewer particles
-          if (distance < 120) {
+          // Connection lines for the constellation aesthetic
+          if (distance < 160) {
             ctx.beginPath();
+            const opacity = 1 - (distance / 160);
             
-            // Highlight connections involving gold particles
-            const isGoldConnection = particles[i].colorType === 0 || particles[j].colorType === 0;
-            const alpha = isGoldConnection ? (0.3 - distance / 400) : (0.15 - distance / 800);
-            
+            // Theme wise black or white connecting network
             ctx.strokeStyle = themeRef.current === 'light'
-              ? (isGoldConnection ? `rgba(230, 200, 117, ${alpha})` : `rgba(0, 0, 0, ${alpha * 0.5})`)
-              : (isGoldConnection ? `rgba(230, 200, 117, ${alpha})` : `rgba(255, 255, 255, ${alpha * 0.5})`);
+              ? `rgba(0, 0, 0, ${opacity * 0.15})`
+              : `rgba(255, 255, 255, ${opacity * 0.15})`;
               
-            // Thicker lines for heavier particle connections
-            ctx.lineWidth = (particles[i].mass + particles[j].mass) * 0.05;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.lineWidth = 1;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
           }
+
+          // N-Body Gravity calculation
+          if (distance > 0 && distance < 250) {
+            // Gravitational constant G (tuned for aesthetics)
+            const G = 0.8;
+            
+            // Softened gravity F = G / (r^2 + softening)
+            let force = G / (distSq + 200);
+            
+            // Short-range repulsion to prevent singular black holes
+            if (distance < 30) {
+                force -= (30 - distance) * 0.002;
+            }
+            
+            const ax = (dx / distance) * force;
+            const ay = (dy / distance) * force;
+            
+            // Newton's 3rd law: Equal and opposite forces
+            // Acceleration is inversely proportional to own mass, so we multiply by the *other* particle's mass
+            p1.vx += ax * p2.mass;
+            p1.vy += ay * p2.mass;
+            
+            p2.vx -= ax * p1.mass;
+            p2.vy -= ay * p1.mass;
+          }
         }
+        
+        p1.update();
+        p1.draw();
       }
+      
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -191,7 +192,7 @@ export default function ParticleCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full opacity-40 dark:opacity-70 pointer-events-none z-0"
+      className="fixed top-0 left-0 w-full h-full opacity-60 dark:opacity-80 pointer-events-none z-0"
     />
   );
 }
