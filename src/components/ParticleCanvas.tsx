@@ -98,16 +98,16 @@ export default function ParticleCanvas() {
           const dy = particles[j].y - particles[i].y;
           const distSq = dx * dx + dy * dy;
           
-          if (distSq < 48400) { // 220px distance max
+          if (distSq < 40000) { // 200px distance max
             const distance = Math.sqrt(distSq);
             if (distance === 0) continue;
             
-            // Repulsion < 70px, Attraction 70-220px
+            // Repulsion < 120px, Attraction 120-200px
             let forceMag = 0;
-            if (distance < 70) {
-              forceMag = -0.05 * (1 - distance / 70); // Push apart to avoid clustering
+            if (distance < 120) {
+              forceMag = -0.02 * (1 - distance / 120); // Push apart to keep nodes distant
             } else {
-              forceMag = 0.015 * (1 - (distance - 70) / 150); // Pull together to form constellations
+              forceMag = 0.002 * (1 - (distance - 120) / 80); // Pull together gently
             }
 
             const fx = (dx / distance) * forceMag;
