@@ -252,7 +252,7 @@ export default function Home() {
 
             <ScrollReveal delay={200}>
               <div className="h-full bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-12 transition-all duration-700 hover:shadow-xl dark:hover:bg-white/[0.04] dark:hover:border-white/10 backdrop-blur-2xl flex flex-col justify-between">
-                <div className="w-16 h-16 bg-gray-100 dark:bg-gradient-to-br dark:from-white/10 dark:to-transparent text-gray-900 dark:text-white rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#E6C875]/20 to-transparent text-[#E6C875] rounded-full flex items-center justify-center border border-[#E6C875]/20 shadow-[0_0_30px_rgba(230,200,117,0.1)]">
                   <LayoutDashboard size={28} strokeWidth={1.5} />
                 </div>
                 <div>
@@ -264,7 +264,7 @@ export default function Home() {
 
             <ScrollReveal delay={300}>
               <div className="h-full bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-12 transition-all duration-700 hover:shadow-xl dark:hover:bg-white/[0.04] dark:hover:border-white/10 backdrop-blur-2xl flex flex-col justify-between">
-                <div className="w-16 h-16 bg-gray-100 dark:bg-gradient-to-br dark:from-white/10 dark:to-transparent text-gray-900 dark:text-white rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#E6C875]/20 to-transparent text-[#E6C875] rounded-full flex items-center justify-center border border-[#E6C875]/20 shadow-[0_0_30px_rgba(230,200,117,0.1)]">
                   <Zap size={28} strokeWidth={1.5} />
                 </div>
                 <div>
