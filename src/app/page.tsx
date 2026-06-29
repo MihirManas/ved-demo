@@ -360,6 +360,29 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
+          <ScrollReveal>
+            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-8 md:p-12 mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Recognized By</p>
+              
+              <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 px-5 md:px-10">
+                {[
+                  { name: 'AICTE', src: '/approval/AICTE.webp' },
+                  { name: 'DPIIT', src: '/approval/DPIIT.webp' },
+                  { name: 'MCA', src: '/approval/MCA.webp' },
+                  { name: 'MSME', src: '/approval/MSME.webp' }
+                ].map((body) => (
+                  <div key={body.name} className="relative group flex items-center justify-center w-24 h-12 md:w-36 md:h-20">
+                    <img
+                      src={body.src}
+                      alt={body.name}
+                      className="max-h-full max-w-full object-contain transition-all duration-300 ease-in-out filter grayscale brightness-0 opacity-40 dark:invert dark:opacity-60 group-hover:grayscale-0 group-hover:brightness-100 dark:group-hover:invert-0 group-hover:opacity-100 group-hover:scale-110 cursor-pointer drop-shadow-sm group-hover:drop-shadow-xl"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
           <div className="grid md:grid-cols-2 gap-10">
             {(showAllReviews ? reviews : reviews.slice(0, 2)).map((review, idx) => (
               <ScrollReveal key={idx} delay={(idx % 2 + 1) * 100}>

@@ -71,6 +71,13 @@ const config: Config = {
           "100%": { transform: "translateX(-50%)" },
         }
       },
+      backdropBlur: {
+        'md': '4px',
+        'lg': '6px',
+        'xl': '8px',
+        '2xl': '8px',
+        '3xl': '8px',
+      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
