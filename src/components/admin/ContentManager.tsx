@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { upsertSiteContent, getAllSiteContent } from "@/app/admin/content-actions";
-import { Loader2, Save, Image as ImageIcon, Type } from "lucide-react";
+import { Loader2, Save, Image as ImageIcon, Type, X } from "lucide-react";
+import { UploadDropzone } from "@/utils/uploadthing";
+import "@uploadthing/react/styles.css";
 
 type SiteContent = {
   id: string;
@@ -54,34 +56,7 @@ export default function ContentManager() {
     setSavingKey(null);
   };
 
-  const handleImageUpload = async (id: string, file: File) => {
-    setSavingKey(id);
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const uploadRes = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-      const uploadData = await uploadRes.json();
-      if (uploadData.success) {
-        // Save URL to SiteContent
-        const res = await upsertSiteContent({ id, value: uploadData.url, type: "IMAGE" });
-        if (res.success) {
-          setContents(prev => ({ ...prev, [id]: uploadData.url }));
-        } else {
-          alert("Failed to save image to content database");
-        }
-      } else {
-        alert("Failed to upload image file");
-      }
-    } catch (err) {
-      console.error("Upload error", err);
-      alert("Upload error");
-    }
-    setSavingKey(null);
-  };
+  // Image upload is handled by UploadDropzone component directly now.
 
   return (
     <div className="space-y-8">
@@ -122,31 +97,62 @@ export default function ContentManager() {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <div className="border-2 border-dashed border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-[#E6C875]/50 transition-colors h-40 bg-black/30 relative overflow-hidden group">
+                    <div className="border-2 border-dashed border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-black/30 relative overflow-hidden group">
                       {contents[section.id] ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={contents[section.id]} alt={section.label} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
+                        <>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={contents[section.id]} alt={section.label} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
+                          <button 
+                            type="button"
+                            onClick={() => {
+                              const newContents = { ...contents };
+                              delete newContents[section.id];
+                              setContents(newContents);
+                            }}
+                            className="absolute z-10 bg-black/70 hover:bg-red-500/80 text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100"
+                          >
+                            Remove Image
+                          </button>
+                        </>
                       ) : (
-                        <div className="flex flex-col items-center text-neutral-500">
-                          <ImageIcon className="w-8 h-8 mb-2" />
-                          <span className="text-sm">Click to upload new image</span>
+                        <div className="w-full relative z-20">
+                          {savingKey === section.id ? (
+                            <div className="flex flex-col items-center justify-center py-6">
+                              <Loader2 className="w-8 h-8 text-[#E6C875] animate-spin mb-2" />
+                              <span className="text-sm text-neutral-400">Saving to database...</span>
+                            </div>
+                          ) : (
+                            <UploadDropzone
+                              endpoint="imageUploader"
+                              onClientUploadComplete={async (res) => {
+                                if (res && res.length > 0) {
+                                  const uploadedUrl = res[0].url;
+                                  setSavingKey(section.id);
+                                  
+                                  // Save to database
+                                  const dbRes = await upsertSiteContent({ id: section.id, value: uploadedUrl, type: "IMAGE" });
+                                  if (dbRes.success) {
+                                    setContents(prev => ({ ...prev, [section.id]: uploadedUrl }));
+                                  } else {
+                                    alert("Failed to save image to content database");
+                                  }
+                                  
+                                  setSavingKey(null);
+                                }
+                              }}
+                              onUploadError={(error: Error) => {
+                                alert(`ERROR! ${error.message}`);
+                              }}
+                              appearance={{
+                                container: "border-none bg-transparent w-full p-0 py-2 m-0",
+                                label: "text-[#E6C875] hover:text-white transition-colors",
+                                allowedContent: "text-neutral-500 text-xs mt-2",
+                                button: "bg-[#E6C875] text-black font-bold mt-4 px-4 py-2 text-sm"
+                              }}
+                            />
+                          )}
                         </div>
                       )}
-                      {savingKey === section.id && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-10">
-                          <Loader2 className="w-8 h-8 text-[#E6C875] animate-spin" />
-                        </div>
-                      )}
-                      <input
-                        type="file"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) handleImageUpload(section.id, file);
-                        }}
-                        accept="image/*"
-                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-20"
-                        title="Upload new image"
-                      />
                     </div>
                   </div>
                 )}

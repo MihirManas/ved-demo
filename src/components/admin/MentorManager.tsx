@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { createMentor, getMentors, deleteMentor } from "@/app/admin/mentor-actions";
 import { Loader2, Plus, Trash2, Image as ImageIcon } from "lucide-react";
+import { UploadDropzone } from "@/utils/uploadthing";
+import "@uploadthing/react/styles.css";
 
 type Mentor = {
   id: number;
@@ -25,7 +27,6 @@ export default function MentorManager() {
   const [imageAlt, setImageAlt] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetchMentors();
@@ -40,14 +41,7 @@ export default function MentorManager() {
     setLoading(false);
   }
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImageFile(file);
-      const objectUrl = URL.createObjectURL(file);
-      setImagePreview(objectUrl);
-    }
-  };
+  // Image state handled by UploadThing now
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,29 +50,9 @@ export default function MentorManager() {
     setIsSubmitting(true);
     let uploadedImagePath = null;
 
-    if (imageFile) {
-      const formData = new FormData();
-      formData.append("file", imageFile);
-
-      try {
-        const uploadRes = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-        const uploadData = await uploadRes.json();
-        if (uploadData.success) {
-          uploadedImagePath = uploadData.url;
-        } else {
-          alert("Failed to upload image");
-          setIsSubmitting(false);
-          return;
-        }
-      } catch (err) {
-        console.error("Upload error", err);
-        alert("Upload error");
-        setIsSubmitting(false);
-        return;
-      }
+    // Upload is handled instantly by UploadDropzone, so imagePreview contains the URL
+    if (imagePreview) {
+      uploadedImagePath = imagePreview;
     }
 
     const res = await createMentor({
@@ -96,7 +70,6 @@ export default function MentorManager() {
       setImageAlt("");
       setImageFile(null);
       setImagePreview(null);
-      if (fileInputRef.current) fileInputRef.current.value = "";
       fetchMentors();
     } else {
       alert("Failed to add mentor");
@@ -155,26 +128,38 @@ export default function MentorManager() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-neutral-400 mb-2">Mentor Photo</label>
-                <div 
-                  className="border-2 border-dashed border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-[#E6C875]/50 transition-colors h-40 bg-black/30 relative overflow-hidden"
-                  onClick={() => fileInputRef.current?.click()}
-                >
+                <div className="border-2 border-dashed border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-black/30 relative overflow-hidden group">
                   {imagePreview ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={imagePreview} alt="Preview" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={imagePreview} alt="Preview" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+                      <button 
+                        type="button"
+                        onClick={() => setImagePreview(null)}
+                        className="absolute z-10 bg-black/70 hover:bg-red-500/80 text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100"
+                      >
+                        Remove Image
+                      </button>
+                    </>
                   ) : (
-                    <div className="flex flex-col items-center text-neutral-500">
-                      <ImageIcon className="w-8 h-8 mb-2" />
-                      <span className="text-sm">Click to upload photo</span>
-                    </div>
+                    <UploadDropzone
+                      endpoint="imageUploader"
+                      onClientUploadComplete={(res) => {
+                        if (res && res.length > 0) {
+                          setImagePreview(res[0].url);
+                        }
+                      }}
+                      onUploadError={(error: Error) => {
+                        alert(`ERROR! ${error.message}`);
+                      }}
+                      appearance={{
+                        container: "border-none bg-transparent w-full p-0 py-2 m-0",
+                        label: "text-[#E6C875] hover:text-white transition-colors",
+                        allowedContent: "text-neutral-500 text-xs mt-2",
+                        button: "bg-[#E6C875] text-black font-bold mt-4 px-4 py-2 text-sm"
+                      }}
+                    />
                   )}
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleImageChange}
-                    accept="image/*"
-                    className="hidden"
-                  />
                 </div>
               </div>
               <div>
