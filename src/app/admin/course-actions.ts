@@ -32,7 +32,7 @@ export async function seedCourses() {
           slug: course.id,
           title: course.title,
           category: course.category,
-          image: course.image,
+          image: `/images/courses/${course.id.replace(/-/g, '_')}.png`,
           dateAdded: course.dateAdded,
           tag: course.tag,
           iconId: course.iconId,
