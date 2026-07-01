@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Code, ShieldCheck, Zap, Users, LayoutDashboard, Quote, Cpu, Database, Network, ChevronRight } from "lucide-react";
+import { ArrowRight, Code, ShieldCheck, Zap, Users, LayoutDashboard, Quote, Cpu, Database, Network, ChevronRight, CheckCircle, Clock, Award, Globe, BookOpen, Target, Heart, PlayCircle, Briefcase } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
   Accordion,
@@ -21,16 +21,16 @@ export default function Home() {
 
   const heroData = [
     {
-      fullText: "Stop Sending Resumes. Start Proving Competence.",
-      highlight: "Start Proving",
+      fullText: "Your Pathway to Professional Excellence. Discover. Learn. Excel.",
+      highlight: "Professional Excellence",
       buttonText: "Build Your Proof",
       route: "/domains"
     },
     {
-      fullText: "Stop applying randomly. Find out exactly why you are not getting interview calls.",
-      highlight: "Find out exactly",
-      buttonText: "Analyse Your Resume",
-      route: "/verify"
+      fullText: "At Ved Upskilling, we believe that learning never stops. Experience real classroom.",
+      highlight: "learning never stops",
+      buttonText: "Explore Courses",
+      route: "/domains"
     }
   ];
 
@@ -72,18 +72,9 @@ export default function Home() {
 
   const featuredCourses = [domainsData["fullstack"], domainsData["ai-python"]];
 
-  const IconComponent = ({ id }: { id: string }) => {
-    if (id === 'cpu') return <Cpu size={120} strokeWidth={1} />;
-    if (id === 'database') return <Database size={120} strokeWidth={1} />;
-    if (id === 'code') return <Code size={120} strokeWidth={1} />;
-    if (id === 'network') return <Network size={120} strokeWidth={1} />;
-    if (id === 'zap') return <Zap size={120} strokeWidth={1} />;
-    if (id === 'users') return <Users size={120} strokeWidth={1} />;
-    return <Cpu size={120} strokeWidth={1} />;
-  };
-
   return (
     <div className="animate-in fade-in duration-1000 ease-out">
+      {/* Hero Section */}
       <div className="relative min-h-screen flex flex-col justify-center pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -91,7 +82,7 @@ export default function Home() {
               <div>
                 <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-[#E6C875] animate-pulse shadow-[0_0_10px_#E6C875]"></span>
-                  <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Admissions Open 2026</span>
+                  <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Online Education Feels Like Real Classroom</span>
                 </div>
 
                 <div className="grid relative mb-12 items-start min-h-[160px] md:min-h-[180px] lg:min-h-[220px]">
@@ -100,6 +91,12 @@ export default function Home() {
                     <span className="w-1 h-[0.9em] bg-gray-900 dark:bg-white inline-block ml-2 animate-pulse align-middle opacity-50"></span>
                   </h1>
                 </div>
+                
+                <ul className="mb-10 space-y-3">
+                  <li className="flex items-center text-lg text-gray-700 dark:text-white/80"><CheckCircle className="text-[#E6C875] w-5 h-5 mr-3" /> Get Certified</li>
+                  <li className="flex items-center text-lg text-gray-700 dark:text-white/80"><CheckCircle className="text-[#E6C875] w-5 h-5 mr-3" /> Gain Job-ready Skills</li>
+                  <li className="flex items-center text-lg text-gray-700 dark:text-white/80"><CheckCircle className="text-[#E6C875] w-5 h-5 mr-3" /> Great Life</li>
+                </ul>
 
                 <div className="flex flex-col sm:flex-row gap-5">
                   <Link
@@ -124,12 +121,6 @@ export default function Home() {
                   <div className="flex items-center space-x-1.5">
                     <span className="text-[#E6C875]">⭐ 4.89</span> <span>Course Report</span>
                   </div>
-                  <div className="flex items-center space-x-1.5">
-                    <span className="text-[#E6C875]">⭐ 4.97</span> <span>Switchup</span>
-                  </div>
-                  <div className="flex items-center space-x-1.5">
-                    <span className="text-[#E6C875]">⭐ 4.7</span> <span>Career Karma</span>
-                  </div>
                 </div>
               </div>
             </ScrollReveal>
@@ -137,25 +128,61 @@ export default function Home() {
             <ScrollReveal delay={300}>
               <div className="relative min-h-[600px] py-12 md:py-0 rounded-[3rem] border border-gray-200 dark:border-white/5 flex items-center justify-center group overflow-hidden bg-gradient-to-br from-black/[0.02] dark:from-white/[0.03] to-transparent backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_100px_rgba(230,200,117,0.05)]">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#E6C875]/10 rounded-full blur-[80px] group-hover:bg-[#E6C875]/20 group-hover:scale-110 transition-all duration-1000"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gray-200/50 dark:bg-white/5 rounded-full blur-[100px] group-hover:bg-gray-300/50 dark:group-hover:bg-white/10 group-hover:scale-110 transition-all duration-1000"></div>
+                
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="https://vedupskilling.in/wp-content/plugins/edura-core/assets/img/hero_overlay_6.png" 
+                  alt="Hero Image" 
+                  className="w-full h-full object-cover opacity-80 mix-blend-overlay absolute inset-0 z-0"
+                />
 
                 <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6 p-8 w-full max-w-[450px]">
                   <div className="bg-white/50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/10 p-8 rounded-[2rem] backdrop-blur-xl transform sm:translate-y-8 animate-float shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-500">
-                    <Code className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
-                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">Architecture</h4>
-                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Systems built for immense, unbounded scale.</p>
+                    <Users className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
+                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">16,500+</h4>
+                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Active Students</p>
                   </div>
                   <div className="bg-white/50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/10 p-8 rounded-[2rem] backdrop-blur-xl transform sm:-translate-y-8 animate-float-delayed shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-500">
-                    <Zap className="text-gray-900 dark:text-white w-10 h-10 mb-6" strokeWidth={1.5} />
-                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">Execution</h4>
-                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Flawless, high-performance rapid delivery.</p>
-                  </div>
-                  <div className="col-span-1 sm:col-span-2 bg-gradient-to-r from-[#E6C875]/10 to-transparent border border-[#E6C875]/30 p-8 rounded-[2rem] backdrop-blur-xl animate-float shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-[#E6C875]/50 transition-colors duration-500">
-                    <ShieldCheck className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
-                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">Verification</h4>
-                    <p className="text-[#D4AF37] dark:text-[#E6C875]/70 text-sm mt-3 font-light leading-relaxed">Cryptographically secured achievements backed by Wipro DICE ID.</p>
+                    <PlayCircle className="text-gray-900 dark:text-white w-10 h-10 mb-6" strokeWidth={1.5} />
+                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">7,500+</h4>
+                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Online Video Courses</p>
                   </div>
                 </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </div>
+
+      {/* Who We Are */}
+      <div className="py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <ScrollReveal>
+              <div className="relative rounded-[3rem] overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="https://vedupskilling.in/wp-content/uploads/2025/01/DALL%C2%B7E-2025-01-04-16.24.38-A-vibrant-and-dynamic-scene-of-a-group-of-students-studying-together-in-a-modern-library.-The-group-is-seated-around-a-large-wooden-table-collaborati.webp" 
+                  alt="Who we are" 
+                  className="w-full h-[500px] object-cover rounded-[3rem]"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <div>
+                <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Who We Are ?</h2>
+                <p className="text-xl text-gray-600 dark:text-white/70 font-light leading-relaxed mb-6">
+                  Ved Upskilling is more than just an edu-tech platform. We are a community of learners, mentors, and industry leaders committed to creating meaningful career transformations.
+                </p>
+                <p className="text-lg text-gray-600 dark:text-white/60 font-light leading-relaxed mb-8">
+                  Our programs provide immersive, practical learning guided by industry professionals with 8-10 years of expertise. Students receive tailored support through one-on-one doubt-solving sessions and gain real-world experience by working on projects sourced from leading multinational companies.
+                </p>
+                <Link
+                    href="/about"
+                    className="inline-flex items-center text-gray-900 dark:text-white font-bold uppercase tracking-widest text-sm hover:text-[#E6C875] dark:hover:text-[#E6C875] transition-colors duration-300"
+                  >
+                    Learn More About Us <ArrowRight size={18} className="ml-2" />
+                </Link>
               </div>
             </ScrollReveal>
           </div>
@@ -168,7 +195,7 @@ export default function Home() {
           <ScrollReveal>
             <div className="flex flex-col md:flex-row justify-between items-end mb-16">
               <div>
-                <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Flagship Architectures.</h2>
+                <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Ved Upskilling Most Enrolled Domains.</h2>
                 <p className="text-gray-600 dark:text-white/60 text-xl font-light max-w-2xl leading-relaxed">Our most rigorous, high-demand execution protocols. Designed specifically for enterprise-level scaling.</p>
               </div>
               <Link
@@ -229,77 +256,131 @@ export default function Home() {
         </div>
       </div>
 
+      {/* VED UPSKILLING Offers */}
       <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gradient-to-b from-gray-50 dark:from-black to-white dark:to-black/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-24">
-              <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Designed for Mastery.</h2>
-              <p className="text-gray-600 dark:text-white/60 text-2xl max-w-3xl mx-auto font-light leading-relaxed">Precision curriculums engineered by industry veterans, built for those who demand absolute excellence.</p>
+              <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Ved Upskilling Offers.</h2>
+              <p className="text-gray-600 dark:text-white/60 text-2xl max-w-3xl mx-auto font-light leading-relaxed">Everything you need to turn your ambitions into reality.</p>
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-8 auto-rows-[350px]">
-            <ScrollReveal delay={100}>
-              <div className="h-full md:col-span-2 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-16 relative overflow-hidden group backdrop-blur-2xl transition-all duration-700 hover:shadow-xl dark:hover:bg-white/[0.04] dark:hover:border-white/10">
-                <div className="absolute right-0 bottom-0 opacity-5 group-hover:opacity-10 transition-all transform group-hover:scale-110 duration-1000 ease-out text-gray-900 dark:text-white">
-                  <Users size={400} strokeWidth={0.5} />
-                </div>
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#E6C875]/20 to-transparent text-[#E6C875] rounded-full flex items-center justify-center backdrop-blur-xl border border-[#E6C875]/20 shadow-[0_0_30px_rgba(230,200,117,0.1)]">
-                    <Users size={32} strokeWidth={1.5} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "Future-Focused Courses", desc: "Stay ahead of the curve with cutting-edge programs tailored to today’s market demands.", icon: Target },
+              { title: "Expert Guidance", desc: "Learn from industry pioneers who share their practical insights and strategies for success.", icon: Users },
+              { title: "Dynamic Learning", desc: "Experience immersive education through interactive sessions, live projects, and collaborative communities.", icon: Zap },
+              { title: "Career-Boosting Certifications", desc: "Gain credentials that open doors to new opportunities and set you apart.", icon: Award },
+              { title: "Comfortable Timings", desc: "Flexible schedules designed to fit your lifestyle and commitments.", icon: Clock },
+              { title: "Daily Live Classes", desc: "Choose from three convenient slots every day for an engaging, real-time learning experience.", icon: PlayCircle },
+              { title: "LMS for Individuals", desc: "Access a personalized Learning Management System to track your progress and manage your courses.", icon: LayoutDashboard },
+              { title: "Everyday Support", desc: "Benefit from dedicated support to assist you throughout your learning journey.", icon: Heart }
+            ].map((offer, idx) => (
+              <ScrollReveal key={idx} delay={idx * 50}>
+                <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-3xl p-8 h-full hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                  <div className="w-14 h-14 bg-[#E6C875]/10 text-[#E6C875] rounded-xl flex items-center justify-center mb-6">
+                    <offer.icon size={28} />
                   </div>
-                  <div>
-                    <h3 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Industry Pioneer Mentorship.</h3>
-                    <p className="text-gray-600 dark:text-white/60 max-w-xl font-light text-xl leading-relaxed">Direct 1-on-1 guidance from professionals shaping the future at top multinationals. No teaching assistants, only absolute experts.</p>
+                  <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-3">{offer.title}</h3>
+                  <p className="text-gray-600 dark:text-white/60 font-light text-sm leading-relaxed">{offer.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Why Choose Ved Upskilling */}
+      <div className="py-24 relative z-10 bg-[#E6C875]/5 dark:bg-[#E6C875]/[0.02] border-y border-[#E6C875]/20 dark:border-[#E6C875]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <ScrollReveal>
+              <div>
+                <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Why Choose Ved Upskilling?</h2>
+                <div className="space-y-8">
+                  <div className="flex">
+                    <div className="flex-shrink-0 mt-1">
+                      <Target className="text-[#E6C875] w-8 h-8" />
+                    </div>
+                    <div className="ml-6">
+                      <h4 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Customized Learning</h4>
+                      <p className="text-gray-600 dark:text-white/60">Craft a pathway that fits your goals, pace, and interests.</p>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0 mt-1">
+                      <Globe className="text-[#E6C875] w-8 h-8" />
+                    </div>
+                    <div className="ml-6">
+                      <h4 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Learn Anytime, Anywhere</h4>
+                      <p className="text-gray-600 dark:text-white/60">Access high-quality content on-demand, without compromising your schedule.</p>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0 mt-1">
+                      <Briefcase className="text-[#E6C875] w-8 h-8" />
+                    </div>
+                    <div className="ml-6">
+                      <h4 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Real-World Applications</h4>
+                      <p className="text-gray-600 dark:text-white/60">Master skills that directly impact your career and deliver tangible results.</p>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0 mt-1">
+                      <Users className="text-[#E6C875] w-8 h-8" />
+                    </div>
+                    <div className="ml-6">
+                      <h4 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Supportive Community</h4>
+                      <p className="text-gray-600 dark:text-white/60">Connect with peers and mentors who inspire, guide, and motivate you throughout your journey.</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </ScrollReveal>
-
             <ScrollReveal delay={200}>
-              <div className="h-full bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-12 transition-all duration-700 hover:shadow-xl dark:hover:bg-white/[0.04] dark:hover:border-white/10 backdrop-blur-2xl flex flex-col justify-between">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#E6C875]/20 to-transparent text-[#E6C875] rounded-full flex items-center justify-center border border-[#E6C875]/20 shadow-[0_0_30px_rgba(230,200,117,0.1)]">
-                  <LayoutDashboard size={28} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-4">Advanced LMS.</h3>
-                  <p className="text-gray-600 dark:text-white/60 font-light text-lg leading-relaxed">A seamless, proprietary dashboard tracking your true technical progress.</p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={300}>
-              <div className="h-full bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-12 transition-all duration-700 hover:shadow-xl dark:hover:bg-white/[0.04] dark:hover:border-white/10 backdrop-blur-2xl flex flex-col justify-between">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#E6C875]/20 to-transparent text-[#E6C875] rounded-full flex items-center justify-center border border-[#E6C875]/20 shadow-[0_0_30px_rgba(230,200,117,0.1)]">
-                  <Zap size={28} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-4">Dynamic Sync.</h3>
-                  <p className="text-gray-600 dark:text-white/60 font-light text-lg leading-relaxed">Live, interactive sessions strictly adapting to your intensive professional schedule.</p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={400}>
-              <div className="h-full md:col-span-2 bg-[#E6C875]/[0.05] dark:bg-[#E6C875]/[0.03] border border-[#E6C875]/30 dark:border-[#E6C875]/10 rounded-[3rem] p-16 relative overflow-hidden transition-all duration-700 hover:shadow-xl dark:hover:bg-[#E6C875]/[0.05] dark:hover:border-[#E6C875]/20 backdrop-blur-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E6C875]/10 dark:from-[#E6C875]/5 to-transparent"></div>
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <div className="w-20 h-20 bg-white dark:bg-[#E6C875]/10 text-[#E6C875] rounded-full flex items-center justify-center border border-[#E6C875]/30 dark:border-[#E6C875]/20 shadow-[0_0_40px_rgba(230,200,117,0.15)]">
-                    <ShieldCheck size={32} strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h3 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Cryptographic Credentials.</h3>
-                    <p className="text-[#B8860B] dark:text-[#E6C875]/80 max-w-xl font-light text-xl leading-relaxed">Verified via DICE ID blockchain. Universally trusted and instantly verifiable by global tech recruiters.</p>
-                  </div>
-                </div>
+              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-[#E6C875]/20 mix-blend-overlay z-10"></div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src="https://vedupskilling.in/wp-content/uploads/2025/01/Why-Choose-vedupskilling-e1736138283193.png" 
+                  alt="Why Choose Us" 
+                  className="w-full h-auto object-cover rounded-[3rem]"
+                />
               </div>
             </ScrollReveal>
           </div>
         </div>
       </div>
 
+      {/* Stats Banner */}
+      <div className="py-20 relative z-10 border-t border-gray-200 dark:border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12">
+              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">25+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Emerging Domains</p>
+              </div>
+              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">60+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Industry Live Projects</p>
+              </div>
+              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">1200+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Students Enrolled</p>
+              </div>
+              <div className="text-center px-4">
+                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">4.9+</p>
+                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Students Rating</p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+
       {/* Testimonials */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5">
+      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="mb-24 max-w-3xl">
@@ -309,29 +390,8 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 mb-24 py-12 border-y border-gray-200 dark:border-white/10">
-              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
-                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">25+</p>
-                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Emerging Domains</p>
-              </div>
-              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
-                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">60+</p>
-                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Industry Live Projects</p>
-              </div>
-              <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
-                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">1200+</p>
-                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Students Enrolled</p>
-              </div>
-              <div className="text-center px-4">
-                <p className="text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">4.9+</p>
-                <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4">Students Rating</p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal>
             <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-8 md:p-12 mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
-              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Our alumni are working at</p>
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Ved Upskilled Candidates Are Working In</p>
               
               <div 
                 className="w-full overflow-hidden relative"
