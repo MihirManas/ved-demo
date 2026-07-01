@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Briefcase, MapPin, IndianRupee, ChevronRight } from 'lucide-react';
+import { Briefcase, MapPin, IndianRupee, ChevronRight, Search } from 'lucide-react';
 import ScrollReveal from "@/components/ScrollReveal";
 
 interface Job {
@@ -19,6 +19,7 @@ interface Job {
 export default function CareersPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -37,11 +38,17 @@ export default function CareersPage() {
     fetchJobs();
   }, []);
 
+  const filteredJobs = jobs.filter(job => 
+    job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    job.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    job.type.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen bg-white dark:bg-black pt-32 pb-20 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-1000 ease-out">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal delay={100}>
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#E6C875] animate-pulse shadow-[0_0_10px_#E6C875]"></span>
               <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Join Our Mission</span>
@@ -56,6 +63,21 @@ export default function CareersPage() {
           </div>
         </ScrollReveal>
 
+        <ScrollReveal delay={150}>
+          <div className="max-w-2xl mx-auto mb-16 relative">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400 dark:text-white/40" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search by role, location, or type..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="block w-full pl-12 pr-4 py-4 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] text-gray-900 dark:text-white transition-all shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none placeholder-gray-400 dark:placeholder-white/30"
+            />
+          </div>
+        </ScrollReveal>
+
         <ScrollReveal delay={200}>
           {loading ? (
             <div className="flex justify-center items-center py-20">
@@ -66,9 +88,14 @@ export default function CareersPage() {
               <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">No Open Roles Currently</h3>
               <p className="text-gray-500 dark:text-white/50">Check back later or follow our social channels for updates on new opportunities.</p>
             </div>
+          ) : filteredJobs.length === 0 ? (
+            <div className="text-center py-20 bg-gray-50 dark:bg-white/[0.02] rounded-2xl border border-gray-200 dark:border-white/5">
+              <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">No matches found</h3>
+              <p className="text-gray-500 dark:text-white/50">Try adjusting your search query.</p>
+            </div>
           ) : (
             <div className="grid gap-8 md:grid-cols-2">
-              {jobs.map((job) => (
+              {filteredJobs.map((job) => (
                 <div 
                   key={job.id} 
                   className="group relative bg-white dark:bg-white/[0.02] rounded-2xl p-8 border border-gray-200 dark:border-white/10 hover:border-[#E6C875]/50 transition-all duration-500 flex flex-col h-full hover:shadow-[0_0_30px_rgba(230,200,117,0.15)]"
