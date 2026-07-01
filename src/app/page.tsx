@@ -215,7 +215,7 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black/80 to-transparent z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-black/80 to-transparent z-10"></div>
                     <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>
                     </div>
