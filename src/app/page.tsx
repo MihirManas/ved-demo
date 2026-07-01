@@ -133,7 +133,7 @@ export default function Home() {
                 <img 
                   src="https://vedupskilling.in/wp-content/plugins/edura-core/assets/img/hero_overlay_6.png" 
                   alt="Hero Image" 
-                  className="w-full h-full object-cover opacity-80 mix-blend-overlay absolute inset-0 z-0"
+                  className="w-full h-full object-cover opacity-20 dark:opacity-80 mix-blend-multiply dark:mix-blend-overlay absolute inset-0 z-0 invert dark:invert-0"
                 />
 
                 <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6 p-8 w-full max-w-[450px]">
@@ -213,7 +213,7 @@ export default function Home() {
                       alt={`${course.title} - Complete guide to ${course.tag}`} 
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out mix-blend-overlay dark:mix-blend-normal" 
+                      className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black/80 to-transparent z-10"></div>
                     <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
