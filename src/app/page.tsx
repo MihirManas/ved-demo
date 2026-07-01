@@ -138,14 +138,19 @@ export default function Home() {
 
                 <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6 p-8 w-full max-w-[450px]">
                   <div className="bg-white/50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/10 p-8 rounded-[2rem] backdrop-blur-xl transform sm:translate-y-8 animate-float shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-500">
-                    <Users className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
-                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">16,500+</h4>
-                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Active Students</p>
+                    <Code className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
+                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">Architecture</h4>
+                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Systems built for immense, unbounded scale.</p>
                   </div>
                   <div className="bg-white/50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/10 p-8 rounded-[2rem] backdrop-blur-xl transform sm:-translate-y-8 animate-float-delayed shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-gray-300 dark:hover:border-white/20 transition-colors duration-500">
-                    <PlayCircle className="text-gray-900 dark:text-white w-10 h-10 mb-6" strokeWidth={1.5} />
-                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">7,500+</h4>
-                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Online Video Courses</p>
+                    <Zap className="text-gray-900 dark:text-white w-10 h-10 mb-6" strokeWidth={1.5} />
+                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">Execution</h4>
+                    <p className="text-gray-600 dark:text-white/50 text-sm mt-3 font-light leading-relaxed">Flawless, high-performance rapid delivery.</p>
+                  </div>
+                  <div className="col-span-1 sm:col-span-2 bg-gradient-to-r from-[#E6C875]/10 to-transparent border border-[#E6C875]/30 p-8 rounded-[2rem] backdrop-blur-xl animate-float shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-[#E6C875]/50 transition-colors duration-500">
+                    <ShieldCheck className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
+                    <h4 className="text-gray-900 dark:text-white font-medium text-lg">Verification</h4>
+                    <p className="text-[#D4AF37] dark:text-[#E6C875]/70 text-sm mt-3 font-light leading-relaxed">Cryptographically secured achievements backed by Wipro DICE ID.</p>
                   </div>
                 </div>
               </div>
