@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import BootSequenceWrapper from "@/components/BootSequenceWrapper";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import Script from "next/script";
@@ -90,26 +89,24 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <BootSequenceWrapper>
-            <ContentProtection>
-              <div className="relative min-h-screen bg-[#F8F9FA] dark:bg-black text-gray-900 dark:text-white overflow-x-clip transition-colors duration-1000 ease-in-out">
-                
-                {/* Background Overlays */}
-                <div className="fixed inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out z-0 bg-gradient-to-tr from-[#E6C875]/10 via-[#F8F9FA]/50 to-white/80 dark:opacity-0 opacity-100" />
-                <div className="fixed inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out z-0 bg-gradient-to-tr from-[#E6C875]/5 via-black to-black/80 dark:opacity-100 opacity-0" />
-                
-                <ParticleCanvas />
-                <Navbar />
-                
-                <main className="relative z-10 pt-24">
-                  {children}
-                </main>
+          <ContentProtection>
+            <div className="relative min-h-screen bg-[#F8F9FA] dark:bg-black text-gray-900 dark:text-white overflow-x-clip transition-colors duration-1000 ease-in-out">
+              
+              {/* Background Overlays */}
+              <div className="fixed inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out z-0 bg-gradient-to-tr from-[#E6C875]/10 via-[#F8F9FA]/50 to-white/80 dark:opacity-0 opacity-100" />
+              <div className="fixed inset-0 pointer-events-none transition-opacity duration-1000 ease-in-out z-0 bg-gradient-to-tr from-[#E6C875]/5 via-black to-black/80 dark:opacity-100 opacity-0" />
+              
+              <ParticleCanvas />
+              <Navbar />
+              
+              <main className="relative z-10 pt-24">
+                {children}
+              </main>
 
-                <Footer />
-                <FloatingActionButton />
-              </div>
-            </ContentProtection>
-          </BootSequenceWrapper>
+              <Footer />
+              <FloatingActionButton />
+            </div>
+          </ContentProtection>
         </ThemeProvider>
       </body>
     </html>
