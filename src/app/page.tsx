@@ -161,36 +161,24 @@ export default function Home() {
 
       {/* Who We Are */}
       <div className="py-20 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <ScrollReveal>
-              <div className="relative rounded-[3rem] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src="https://vedupskilling.in/wp-content/uploads/2025/01/DALL%C2%B7E-2025-01-04-16.24.38-A-vibrant-and-dynamic-scene-of-a-group-of-students-studying-together-in-a-modern-library.-The-group-is-seated-around-a-large-wooden-table-collaborati.webp" 
-                  alt="Who we are" 
-                  className="w-full h-[500px] object-cover rounded-[3rem]"
-                />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <div>
-                <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Who We Are ?</h2>
-                <p className="text-xl text-gray-600 dark:text-white/70 font-light leading-relaxed mb-6">
-                  Ved Upskilling is more than just an edu-tech platform. We are a community of learners, mentors, and industry leaders committed to creating meaningful career transformations.
-                </p>
-                <p className="text-lg text-gray-600 dark:text-white/60 font-light leading-relaxed mb-8">
-                  Our programs provide immersive, practical learning guided by industry professionals with 8-10 years of expertise. Students receive tailored support through one-on-one doubt-solving sessions and gain real-world experience by working on projects sourced from leading multinational companies.
-                </p>
-                <Link
-                    href="/about"
-                    className="inline-flex items-center text-gray-900 dark:text-white font-bold uppercase tracking-widest text-sm hover:text-[#E6C875] dark:hover:text-[#E6C875] transition-colors duration-300"
-                  >
-                    Learn More About Us <ArrowRight size={18} className="ml-2" />
-                </Link>
-              </div>
-            </ScrollReveal>
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal delay={100}>
+            <div>
+              <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Who We Are ?</h2>
+              <p className="text-xl text-gray-600 dark:text-white/70 font-light leading-relaxed mb-6">
+                Ved Upskilling is more than just an edu-tech platform. We are a community of learners, mentors, and industry leaders committed to creating meaningful career transformations.
+              </p>
+              <p className="text-lg text-gray-600 dark:text-white/60 font-light leading-relaxed mb-8">
+                Our programs provide immersive, practical learning guided by industry professionals with 8-10 years of expertise. Students receive tailored support through one-on-one doubt-solving sessions and gain real-world experience by working on projects sourced from leading multinational companies.
+              </p>
+              <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center text-gray-900 dark:text-white font-bold uppercase tracking-widest text-sm hover:text-[#E6C875] dark:hover:text-[#E6C875] transition-colors duration-300"
+                >
+                  Learn More About Us <ArrowRight size={18} className="ml-2" />
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
