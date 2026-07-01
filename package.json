@@ -22,7 +22,9 @@
     "@maxmind/geoip2-node": "^5.0.0",
     "@prisma/client": "^5.10.2",
     "react-simple-maps": "^3.0.0",
-    "d3-scale": "^4.0.2"
+    "d3-scale": "^4.0.2",
+    "uploadthing": "latest",
+    "@uploadthing/react": "latest"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createCourse, getCourses, deleteCourse, seedCourses, updateCourse } from "@/app/admin/course-actions";
-import { Loader2, Plus, Trash2, Database, Pencil, X, Image as ImageIcon, Upload } from "lucide-react";
+import { Loader2, Plus, Trash2, Database, Pencil, X, Image as ImageIcon } from "lucide-react";
 import Image from "next/image";
+import { UploadDropzone } from "@/utils/uploadthing";
+import "@uploadthing/react/styles.css";
 
 type Course = {
   id: string;
@@ -21,7 +23,6 @@ export default function CourseManager() {
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSeeding, setIsSeeding] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   
   const [editingId, setEditingId] = useState<string | null>(null);
   
@@ -32,8 +33,6 @@ export default function CourseManager() {
   const [about, setAbout] = useState("");
   const [tag, setTag] = useState("");
   const [image, setImage] = useState("");
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetchCourses();
@@ -122,32 +121,6 @@ export default function CourseManager() {
     }
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setIsUploading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await res.json();
-      
-      if (data.success) {
-        setImage(data.url);
-      } else {
-        alert("Failed to upload image");
-      }
-    } catch (error) {
-      console.error("Upload error:", error);
-      alert("Failed to upload image");
-    } finally {
-      setIsUploading(false);
-    }
   };
 
   return (
@@ -188,38 +161,36 @@ export default function CourseManager() {
               {/* Image Upload Area */}
               <div>
                 <label className="block text-sm font-medium text-neutral-400 mb-2">Course Image</label>
-                <div 
-                  className={`relative border-2 border-dashed ${image ? 'border-[#E6C875]/50 bg-[#E6C875]/5' : 'border-neutral-800 bg-black/50'} rounded-xl p-4 flex flex-col items-center justify-center transition-all hover:border-[#E6C875]/50 group cursor-pointer overflow-hidden min-h-[160px]`}
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleImageUpload}
-                    accept="image/*"
-                    className="hidden"
-                  />
-                  
-                  {isUploading ? (
-                    <div className="flex flex-col items-center gap-3">
-                      <Loader2 className="w-8 h-8 text-[#E6C875] animate-spin" />
-                      <span className="text-sm text-neutral-400">Uploading...</span>
+                <div className={`relative border-2 border-dashed ${image ? 'border-[#E6C875]/50 bg-[#E6C875]/5' : 'border-neutral-800 bg-black/50'} rounded-xl p-4 flex flex-col items-center justify-center transition-all hover:border-[#E6C875]/50 group overflow-hidden min-h-[160px]`}>
+                  {image ? (
+                    <div className="relative w-full h-32 mb-4">
+                      <Image src={image} alt="Preview" fill className="object-cover rounded-lg opacity-80 group-hover:opacity-60 transition-opacity" />
+                      <button 
+                        type="button"
+                        onClick={() => setImage("")}
+                        className="absolute top-2 right-2 bg-black/70 hover:bg-red-500/80 text-white p-1.5 rounded-md transition-colors"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
                     </div>
-                  ) : image ? (
-                    <>
-                      <Image src={image} alt="Preview" fill className="object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                        <Upload className="w-8 h-8 text-white mb-2 shadow-lg" />
-                        <span className="text-sm font-bold text-white bg-black/50 px-3 py-1 rounded-full">Change Image</span>
-                      </div>
-                    </>
                   ) : (
-                    <div className="flex flex-col items-center gap-3">
-                      <div className="p-3 bg-neutral-900 rounded-full group-hover:bg-[#E6C875]/20 transition-colors">
-                        <ImageIcon className="w-6 h-6 text-neutral-500 group-hover:text-[#E6C875] transition-colors" />
-                      </div>
-                      <span className="text-sm text-neutral-400 font-medium">Click to upload image</span>
-                    </div>
+                    <UploadDropzone
+                      endpoint="imageUploader"
+                      onClientUploadComplete={(res) => {
+                        if (res && res.length > 0) {
+                          setImage(res[0].url);
+                        }
+                      }}
+                      onUploadError={(error: Error) => {
+                        alert(`ERROR! ${error.message}`);
+                      }}
+                      appearance={{
+                        container: "border-none bg-transparent w-full p-0 py-2 m-0",
+                        label: "text-[#E6C875] hover:text-white transition-colors",
+                        allowedContent: "text-neutral-500 text-xs mt-2",
+                        button: "bg-[#E6C875] text-black font-bold mt-4"
+                      }}
+                    />
                   )}
                 </div>
               </div>
@@ -287,7 +258,7 @@ export default function CourseManager() {
           
           <button
             type="submit"
-            disabled={isSubmitting || isUploading}
+            disabled={isSubmitting}
             className="flex items-center justify-center gap-2 w-full md:w-auto px-10 py-3 bg-[#E6C875] hover:bg-[#d4b55e] text-black font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] disabled:opacity-50"
           >
             {isSubmitting ? (
