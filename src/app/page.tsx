@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Code, ShieldCheck, Zap, Users, LayoutDashboard, Quote, Cpu, Database, Network, ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import {
@@ -187,10 +188,15 @@ export default function Home() {
                   className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                 >
                   <div className="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
-                    <div className="text-gray-200 dark:text-white/5 transform group-hover:scale-125 group-hover:text-[#E6C875]/20 transition-all duration-1000 ease-out">
-                      <IconComponent id={course.iconId} />
-                    </div>
-                    <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center">
+                    <Image 
+                      src={`/images/courses/${course.id.replace(/-/g, '_')}.png`} 
+                      alt={`${course.title} - Complete guide to ${course.tag}`} 
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out mix-blend-overlay dark:mix-blend-normal" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black/80 to-transparent z-10"></div>
+                    <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>
                     </div>
                   </div>
