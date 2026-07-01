@@ -102,6 +102,39 @@ export async function deleteCourse(id: string) {
   }
 }
 
+export async function updateCourse(
+  id: string,
+  data: {
+    title: string;
+    category: string;
+    about: string;
+    slug: string;
+    image?: string | null;
+    tag?: string | null;
+  }
+) {
+  try {
+    const course = await prisma.course.update({
+      where: { id },
+      data: {
+        title: data.title,
+        slug: data.slug,
+        category: data.category,
+        about: data.about,
+        ...(data.image !== undefined && { image: data.image }),
+        ...(data.tag !== undefined && { tag: data.tag }),
+      },
+    });
+    revalidatePath("/admin");
+    revalidatePath("/domains");
+    revalidatePath("/");
+    return { success: true, course };
+  } catch (error) {
+    console.error("Failed to update course", error);
+    return { success: false, error: "Failed to update course" };
+  }
+}
+
 export async function getCourseBySlug(slug: string) {
   try {
     const course = await prisma.course.findUnique({
