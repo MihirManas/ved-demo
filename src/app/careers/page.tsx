@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Briefcase, MapPin, IndianRupee, ChevronRight } from 'lucide-react';
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface Job {
   id: number;
@@ -36,72 +38,81 @@ export default function CareersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">
-            Join Our Team
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Help us build the future of education. Discover opportunities to grow, innovate, and make a real impact.
-          </p>
-        </div>
+    <div className="min-h-screen bg-white dark:bg-black pt-32 pb-20 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-1000 ease-out">
+      <div className="max-w-6xl mx-auto">
+        <ScrollReveal delay={100}>
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#E6C875] animate-pulse shadow-[0_0_10px_#E6C875]"></span>
+              <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Join Our Mission</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white tracking-tighter leading-[1.05] mb-6">
+              Build the Future of <span className="text-[#E6C875]">Education</span>
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-white/60 max-w-2xl mx-auto font-light">
+              We are on a mission to bridge the gap between academic theory and industry execution. Join our elite team.
+            </p>
+          </div>
+        </ScrollReveal>
 
-        {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          </div>
-        ) : jobs.length === 0 ? (
-          <div className="text-center py-20 bg-gray-50 rounded-2xl border border-gray-100">
-            <h3 className="text-xl font-medium text-gray-900 mb-2">No Open Roles Currently</h3>
-            <p className="text-gray-500">Check back later or follow us on our socials for updates.</p>
-          </div>
-        ) : (
-          <div className="grid gap-6 md:grid-cols-2">
-            {jobs.map((job) => (
-              <div 
-                key={job.id} 
-                className="bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 flex flex-col h-full"
-              >
-                <div className="mb-4">
-                  <div className="flex justify-between items-start">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{job.title}</h2>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700">
-                      {job.type}
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-3 text-sm text-gray-500 mb-4">
-                    <div className="flex items-center">
-                      <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      {job.location}
+        <ScrollReveal delay={200}>
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#E6C875]"></div>
+            </div>
+          ) : jobs.length === 0 ? (
+            <div className="text-center py-20 bg-gray-50 dark:bg-white/[0.02] rounded-2xl border border-gray-200 dark:border-white/5">
+              <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">No Open Roles Currently</h3>
+              <p className="text-gray-500 dark:text-white/50">Check back later or follow our social channels for updates on new opportunities.</p>
+            </div>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-2">
+              {jobs.map((job) => (
+                <div 
+                  key={job.id} 
+                  className="group relative bg-white dark:bg-white/[0.02] rounded-2xl p-8 border border-gray-200 dark:border-white/10 hover:border-[#E6C875]/50 transition-all duration-500 flex flex-col h-full hover:shadow-[0_0_30px_rgba(230,200,117,0.15)]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#E6C875]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" />
+                  
+                  <div className="relative z-10 mb-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-[#E6C875] transition-colors">{job.title}</h2>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white/80">
+                        {job.type}
+                      </span>
                     </div>
-                    {job.salary && (
+                    
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-white/50 mb-6 font-medium">
                       <div className="flex items-center">
-                        <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {job.salary}
+                        <MapPin className="w-4 h-4 mr-1.5 text-[#E6C875]" />
+                        {job.location}
                       </div>
-                    )}
+                      {job.salary && (
+                        <div className="flex items-center">
+                          <IndianRupee className="w-4 h-4 mr-1.5 text-[#E6C875]" />
+                          {job.salary}
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-gray-600 dark:text-white/70 line-clamp-3 text-sm leading-relaxed font-light">{job.description}</p>
                   </div>
-                  <p className="text-gray-600 line-clamp-3 text-sm leading-relaxed">{job.description}</p>
+                  
+                  <div className="mt-auto relative z-10">
+                    <div className="h-[1px] w-full bg-gray-100 dark:bg-white/10 mb-6" />
+                    <Link 
+                      href={`mailto:hr@vedupskilling.com?subject=Application for ${job.title}`}
+                      className="inline-flex items-center text-sm uppercase tracking-widest font-bold text-gray-900 dark:text-white hover:text-[#E6C875] dark:hover:text-[#E6C875] transition-colors group/btn"
+                    >
+                      Apply Now
+                      <ChevronRight className="w-4 h-4 ml-1 transform group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-                
-                <div className="mt-auto pt-6">
-                  <Link 
-                    href={`mailto:hr@example.com?subject=Application for ${job.title}`}
-                    className="block w-full text-center py-2.5 px-4 rounded-xl text-sm font-semibold text-blue-600 bg-blue-50 hover:bg-blue-600 hover:text-white transition-colors duration-200"
-                  >
-                    Apply Now
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </ScrollReveal>
       </div>
     </div>
   );
