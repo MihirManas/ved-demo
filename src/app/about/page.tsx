@@ -17,7 +17,7 @@ export default function About() {
         {/* Hero Section */}
         <ScrollReveal>
           <div className="max-w-5xl mx-auto text-center mb-40">
-            <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-10">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-10">
               Your Pathway to <span className="text-[#E6C875]">Professional Excellence.</span>
             </h1>
             <p className="text-2xl md:text-3xl text-gray-600 dark:text-white/60 leading-relaxed font-light">
