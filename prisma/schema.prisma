@@ -43,3 +43,12 @@ model Application {
 
   job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }
+
+model Course {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  imagePath   String?
+  imageAlt    String?
+  createdAt   DateTime @default(now())
+}

@@ -2,15 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { getDashboardStats } from "@/app/admin/actions";
-import { LogOut, Activity, Users, MapPin, BarChart3, Loader2 } from "lucide-react";
+import { LogOut, Activity, Users, MapPin, BarChart3, Loader2, BookOpen, LineChart } from "lucide-react";
 import TrafficSourcesChart from "./TrafficSourcesChart";
 import CityCategoriesChart from "./CityCategoriesChart";
 import DailyLeadsChart from "./DailyLeadsChart";
 import IndiaMapWidget from "./IndiaMapWidget";
+import CourseManager from "./CourseManager";
 
 type Stats = Awaited<ReturnType<typeof getDashboardStats>>;
 
 export default function Dashboard({ onLogout }: { onLogout: () => void }) {
+  const [activeTab, setActiveTab] = useState<"analytics" | "courses">("courses");
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -41,25 +43,51 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black text-white p-4 md:p-8 font-sans selection:bg-[#E6C875]/30">
-      {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4 relative">
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#E6C875] blur-[100px] opacity-10 rounded-full pointer-events-none"></div>
-        <div className="relative z-10">
-          <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-neutral-200 to-neutral-500">
-            Analytics Overview
-          </h1>
-          <p className="text-neutral-400 mt-2 text-sm font-medium tracking-wide uppercase">Real-time intelligence</p>
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 w-full">
+          <div>
+            <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-neutral-200 to-neutral-500">
+              Admin Portal
+            </h1>
+            <p className="text-neutral-400 mt-2 text-sm font-medium tracking-wide uppercase">Manage your platform</p>
+          </div>
+          
+          <div className="flex bg-white/5 rounded-xl p-1 border border-white/10">
+            <button 
+              onClick={() => setActiveTab("analytics")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'analytics' ? 'bg-white/10 text-white shadow-lg' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+            >
+              <LineChart className="w-4 h-4" />
+              Analytics
+            </button>
+            <button 
+              onClick={() => setActiveTab("courses")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'courses' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+            >
+              <BookOpen className="w-4 h-4" />
+              Courses
+            </button>
+          </div>
         </div>
         <button
           onClick={onLogout}
-          className="relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 text-sm font-medium text-neutral-300 hover:text-white hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+          className="relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 text-sm font-medium text-neutral-300 hover:text-white hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] whitespace-nowrap"
         >
           <LogOut className="w-4 h-4" />
-          Secure Logout
+          Logout
         </button>
       </header>
 
-      {/* Top Stats Cards */}
+      {activeTab === "courses" && (
+        <div className="relative z-10">
+          <CourseManager />
+        </div>
+      )}
+
+      {activeTab === "analytics" && (
+        <>
+          {/* Top Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 relative z-10">
         <StatCard title="Total Visits" value={stats.totalVisits.toLocaleString()} icon={<Users />} color="text-blue-400" />
         <StatCard title="Avg. Daily Leads" value={Math.round(stats.dailyLeads.reduce((a, b) => a + b.count, 0) / Math.max(stats.dailyLeads.length, 1)).toString()} icon={<Activity />} color="text-green-400" />
@@ -104,6 +132,8 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
           </div>
         </div>
       </div>
+        </>
+      )}
     </div>
   );
 }
