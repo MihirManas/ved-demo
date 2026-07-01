@@ -20,11 +20,8 @@ export async function seedCourses() {
   try {
     const coursesList = Object.values(domainsData);
     
-    // Check if courses already exist
-    const count = await prisma.course.count();
-    if (count > 0) {
-      return { success: false, message: "Courses already seeded. Please delete existing courses first to re-seed." };
-    }
+    // Wipe existing courses to ensure a clean slate
+    await prisma.course.deleteMany();
 
     const creates = coursesList.map(course => {
       return prisma.course.create({
