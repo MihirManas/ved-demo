@@ -121,8 +121,6 @@ export default function CourseManager() {
     }
   };
 
-  };
-
   return (
     <div className="space-y-8">
       {/* Create/Edit Course Form */}
