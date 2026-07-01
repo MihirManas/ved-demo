@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Star, Network, Users } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { domainsData } from "@/constants/domainsData";
@@ -24,6 +25,20 @@ export default function CourseDetail({ params }: { params: { id: string } }) {
         >
           <ChevronRight size={18} className="rotate-180 mr-3 group-hover:-translate-x-2 transition-transform" /> Back to Domains Catalog
         </Link>
+
+        <ScrollReveal>
+          <div className="mb-16 relative w-full h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden border border-gray-200 dark:border-white/10 shadow-2xl">
+            <Image 
+              src={`/images/courses/${course.id.replace(/-/g, '_')}.png`} 
+              alt={`${course.title} - Complete course covering ${course.techs.join(', ')}`} 
+              fill 
+              sizes="100vw"
+              className="object-cover" 
+              priority 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black via-transparent to-transparent"></div>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal>
           <div className="mb-32">

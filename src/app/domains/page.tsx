@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { ChevronRight, Search } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { domainsData } from "@/constants/domainsData";
 
@@ -19,6 +20,7 @@ const categories = [
 export default function Domains() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [sortBy, setSortBy] = useState<"default" | "nameAsc" | "nameDesc" | "dateAdded">("default");
+  const [searchQuery, setSearchQuery] = useState("");
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const coursesList = Object.values(domainsData);
@@ -74,20 +76,32 @@ export default function Domains() {
               </div>
             </div>
             
-            <div className="flex items-center gap-4 bg-white/50 dark:bg-black/30 p-2 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md">
-              <span className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-widest pl-3">Sort:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-transparent border-none text-gray-900 dark:text-white font-medium outline-none focus:ring-0 cursor-pointer text-sm pr-4 appearance-none"
-              >
-                <option value="default" className="text-black">Default</option>
-                <option value="nameAsc" className="text-black">Name (A-Z)</option>
-                <option value="nameDesc" className="text-black">Name (Z-A)</option>
-                <option value="dateAdded" className="text-black">Date Added (Newest)</option>
-              </select>
-              <div className="pr-3 text-gray-400 pointer-events-none">
-                <ChevronRight size={16} className="rotate-90" />
+            <div className="flex flex-col gap-4 w-full lg:w-auto">
+              <div className="flex items-center gap-3 bg-white/50 dark:bg-black/30 p-2 px-4 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md">
+                <Search size={18} className="text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search architectures..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent border-none text-gray-900 dark:text-white font-medium outline-none focus:ring-0 text-sm py-1 w-full lg:w-64 placeholder:text-gray-400"
+                />
+              </div>
+              <div className="flex items-center gap-4 bg-white/50 dark:bg-black/30 p-2 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md self-start lg:self-end w-full lg:w-auto justify-between lg:justify-start">
+                <span className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-widest pl-3">Sort:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                  className="bg-transparent border-none text-gray-900 dark:text-white font-medium outline-none focus:ring-0 cursor-pointer text-sm pr-4 appearance-none w-full lg:w-auto"
+                >
+                  <option value="default" className="text-black">Default</option>
+                  <option value="nameAsc" className="text-black">Name (A-Z)</option>
+                  <option value="nameDesc" className="text-black">Name (Z-A)</option>
+                  <option value="dateAdded" className="text-black">Date Added (Newest)</option>
+                </select>
+                <div className="pr-3 text-gray-400 pointer-events-none">
+                  <ChevronRight size={16} className="rotate-90" />
+                </div>
               </div>
             </div>
           </div>
@@ -136,6 +150,18 @@ export default function Domains() {
           <div className="lg:w-3/4 pb-32">
             {categories.map((category, idx) => {
               let categoryCourses = coursesList.filter(c => c.category === category);
+              
+              if (searchQuery.trim() !== "") {
+                const q = searchQuery.toLowerCase();
+                categoryCourses = categoryCourses.filter(c => 
+                  c.title.toLowerCase().includes(q) || 
+                  c.about.toLowerCase().includes(q) ||
+                  c.techs.some((t: string) => t.toLowerCase().includes(q))
+                );
+              }
+
+              if (categoryCourses.length === 0) return null;
+
               if (sortBy === "nameAsc") {
                 categoryCourses.sort((a, b) => a.title.localeCompare(b.title));
               } else if (sortBy === "nameDesc") {
@@ -169,7 +195,13 @@ export default function Domains() {
                           className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                         >
                           <div className="h-48 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
-                            <img src={course.image} alt={course.title} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out mix-blend-overlay dark:mix-blend-normal" />
+                            <Image 
+                              src={`/images/courses/${course.id.replace(/-/g, '_')}.png`} 
+                              alt={`${course.title} - Complete guide to ${course.tag}`} 
+                              fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out mix-blend-overlay dark:mix-blend-normal" 
+                            />
                             <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black/80 to-transparent z-10"></div>
                             <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
                               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>

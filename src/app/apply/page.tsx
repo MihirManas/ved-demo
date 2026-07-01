@@ -41,6 +41,8 @@ const initialFormData = {
   fullName: '',
   email: '',
   phone: '',
+  collegeName: '',
+  crNumber: '',
   qualification: '',
   duration: '',
   academicStatus: '',
@@ -61,6 +63,7 @@ const validateStep = (step: number, data: any) => {
     if (!data.phone.trim() || data.phone.length < 10) errors.phone = "Valid 10-digit Phone is required";
   }
   if (step === 1) {
+    if (!data.collegeName.trim()) errors.collegeName = "College Name is required";
     if (!data.qualification) errors.qualification = "Qualification is required";
     if (!data.duration) errors.duration = "Duration is required";
     if (!data.academicStatus) errors.academicStatus = "Academic Status is required";
@@ -266,6 +269,15 @@ export default function ApplyView() {
                           <div className="h-[1px] w-12 bg-[#E6C875]"></div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-gray-900 dark:text-white text-xs mb-3 tracking-[0.1em] font-bold uppercase ml-4">College / University Name *</label>
+                            <input type="text" placeholder="Enter full college or university name" value={formData.collegeName} onChange={e => setField('collegeName', e.target.value)} className={`${inputBase} ${errors.collegeName ? '!border-red-500/50 !bg-red-500/5' : ''}`} />
+                            {errors.collegeName && <p className={errorText}><AlertCircle size={14} className="mr-2"/> {errors.collegeName}</p>}
+                          </div>
+                          <div>
+                            <label className="block text-gray-900 dark:text-white text-xs mb-3 tracking-[0.1em] font-bold uppercase ml-4">Class Representative Number</label>
+                            <input type="text" placeholder="CR Number (Optional)" value={formData.crNumber} onChange={e => setField('crNumber', e.target.value)} className={`${inputBase}`} />
+                          </div>
                           <div>
                             <label className="block text-gray-900 dark:text-white text-xs mb-3 tracking-[0.1em] font-bold uppercase ml-4">Highest Qualification *</label>
                             <select value={formData.qualification} onChange={e => setField('qualification', e.target.value)} className={`${selectBase} ${errors.qualification ? '!border-red-500/50 !bg-red-500/5' : ''}`}>
