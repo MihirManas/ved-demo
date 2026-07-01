@@ -2,17 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { getDashboardStats } from "@/app/admin/actions";
-import { LogOut, Activity, Users, MapPin, BarChart3, Loader2, BookOpen, LineChart } from "lucide-react";
+import { LogOut, Activity, Users, MapPin, BarChart3, Loader2, BookOpen, LineChart, GraduationCap, LayoutTemplate } from "lucide-react";
 import TrafficSourcesChart from "./TrafficSourcesChart";
 import CityCategoriesChart from "./CityCategoriesChart";
 import DailyLeadsChart from "./DailyLeadsChart";
 import IndiaMapWidget from "./IndiaMapWidget";
 import CourseManager from "./CourseManager";
+import MentorManager from "./MentorManager";
+import ContentManager from "./ContentManager";
 
 type Stats = Awaited<ReturnType<typeof getDashboardStats>>;
 
 export default function Dashboard({ onLogout }: { onLogout: () => void }) {
-  const [activeTab, setActiveTab] = useState<"analytics" | "courses">("courses");
+  const [activeTab, setActiveTab] = useState<"analytics" | "courses" | "mentors" | "content">("mentors");
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -53,20 +55,34 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
             <p className="text-neutral-400 mt-2 text-sm font-medium tracking-wide uppercase">Manage your platform</p>
           </div>
           
-          <div className="flex bg-white/5 rounded-xl p-1 border border-white/10">
+          <div className="flex bg-white/5 rounded-xl p-1 border border-white/10 overflow-x-auto">
             <button 
               onClick={() => setActiveTab("analytics")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'analytics' ? 'bg-white/10 text-white shadow-lg' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'analytics' ? 'bg-white/10 text-white shadow-lg' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
             >
               <LineChart className="w-4 h-4" />
               Analytics
             </button>
             <button 
               onClick={() => setActiveTab("courses")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'courses' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'courses' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
             >
               <BookOpen className="w-4 h-4" />
               Courses
+            </button>
+            <button 
+              onClick={() => setActiveTab("mentors")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'mentors' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+            >
+              <GraduationCap className="w-4 h-4" />
+              Mentors
+            </button>
+            <button 
+              onClick={() => setActiveTab("content")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'content' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+            >
+              <LayoutTemplate className="w-4 h-4" />
+              Site Content
             </button>
           </div>
         </div>
@@ -82,6 +98,18 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
       {activeTab === "courses" && (
         <div className="relative z-10">
           <CourseManager />
+        </div>
+      )}
+
+      {activeTab === "mentors" && (
+        <div className="relative z-10">
+          <MentorManager />
+        </div>
+      )}
+
+      {activeTab === "content" && (
+        <div className="relative z-10">
+          <ContentManager />
         </div>
       )}
 

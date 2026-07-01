@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Code, ShieldCheck, Zap, Users, LayoutDashboard, Quote, Cpu, Database, Network, ChevronRight, CheckCircle, Clock, Award, Globe, BookOpen, Target, Heart, PlayCircle, Briefcase } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { getAllSiteContent } from "@/app/admin/content-actions";
 import {
   Accordion,
   AccordionContent,
@@ -18,6 +19,21 @@ export default function Home() {
   const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [siteContent, setSiteContent] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    async function loadContent() {
+      const res = await getAllSiteContent();
+      if (res.success && res.contents) {
+        const map: Record<string, string> = {};
+        res.contents.forEach(c => {
+          map[c.id] = c.value;
+        });
+        setSiteContent(map);
+      }
+    }
+    loadContent();
+  }, []);
 
   const heroData = [
     {
@@ -131,7 +147,7 @@ export default function Home() {
                 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
-                  src="https://vedupskilling.in/wp-content/plugins/edura-core/assets/img/hero_overlay_6.png" 
+                  src={siteContent["homepage_hero_image"] || "https://vedupskilling.in/wp-content/plugins/edura-core/assets/img/hero_overlay_6.png"} 
                   alt="Hero Image" 
                   className="w-full h-full object-cover opacity-20 dark:opacity-80 mix-blend-multiply dark:mix-blend-overlay absolute inset-0 z-0 invert dark:invert-0"
                 />
@@ -164,12 +180,11 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal delay={100}>
             <div>
-              <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Who We Are ?</h2>
-              <p className="text-xl text-gray-600 dark:text-white/70 font-light leading-relaxed mb-6">
-                Ved Upskilling is more than just an edu-tech platform. We are a community of learners, mentors, and industry leaders committed to creating meaningful career transformations.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-white/60 font-light leading-relaxed mb-8">
-                Our programs provide immersive, practical learning guided by industry professionals with 8-10 years of expertise. Students receive tailored support through one-on-one doubt-solving sessions and gain real-world experience by working on projects sourced from leading multinational companies.
+              <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">
+                {siteContent["homepage_hero_title"] || "Who We Are ?"}
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-white/70 font-light leading-relaxed mb-6 whitespace-pre-wrap">
+                {siteContent["about_section_text"] || "Ved Upskilling is more than just an edu-tech platform. We are a community of learners, mentors, and industry leaders committed to creating meaningful career transformations.\n\nOur programs provide immersive, practical learning guided by industry professionals with 8-10 years of expertise. Students receive tailored support through one-on-one doubt-solving sessions and gain real-world experience by working on projects sourced from leading multinational companies."}
               </p>
               <Link
                   href="/about"

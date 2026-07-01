@@ -52,3 +52,20 @@ model Course {
   imageAlt    String?
   createdAt   DateTime @default(now())
 }
+
+model Mentor {
+  id          Int      @id @default(autoincrement())
+  name        String
+  designation String
+  bio         String
+  imagePath   String?
+  imageAlt    String?
+  createdAt   DateTime @default(now())
+}
+
+model SiteContent {
+  id        String   @id // e.g. 'homepage_hero_image', 'about_title'
+  value     String
+  type      String   // 'TEXT' or 'IMAGE'
+  updatedAt DateTime @updatedAt
+}
