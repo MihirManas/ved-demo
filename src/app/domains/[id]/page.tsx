@@ -2,17 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Star, Network, Users } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { domainsData } from "@/constants/domainsData";
+import { getCourseBySlug } from "@/app/admin/course-actions";
 import { notFound } from "next/navigation";
 
-export function generateStaticParams() {
-  return Object.keys(domainsData).map((id) => ({
-    id: id,
-  }));
-}
-
-export default function CourseDetail({ params }: { params: { id: string } }) {
-  const course = domainsData[params.id];
+export default async function CourseDetail({ params }: { params: { id: string } }) {
+  const res = await getCourseBySlug(params.id);
+  const course = res.success ? res.course : null;
   if (!course) return notFound();
 
   return (
@@ -29,7 +24,7 @@ export default function CourseDetail({ params }: { params: { id: string } }) {
         <ScrollReveal>
           <div className="mb-16 relative w-full h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden border border-gray-200 dark:border-white/10 shadow-2xl">
             <Image 
-              src={`/images/courses/${course.id.replace(/-/g, '_')}.png`} 
+              src={course.image || `/images/courses/${course.slug.replace(/-/g, '_')}.png`} 
               alt={`${course.title} - Complete course covering ${course.techs.join(', ')}`} 
               fill 
               sizes="100vw"

@@ -45,12 +45,24 @@ model Application {
 }
 
 model Course {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  imagePath   String?
-  imageAlt    String?
-  createdAt   DateTime @default(now())
+  id           String   @id @default(cuid())
+  slug         String   @unique // This will be like "mongodb-django"
+  title        String
+  category     String
+  image        String?
+  dateAdded    String?
+  tag          String?
+  iconId       String?
+  length       String?
+  focus        String?
+  techs        String[]
+  modules      Int?
+  about        String
+  whyChoose    String?
+  marketGrowth String?
+  hiring       String?
+  syllabus     String[]
+  createdAt    DateTime @default(now())
 }
 
 model Mentor {

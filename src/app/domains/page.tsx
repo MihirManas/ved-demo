@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Search } from "lucide-react";
+import { ChevronRight, Search, Loader2 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { domainsData } from "@/constants/domainsData";
+import { getCourses } from "@/app/admin/course-actions";
 
 const categories = [
   "Software Engineering & Web",
@@ -23,7 +23,20 @@ export default function Domains() {
   const [searchQuery, setSearchQuery] = useState("");
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const coursesList = Object.values(domainsData);
+  const [coursesList, setCoursesList] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      const res = await getCourses();
+      if (res.success && res.courses) {
+        setCoursesList(res.courses);
+      }
+      setLoading(false);
+    }
+    load();
+  }, []);
+
   const totalCourses = coursesList.length;
   const totalDomains = categories.length;
 
@@ -107,6 +120,11 @@ export default function Domains() {
           </div>
         </ScrollReveal>
 
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+             <Loader2 className="w-12 h-12 text-[#E6C875] animate-spin" />
+          </div>
+        ) : (
         <div className="flex flex-col lg:flex-row-reverse gap-16 relative">
           {/* Right Sidebar - Table of Contents */}
           <div className="lg:w-1/4 flex-shrink-0 hidden lg:block relative">
@@ -167,7 +185,7 @@ export default function Domains() {
               } else if (sortBy === "nameDesc") {
                 categoryCourses.sort((a, b) => b.title.localeCompare(a.title));
               } else if (sortBy === "dateAdded") {
-                categoryCourses.sort((a, b) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());
+                categoryCourses.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
               }
               
               return (
@@ -243,6 +261,7 @@ export default function Domains() {
             })}
           </div>
         </div>
+        )}
       </div>
     </div>
   );

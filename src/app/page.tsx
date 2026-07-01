@@ -20,6 +20,7 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [siteContent, setSiteContent] = useState<Record<string, string>>({});
+  const [featuredCourses, setFeaturedCourses] = useState<any[]>([]);
 
   useEffect(() => {
     async function loadContent() {
@@ -32,7 +33,24 @@ export default function Home() {
         setSiteContent(map);
       }
     }
+    
+    async function loadFeaturedCourses() {
+      // Import here to avoid client side error if not exported from server action properly, 
+      // but we can just use another action or fetch them.
+      // Wait, getCourseBySlug is a server action!
+      const { getCourseBySlug } = await import("@/app/admin/course-actions");
+      const c1 = await getCourseBySlug("fullstack");
+      const c2 = await getCourseBySlug("ai-python");
+      
+      const courses = [];
+      if (c1.success && c1.course) courses.push(c1.course);
+      if (c2.success && c2.course) courses.push(c2.course);
+      
+      setFeaturedCourses(courses);
+    }
+    
     loadContent();
+    loadFeaturedCourses();
   }, []);
 
   const heroData = [
@@ -85,8 +103,6 @@ export default function Home() {
     { name: "Rahul D.", role: "Embedded Systems Lead", initials: "RD", bg: "from-[#E6C875]/60 to-yellow-900", quote: "The rigorous focus on actual hardware architecture rather than just theory allowed me to confidently clear the technical rounds at a top semiconductor firm. Unmatched quality." },
     { name: "Ananya K.", role: "Data Scientist", initials: "AK", bg: "from-gray-200 dark:from-gray-300 to-gray-400 dark:to-gray-600", quote: "I transitioned from a basic analytics role to building highly scalable PyTorch models. The Execution Protocol is intense, but the resulting career trajectory is undeniable." }
   ];
-
-  const featuredCourses = [domainsData["fullstack"], domainsData["ai-python"]];
 
   return (
     <div className="animate-in fade-in duration-1000 ease-out">
@@ -219,12 +235,12 @@ export default function Home() {
             {featuredCourses.map((course, idx) => (
               <ScrollReveal key={course.id} delay={idx * 150}>
                 <Link
-                  href={`/domains/${course.id}`}
+                  href={`/domains/${course.slug}`}
                   className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                 >
                   <div className="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
                     <Image 
-                      src={`/images/courses/${course.id.replace(/-/g, '_')}.png`} 
+                      src={course.image || `/images/courses/${course.slug.replace(/-/g, '_')}.png`} 
                       alt={`${course.title} - Complete guide to ${course.tag}`} 
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
