@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Cpu, Database, Code, Network, Zap, Users, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { domainsData } from "@/constants/domainsData";
 
@@ -18,9 +18,12 @@ const categories = [
 
 export default function Domains() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [sortBy, setSortBy] = useState<"default" | "nameAsc" | "nameDesc" | "dateAdded">("default");
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const coursesList = Object.values(domainsData);
+  const totalCourses = coursesList.length;
+  const totalDomains = categories.length;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,26 +53,43 @@ export default function Domains() {
     }
   };
 
-  const IconComponent = ({ id }: { id: string }) => {
-    if (id === 'cpu') return <Cpu size={120} strokeWidth={1} />;
-    if (id === 'database') return <Database size={120} strokeWidth={1} />;
-    if (id === 'code') return <Code size={120} strokeWidth={1} />;
-    if (id === 'network') return <Network size={120} strokeWidth={1} />;
-    if (id === 'zap') return <Zap size={120} strokeWidth={1} />;
-    if (id === 'users') return <Users size={120} strokeWidth={1} />;
-    return <Cpu size={120} strokeWidth={1} />;
-  };
-
   return (
     <div className="min-h-screen pt-32 pb-40 animate-in fade-in duration-1000 ease-out">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <ScrollReveal>
-          <div className="mb-20">
-            <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Elite Domains.</h1>
-            <p className="text-gray-600 dark:text-white/60 text-xl font-light max-w-3xl leading-relaxed">
-              Curriculum engineered relentlessly for the next generation of technological leaders. Select your architectural path below.
-            </p>
+          <div className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Elite Domains.</h1>
+              <p className="text-gray-600 dark:text-white/60 text-xl font-light max-w-3xl leading-relaxed mb-8">
+                Curriculum engineered relentlessly for the next generation of technological leaders. Select your architectural path below.
+              </p>
+              <div className="flex gap-4 items-center">
+                <span className="px-5 py-2.5 rounded-full bg-[#E6C875]/10 text-[#E6C875] border border-[#E6C875]/30 text-sm font-bold tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(230,200,117,0.1)]">
+                  {totalDomains} Domains
+                </span>
+                <span className="px-5 py-2.5 rounded-full bg-[#E6C875]/10 text-[#E6C875] border border-[#E6C875]/30 text-sm font-bold tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(230,200,117,0.1)]">
+                  {totalCourses} Courses
+                </span>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4 bg-white/50 dark:bg-black/30 p-2 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md">
+              <span className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-widest pl-3">Sort:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="bg-transparent border-none text-gray-900 dark:text-white font-medium outline-none focus:ring-0 cursor-pointer text-sm pr-4 appearance-none"
+              >
+                <option value="default" className="text-black">Default</option>
+                <option value="nameAsc" className="text-black">Name (A-Z)</option>
+                <option value="nameDesc" className="text-black">Name (Z-A)</option>
+                <option value="dateAdded" className="text-black">Date Added (Newest)</option>
+              </select>
+              <div className="pr-3 text-gray-400 pointer-events-none">
+                <ChevronRight size={16} className="rotate-90" />
+              </div>
+            </div>
           </div>
         </ScrollReveal>
 
@@ -115,7 +135,15 @@ export default function Domains() {
           {/* Right Content Area (Scrollable Sections) */}
           <div className="lg:w-3/4 pb-32">
             {categories.map((category, idx) => {
-              const categoryCourses = coursesList.filter(c => c.category === category);
+              let categoryCourses = coursesList.filter(c => c.category === category);
+              if (sortBy === "nameAsc") {
+                categoryCourses.sort((a, b) => a.title.localeCompare(b.title));
+              } else if (sortBy === "nameDesc") {
+                categoryCourses.sort((a, b) => b.title.localeCompare(a.title));
+              } else if (sortBy === "dateAdded") {
+                categoryCourses.sort((a, b) => new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime());
+              }
+              
               return (
                 <div 
                   key={category} 
@@ -141,10 +169,9 @@ export default function Domains() {
                           className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                         >
                           <div className="h-48 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
-                            <div className="text-gray-200 dark:text-white/5 transform group-hover:scale-125 group-hover:text-[#E6C875]/20 transition-all duration-1000 ease-out">
-                              <IconComponent id={course.iconId} />
-                            </div>
-                            <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center">
+                            <img src={course.image} alt={course.title} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out mix-blend-overlay dark:mix-blend-normal" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-black/80 to-transparent z-10"></div>
+                            <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
                               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>
                             </div>
                           </div>

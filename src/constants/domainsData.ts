@@ -3,6 +3,8 @@ export const domainsData: Record<string, any> = {
   "mongodb-django": {
     id: "mongodb-django",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-01-15",
     title: "MongoDB With Django",
     tag: "Backend Systems",
     iconId: "database",
@@ -19,6 +21,8 @@ export const domainsData: Record<string, any> = {
   "mongodb-nodejs": {
     id: "mongodb-nodejs",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-01-29",
     title: "MongoDB With NodeJS",
     tag: "MERN Stack Foundations",
     iconId: "code",
@@ -35,6 +39,8 @@ export const domainsData: Record<string, any> = {
   "advanced-java": {
     id: "advanced-java",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-02-12",
     title: "Advanced Java Programming",
     tag: "Enterprise Systems",
     iconId: "cpu",
@@ -51,6 +57,8 @@ export const domainsData: Record<string, any> = {
   "fullstack": {
     id: "fullstack",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-02-26",
     title: "Full Stack Web Development",
     tag: "End-to-End Architecture",
     iconId: "code",
@@ -67,6 +75,8 @@ export const domainsData: Record<string, any> = {
   "web-development": {
     id: "web-development",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-03-12",
     title: "Web Development",
     tag: "Frontend Core",
     iconId: "code",
@@ -83,6 +93,8 @@ export const domainsData: Record<string, any> = {
   "reactjs": {
     id: "reactjs",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-03-26",
     title: "ReactJS",
     tag: "Client-Side Engineering",
     iconId: "code",
@@ -99,6 +111,8 @@ export const domainsData: Record<string, any> = {
   "mysql-spring-boot": {
     id: "mysql-spring-boot",
     category: "Software Engineering & Web",
+    image: "/images/domains/software_web.png",
+    dateAdded: "2023-04-09",
     title: "MySQL With Spring Boot",
     tag: "Microservices",
     iconId: "database",
@@ -117,6 +131,8 @@ export const domainsData: Record<string, any> = {
   "ai-python": {
     id: "ai-python",
     category: "Data Science & AI",
+    image: "/images/domains/data_science.png",
+    dateAdded: "2023-04-23",
     title: "Artificial Intelligence With Python",
     tag: "AI Engineering",
     iconId: "cpu",
@@ -133,6 +149,8 @@ export const domainsData: Record<string, any> = {
   "data-science-python": {
     id: "data-science-python",
     category: "Data Science & AI",
+    image: "/images/domains/data_science.png",
+    dateAdded: "2023-05-07",
     title: "Data Science With Python",
     tag: "Statistical Modeling",
     iconId: "database",
@@ -149,6 +167,8 @@ export const domainsData: Record<string, any> = {
   "machine-learning": {
     id: "machine-learning",
     category: "Data Science & AI",
+    image: "/images/domains/data_science.png",
+    dateAdded: "2023-05-21",
     title: "Machine Learning With Python",
     tag: "Predictive Systems",
     iconId: "zap",
@@ -165,6 +185,8 @@ export const domainsData: Record<string, any> = {
   "business-analytics": {
     id: "business-analytics",
     category: "Data Science & AI",
+    image: "/images/domains/data_science.png",
+    dateAdded: "2023-06-04",
     title: "Business Analytics",
     tag: "Data-Driven Strategy",
     iconId: "network",
@@ -183,6 +205,8 @@ export const domainsData: Record<string, any> = {
   "vlsi": {
     id: "vlsi",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-06-18",
     title: "VLSI Design Architecture",
     tag: "Silicon Engineering",
     iconId: "cpu",
@@ -199,6 +223,8 @@ export const domainsData: Record<string, any> = {
   "embedded": {
     id: "embedded",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-07-02",
     title: "Embedded Systems Using Proteus",
     tag: "Microcontroller Systems",
     iconId: "cpu",
@@ -215,6 +241,8 @@ export const domainsData: Record<string, any> = {
   "ic-engine": {
     id: "ic-engine",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-07-16",
     title: "IC Engine",
     tag: "Mechanical Core",
     iconId: "zap",
@@ -231,6 +259,8 @@ export const domainsData: Record<string, any> = {
   "car-design": {
     id: "car-design",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-07-30",
     title: "Car Design",
     tag: "Automotive Architecture",
     iconId: "network",
@@ -247,6 +277,8 @@ export const domainsData: Record<string, any> = {
   "hybrid-ev": {
     id: "hybrid-ev",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-08-13",
     title: "Hybrid and Electric Vehicle",
     tag: "Next-Gen Automotive",
     iconId: "zap",
@@ -263,6 +295,8 @@ export const domainsData: Record<string, any> = {
   "robotics": {
     id: "robotics",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-08-27",
     title: "Robotics",
     tag: "Autonomous Systems",
     iconId: "cpu",
@@ -279,6 +313,8 @@ export const domainsData: Record<string, any> = {
   "iot": {
     id: "iot",
     category: "Hardware, IoT & Core Engineering",
+    image: "/images/domains/hardware_iot.png",
+    dateAdded: "2023-09-10",
     title: "Internet Of Things",
     tag: "Connected Systems",
     iconId: "network",
@@ -297,6 +333,8 @@ export const domainsData: Record<string, any> = {
   "azure": {
     id: "azure",
     category: "Cloud Computing & Cyber Security",
+    image: "/images/domains/cloud_security.png",
+    dateAdded: "2023-09-24",
     title: "Microsoft Azure Cloud Computing",
     tag: "Enterprise Cloud",
     iconId: "network",
@@ -313,6 +351,8 @@ export const domainsData: Record<string, any> = {
   "aws": {
     id: "aws",
     category: "Cloud Computing & Cyber Security",
+    image: "/images/domains/cloud_security.png",
+    dateAdded: "2023-10-08",
     title: "Amazon Web Services Cloud Computing",
     tag: "Hyperscale Cloud",
     iconId: "network",
@@ -329,6 +369,8 @@ export const domainsData: Record<string, any> = {
   "cyber-security": {
     id: "cyber-security",
     category: "Cloud Computing & Cyber Security",
+    image: "/images/domains/cloud_security.png",
+    dateAdded: "2023-10-22",
     title: "Cyber Security Using Kali Linux",
     tag: "Offensive Security",
     iconId: "code",
@@ -345,6 +387,8 @@ export const domainsData: Record<string, any> = {
   "blockchain": {
     id: "blockchain",
     category: "Cloud Computing & Cyber Security",
+    image: "/images/domains/cloud_security.png",
+    dateAdded: "2023-11-05",
     title: "Blockchain Development",
     tag: "Decentralized Systems",
     iconId: "database",
@@ -363,6 +407,8 @@ export const domainsData: Record<string, any> = {
   "graphic-design": {
     id: "graphic-design",
     category: "Design & UI/UX",
+    image: "/images/domains/design_ui.png",
+    dateAdded: "2023-11-19",
     title: "Graphic Design",
     tag: "Visual Communication",
     iconId: "code", // Can map to a better icon in UI
@@ -379,6 +425,8 @@ export const domainsData: Record<string, any> = {
   "ui-ux": {
     id: "ui-ux",
     category: "Design & UI/UX",
+    image: "/images/domains/design_ui.png",
+    dateAdded: "2023-12-03",
     title: "UI/UX",
     tag: "User Experience Architecture",
     iconId: "code",
@@ -395,6 +443,8 @@ export const domainsData: Record<string, any> = {
   "autocad": {
     id: "autocad",
     category: "Design & UI/UX",
+    image: "/images/domains/design_ui.png",
+    dateAdded: "2023-12-17",
     title: "AutoCAD Using Autodesk Software",
     tag: "Precision Drafting",
     iconId: "cpu",
@@ -413,6 +463,8 @@ export const domainsData: Record<string, any> = {
   "stock-marketing": {
     id: "stock-marketing",
     category: "Business, Management & Finance",
+    image: "/images/domains/business_finance.png",
+    dateAdded: "2023-12-31",
     title: "Stock Marketing",
     tag: "Financial Markets",
     iconId: "network",
@@ -429,6 +481,8 @@ export const domainsData: Record<string, any> = {
   "marketing-management": {
     id: "marketing-management",
     category: "Business, Management & Finance",
+    image: "/images/domains/business_finance.png",
+    dateAdded: "2024-01-14",
     title: "Marketing Management",
     tag: "Strategic Growth",
     iconId: "network",
@@ -445,6 +499,8 @@ export const domainsData: Record<string, any> = {
   "human-resource": {
     id: "human-resource",
     category: "Business, Management & Finance",
+    image: "/images/domains/business_finance.png",
+    dateAdded: "2024-01-28",
     title: "Human Resource Management And Analytics",
     tag: "People Operations",
     iconId: "users",
@@ -461,6 +517,8 @@ export const domainsData: Record<string, any> = {
   "digital-marketing": {
     id: "digital-marketing",
     category: "Business, Management & Finance",
+    image: "/images/domains/business_finance.png",
+    dateAdded: "2024-02-11",
     title: "Digital Marketing Using SEO And Marketing Automation Tools",
     tag: "Growth Engineering",
     iconId: "network",
@@ -477,6 +535,8 @@ export const domainsData: Record<string, any> = {
   "finance": {
     id: "finance",
     category: "Business, Management & Finance",
+    image: "/images/domains/business_finance.png",
+    dateAdded: "2024-02-25",
     title: "Finance",
     tag: "Corporate Finance",
     iconId: "database",
@@ -495,6 +555,8 @@ export const domainsData: Record<string, any> = {
   "construction-planning": {
     id: "construction-planning",
     category: "Specialized Sciences",
+    image: "/images/domains/specialized_science.png",
+    dateAdded: "2024-03-10",
     title: "Construction Planning And Structural Analysis",
     tag: "Civil Infrastructure",
     iconId: "network",
@@ -511,6 +573,8 @@ export const domainsData: Record<string, any> = {
   "nanoscience": {
     id: "nanoscience",
     category: "Specialized Sciences",
+    image: "/images/domains/specialized_science.png",
+    dateAdded: "2024-03-24",
     title: "Nanoscience And Nanotechnology",
     tag: "Atomic Engineering",
     iconId: "zap",
@@ -527,6 +591,8 @@ export const domainsData: Record<string, any> = {
   "genetic-engineering": {
     id: "genetic-engineering",
     category: "Specialized Sciences",
+    image: "/images/domains/specialized_science.png",
+    dateAdded: "2024-04-07",
     title: "Genetic Engineering",
     tag: "Bio-Architecture",
     iconId: "network",
