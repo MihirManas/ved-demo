@@ -15,3 +15,14 @@ model TrafficLog {
   cityCategory String?  // e.g., 'Tier 1', 'Tier 2', 'Tier 3', 'Other'
   createdAt    DateTime @default(now())
 }
+
+model Job {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  location    String
+  type        String   // e.g., 'Full-time', 'Part-time', 'Internship'
+  salary      String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}

@@ -86,7 +86,7 @@ export default function Home() {
                 </div>
 
                 <div className="grid relative mb-12 items-start min-h-[160px] md:min-h-[180px] lg:min-h-[220px]">
-                  <h1 className="col-start-1 row-start-1 w-full text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-white tracking-tighter leading-[1.05]">
+                  <h1 className="col-start-1 row-start-1 w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-white tracking-tighter leading-[1.05]">
                     {renderHighlightedText(typedText, heroData[heroIndex].highlight)}
                     <span className="w-1 h-[0.9em] bg-gray-900 dark:bg-white inline-block ml-2 animate-pulse align-middle opacity-50"></span>
                   </h1>

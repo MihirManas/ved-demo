@@ -1,5 +1,11 @@
 import { Target, Lightbulb, Shield, Zap, Users, Award, BookOpen, Star } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Ved Upskilling",
+  description: "Ved Upskilling is a community of learners, mentors, and industry leaders committed to creating meaningful career transformations with 8-10 years of expertise.",
+};
 
 export default function About() {
   return (

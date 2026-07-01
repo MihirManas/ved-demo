@@ -9,6 +9,8 @@ export async function POST(req: Request) {
       fullName: data.fullName,
       email: data.email,
       phone: data.phone,
+      collegeName: data.collegeName,
+      crNumber: data.crNumber,
       qualification: data.qualification,
       duration: data.duration,
       academicStatus: data.academicStatus,
