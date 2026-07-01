@@ -240,7 +240,7 @@ export default function Home() {
                 >
                   <div className="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
                     <Image 
-                      src={course.image || `/images/courses/${course.slug.replace(/-/g, '_')}.png`} 
+                      src={course.image?.startsWith('http') ? course.image : `/images/courses/${course.slug.replace(/-/g, '_')}.png`} 
                       alt={`${course.title} - Complete guide to ${course.tag}`} 
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

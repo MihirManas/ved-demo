@@ -24,7 +24,7 @@ export default async function CourseDetail({ params }: { params: { id: string } 
         <ScrollReveal>
           <div className="mb-16 relative w-full h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden border border-gray-200 dark:border-white/10 shadow-2xl">
             <Image 
-              src={course.image || `/images/courses/${course.slug.replace(/-/g, '_')}.png`} 
+              src={course.image?.startsWith('http') ? course.image : `/images/courses/${course.slug.replace(/-/g, '_')}.png`} 
               alt={`${course.title} - Complete course covering ${course.techs.join(', ')}`} 
               fill 
               sizes="100vw"
