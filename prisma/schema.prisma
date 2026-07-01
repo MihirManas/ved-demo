@@ -17,12 +17,29 @@ model TrafficLog {
 }
 
 model Job {
+  id             Int           @id @default(autoincrement())
+  title          String
+  description    String
+  location       String
+  type           String        // e.g., 'Full-time', 'Part-time', 'Internship'
+  salary         String?
+  isActive       Boolean       @default(true)
+  requiresGithub Boolean       @default(false)
+  createdAt      DateTime      @default(now())
+  applications   Application[]
+}
+
+model Application {
   id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  location    String
-  type        String   // e.g., 'Full-time', 'Part-time', 'Internship'
-  salary      String?
-  isActive    Boolean  @default(true)
+  jobId       Int
+  name        String
+  email       String
+  phone       String
+  address     String
+  resumeLink  String
+  linkedinUrl String?
+  githubUrl   String?
   createdAt   DateTime @default(now())
+
+  job         Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
 }

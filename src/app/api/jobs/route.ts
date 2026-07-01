@@ -19,7 +19,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { title, description, location, type, salary, password } = body;
+    const { title, description, location, type, salary, password, requiresGithub } = body;
 
     // Verify master password
     if (password !== process.env.HR_MASTER_PASSWORD) {
@@ -37,6 +37,7 @@ export async function POST(request: Request) {
         location,
         type,
         salary,
+        requiresGithub: !!requiresGithub,
       },
     });
 
