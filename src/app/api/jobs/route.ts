@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     const { title, description, location, type, salary, password, requiresGithub } = body;
 
     // Verify master password
-    if (password !== process.env.HR_MASTER_PASSWORD) {
+    if (password !== (process.env.HR_MASTER_PASSWORD || 'Ved-HR-Password-2026!')) {
       return NextResponse.json({ error: "Unauthorized: Invalid master password" }, { status: 401 });
     }
 
