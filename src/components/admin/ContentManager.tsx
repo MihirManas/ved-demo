@@ -60,9 +60,9 @@ export default function ContentManager() {
 
   return (
     <div className="space-y-8">
-      <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-3xl p-7 shadow-2xl relative overflow-hidden">
-        <h2 className="text-xl font-bold mb-2 text-neutral-200">Website Content Management</h2>
-        <p className="text-neutral-400 text-sm mb-8">Update the text and images across the public facing website instantly.</p>
+      <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden">
+        <h2 className="text-xl font-bold mb-2 text-gray-900 dark:text-neutral-200">Website Content Management</h2>
+        <p className="text-gray-500 dark:text-neutral-400 text-sm mb-8">Update the text and images across the public facing website instantly.</p>
         
         {loading ? (
           <div className="flex justify-center py-12">
@@ -71,11 +71,11 @@ export default function ContentManager() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {PREDEFINED_SECTIONS.map((section) => (
-              <div key={section.id} className="bg-black/40 border border-neutral-800 rounded-2xl p-5">
+              <div key={section.id} className="bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-neutral-800 rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-4">
-                  {section.type === "IMAGE" ? <ImageIcon className="w-4 h-4 text-purple-400" /> : <Type className="w-4 h-4 text-blue-400" />}
-                  <h3 className="font-semibold text-white">{section.label}</h3>
-                  <span className="text-xs text-neutral-600 bg-neutral-900 px-2 py-0.5 rounded-full ml-auto">{section.id}</span>
+                  {section.type === "IMAGE" ? <ImageIcon className="w-4 h-4 text-purple-500 dark:text-purple-400" /> : <Type className="w-4 h-4 text-blue-500 dark:text-blue-400" />}
+                  <h3 className="font-semibold text-gray-900 dark:text-white">{section.label}</h3>
+                  <span className="text-xs text-gray-600 dark:text-neutral-400 bg-gray-200 dark:bg-neutral-900 px-2 py-0.5 rounded-full ml-auto">{section.id}</span>
                 </div>
 
                 {section.type === "TEXT" ? (
@@ -83,13 +83,13 @@ export default function ContentManager() {
                     <textarea
                       value={contents[section.id] || ""}
                       onChange={(e) => handleTextChange(section.id, e.target.value)}
-                      className="w-full bg-black/50 border border-neutral-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#E6C875]/50 transition-all resize-none min-h-[100px]"
+                      className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent dark:focus:border-[#E6C875]/50 transition-all resize-none min-h-[100px]"
                       placeholder={`Enter text for ${section.label.toLowerCase()}`}
                     />
                     <button
                       onClick={() => handleSaveText(section.id, contents[section.id])}
                       disabled={savingKey === section.id}
-                      className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50"
+                      className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-gray-200 dark:bg-neutral-800 hover:bg-gray-300 dark:hover:bg-neutral-700 text-gray-900 dark:text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50"
                     >
                       {savingKey === section.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
                       {savingKey === section.id ? "Saving..." : "Save Text"}
@@ -97,7 +97,7 @@ export default function ContentManager() {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <div className="border-2 border-dashed border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-black/30 relative overflow-hidden group">
+                    <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-gray-400 dark:hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-white dark:bg-black/30 relative overflow-hidden group">
                       {contents[section.id] ? (
                         <>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -109,7 +109,7 @@ export default function ContentManager() {
                               delete newContents[section.id];
                               setContents(newContents);
                             }}
-                            className="absolute z-10 bg-black/70 hover:bg-red-500/80 text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100"
+                            className="absolute z-10 bg-white/90 dark:bg-black/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100 shadow-md"
                           >
                             Remove Image
                           </button>
@@ -119,7 +119,7 @@ export default function ContentManager() {
                           {savingKey === section.id ? (
                             <div className="flex flex-col items-center justify-center py-6">
                               <Loader2 className="w-8 h-8 text-[#E6C875] animate-spin mb-2" />
-                              <span className="text-sm text-neutral-400">Saving to database...</span>
+                              <span className="text-sm text-gray-500 dark:text-neutral-400">Saving to database...</span>
                             </div>
                           ) : (
                             <UploadDropzone

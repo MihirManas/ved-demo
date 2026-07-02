@@ -1,8 +1,17 @@
 "use client";
 
+import { useTheme } from 'next-themes';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useEffect, useState } from 'react';
 
 export default function DailyLeadsChart({ data }: { data: { date: string, count: number }[] }) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Format date for display
   const formattedData = data.map(item => {
     const d = new Date(item.date);
@@ -11,6 +20,16 @@ export default function DailyLeadsChart({ data }: { data: { date: string, count:
       displayDate: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     };
   });
+
+  if (!mounted) return <div className="h-[300px] w-full" />;
+
+  const isDark = resolvedTheme === 'dark';
+  const gridColor = isDark ? '#333' : '#e5e7eb';
+  const axisColor = isDark ? '#666' : '#9ca3af';
+  const tickColor = isDark ? '#888' : '#6b7280';
+  const tooltipBg = isDark ? '#111' : '#fff';
+  const tooltipBorder = isDark ? '#333' : '#e5e7eb';
+  const tooltipText = isDark ? '#fff' : '#111';
 
   return (
     <div className="h-[300px] w-full">
@@ -22,24 +41,24 @@ export default function DailyLeadsChart({ data }: { data: { date: string, count:
               <stop offset="95%" stopColor="#E6C875" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
           <XAxis 
             dataKey="displayDate" 
-            stroke="#666" 
-            tick={{fill: '#888', fontSize: 12}} 
+            stroke={axisColor} 
+            tick={{fill: tickColor, fontSize: 12}} 
             axisLine={false}
             tickLine={false}
             dy={10}
           />
           <YAxis 
-            stroke="#666" 
-            tick={{fill: '#888', fontSize: 12}} 
+            stroke={axisColor} 
+            tick={{fill: tickColor, fontSize: 12}} 
             axisLine={false}
             tickLine={false}
             dx={-10}
           />
           <Tooltip 
-            contentStyle={{ backgroundColor: '#111', borderColor: '#333', borderRadius: '12px', color: '#fff' }}
+            contentStyle={{ backgroundColor: tooltipBg, borderColor: tooltipBorder, borderRadius: '12px', color: tooltipText }}
             itemStyle={{ color: '#E6C875' }}
           />
           <Area 

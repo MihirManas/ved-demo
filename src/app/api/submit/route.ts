@@ -4,6 +4,23 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
 
+    // Calculate Lead Score automatically based on urgency and program
+    let score = 0;
+    
+    // Program Priority
+    if (data.program === "placement") score += 50;
+    else if (data.program === "internship") score += 30;
+    else score += 10;
+    
+    // Academic Urgency
+    if (data.academicStatus === "Final Year" || data.academicStatus === "Graduated") score += 30;
+    else if (data.academicStatus === "3rd Year") score += 20;
+    else score += 10;
+    
+    let calculatedLeadScore = "Low Priority";
+    if (score >= 70) calculatedLeadScore = "High Priority";
+    else if (score >= 40) calculatedLeadScore = "Medium Priority";
+
     // Format the data exactly as your Google Apps Script expects it
     const payloadForAppScript = {
       fullName: data.fullName,
@@ -19,7 +36,7 @@ export async function POST(req: Request) {
       domain: `${data.domainCategory} - ${data.domainCourse}`, // Combined for your Apps Script
       program: data.program,
       careerGoals: data.careerGoals,
-      leadScore: ""
+      leadScore: calculatedLeadScore
     };
 
     // IMPORTANT: Replace this with your actual Google Apps Script Web App URL

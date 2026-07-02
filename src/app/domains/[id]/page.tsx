@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ChevronRight, Star, Network, Users } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getCourseBySlug } from "@/app/admin/course-actions";
+import CourseAccordion from "@/components/CourseAccordion";
 import { notFound } from "next/navigation";
 
 export default async function CourseDetail({ params }: { params: { id: string } }) {
@@ -77,14 +78,7 @@ export default async function CourseDetail({ params }: { params: { id: string } 
         <ScrollReveal>
           <div className="border-t border-gray-200 dark:border-white/10 pt-32 mb-32">
             <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-20 text-center">Execution Protocol.</h2>
-            <div className="max-w-5xl mx-auto space-y-6">
-              {course.syllabus.map((item: string, idx: number) => (
-                <div key={idx} className="bg-white dark:bg-black/60 border border-gray-200 dark:border-white/10 rounded-3xl p-10 flex items-center hover:border-[#E6C875]/50 dark:hover:border-[#E6C875]/50 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-all duration-500 shadow-md dark:shadow-lg">
-                  <div className="text-6xl font-medium text-gray-200 dark:text-white/5 mr-10 w-24 text-right">{(idx + 1).toString().padStart(2, '0')}</div>
-                  <div className="text-2xl text-gray-800 dark:text-white/80 font-light">{item}</div>
-                </div>
-              ))}
-            </div>
+            <CourseAccordion syllabus={course.syllabus} />
           </div>
         </ScrollReveal>
 

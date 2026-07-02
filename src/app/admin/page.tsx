@@ -33,7 +33,7 @@ export default function AdminPage() {
 
   if (isAuthenticated) {
     return (
-      <div className="relative w-full z-50 bg-black text-white mt-8 rounded-3xl">
+      <div className="relative w-full z-50 bg-white dark:bg-black text-black dark:text-white mt-8 rounded-3xl">
         <Dashboard onLogout={() => {
           setIsAuthenticated(false);
           sessionStorage.removeItem("admin_auth");
@@ -43,17 +43,17 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="relative w-full min-h-[80vh] z-50 bg-black flex items-center justify-center p-4 rounded-3xl overflow-hidden mt-8">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black"></div>
+    <div className="relative w-full min-h-[80vh] z-50 bg-gray-50 dark:bg-black flex items-center justify-center p-4 rounded-3xl overflow-hidden mt-8">
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-200 via-gray-50 to-gray-50 dark:from-neutral-900 dark:via-black dark:to-black"></div>
       
       <div className="relative z-10 w-full max-w-md">
-        <div className="bg-neutral-900/50 backdrop-blur-xl border border-neutral-800 rounded-3xl p-8 shadow-2xl">
+        <div className="bg-white/80 dark:bg-neutral-900/50 backdrop-blur-xl border border-gray-200 dark:border-neutral-800 rounded-3xl p-8 shadow-2xl">
           <div className="flex flex-col items-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-tr from-[#E6C875] to-yellow-200 rounded-2xl flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(230,200,117,0.3)]">
               <Lock className="w-8 h-8 text-black" />
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Admin Portal</h1>
-            <p className="text-neutral-400 text-sm mt-2 text-center">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Admin Portal</h1>
+            <p className="text-gray-500 dark:text-neutral-400 text-sm mt-2 text-center">
               Restricted Area. Enter credentials to proceed.
             </p>
           </div>
@@ -65,12 +65,12 @@ export default function AdminPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-[#E6C875] transition-all"
+                className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-[#E6C875] transition-all"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-300 transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-neutral-500 hover:text-gray-600 dark:hover:text-neutral-300 transition-colors"
               >
                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
               </button>

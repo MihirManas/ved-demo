@@ -124,9 +124,9 @@ export default function CourseManager() {
   return (
     <div className="space-y-8">
       {/* Create/Edit Course Form */}
-      <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-3xl p-7 shadow-2xl relative overflow-hidden">
-        <div className="flex justify-between items-center mb-6 border-b border-white/[0.05] pb-4">
-          <h2 className="text-xl font-bold text-neutral-200">
+      <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden">
+        <div className="flex justify-between items-center mb-6 border-b border-gray-100 dark:border-white/[0.05] pb-4">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-neutral-200">
             {editingId ? "Edit Course" : "Add New Course"}
           </h2>
           <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function CourseManager() {
               <button
                 type="button"
                 onClick={resetForm}
-                className="flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-white font-medium rounded-lg transition-colors text-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-neutral-800 hover:bg-gray-300 dark:hover:bg-neutral-700 text-gray-900 dark:text-white font-medium rounded-lg transition-colors text-sm"
               >
                 <X className="w-4 h-4" /> Cancel Edit
               </button>
@@ -158,15 +158,15 @@ export default function CourseManager() {
             <div className="space-y-4">
               {/* Image Upload Area */}
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Course Image</label>
-                <div className={`relative border-2 border-dashed ${image ? 'border-[#E6C875]/50 bg-[#E6C875]/5' : 'border-neutral-800 bg-black/50'} rounded-xl p-4 flex flex-col items-center justify-center transition-all hover:border-[#E6C875]/50 group overflow-hidden min-h-[160px]`}>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Course Image</label>
+                <div className={`relative border-2 border-dashed ${image ? 'border-[#E6C875]/50 bg-[#E6C875]/5' : 'border-gray-300 dark:border-neutral-800 bg-white dark:bg-black/50'} rounded-xl p-4 flex flex-col items-center justify-center transition-all hover:border-gray-400 dark:hover:border-[#E6C875]/50 group overflow-hidden min-h-[160px]`}>
                   {image ? (
                     <div className="relative w-full h-32 mb-4">
                       <Image src={image} alt="Preview" fill className="object-cover rounded-lg opacity-80 group-hover:opacity-60 transition-opacity" />
                       <button 
                         type="button"
                         onClick={() => setImage("")}
-                        className="absolute top-2 right-2 bg-black/70 hover:bg-red-500/80 text-white p-1.5 rounded-md transition-colors"
+                        className="absolute top-2 right-2 bg-white/90 dark:bg-black/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white p-1.5 rounded-md transition-colors shadow-md"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -184,8 +184,8 @@ export default function CourseManager() {
                       }}
                       appearance={{
                         container: "border-none bg-transparent w-full p-0 py-2 m-0",
-                        label: "text-[#E6C875] hover:text-white transition-colors",
-                        allowedContent: "text-neutral-500 text-xs mt-2",
+                        label: "text-[#D4B55E] dark:text-[#E6C875] hover:text-gray-900 dark:hover:text-white transition-colors",
+                        allowedContent: "text-gray-500 dark:text-neutral-500 text-xs mt-2",
                         button: "bg-[#E6C875] text-black font-bold mt-4"
                       }}
                     />
@@ -194,12 +194,12 @@ export default function CourseManager() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Course Title</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Course Title</label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -208,46 +208,46 @@ export default function CourseManager() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-neutral-400 mb-2">URL Slug</label>
+                  <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">URL Slug</label>
                   <input
                     type="text"
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                     placeholder="e.g. react-mastery"
-                    className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all text-sm"
+                    className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all text-sm"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-neutral-400 mb-2">Tag</label>
+                  <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Tag</label>
                   <input
                     type="text"
                     value={tag}
                     onChange={(e) => setTag(e.target.value)}
                     placeholder="e.g. Frontend"
-                    className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all text-sm"
+                    className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all text-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Category</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Category</label>
                 <input
                   type="text"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">About / Description</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">About / Description</label>
                 <textarea
                   value={about}
                   onChange={(e) => setAbout(e.target.value)}
                   rows={3}
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all resize-none text-sm"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all resize-none text-sm"
                   required
                 />
               </div>
@@ -272,21 +272,21 @@ export default function CourseManager() {
       </div>
 
       {/* Course List */}
-      <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-3xl p-7 shadow-2xl relative overflow-hidden">
-        <h2 className="text-xl font-bold mb-6 text-neutral-200">Manage Courses ({courses.length})</h2>
+      <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden">
+        <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-neutral-200">Manage Courses ({courses.length})</h2>
         
         {loading ? (
           <div className="flex justify-center py-12">
             <Loader2 className="w-8 h-8 text-[#E6C875] animate-spin" />
           </div>
         ) : courses.length === 0 ? (
-          <div className="text-center py-12 text-neutral-500">
+          <div className="text-center py-12 text-gray-500 dark:text-neutral-500">
             No courses created yet.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {courses.map((course) => (
-              <div key={course.id} className="bg-black/40 border border-neutral-800 rounded-2xl overflow-hidden relative group hover:border-neutral-700 transition-colors flex flex-col h-full">
+              <div key={course.id} className="bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden relative group hover:border-gray-300 dark:hover:border-neutral-700 transition-colors flex flex-col h-full shadow-sm">
                 {/* Actions */}
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button 
@@ -304,21 +304,21 @@ export default function CourseManager() {
                 </div>
                 
                 {/* Course Image */}
-                <div className="h-32 bg-neutral-900 relative flex items-center justify-center border-b border-neutral-800">
+                <div className="h-32 bg-gray-200 dark:bg-neutral-900 relative flex items-center justify-center border-b border-gray-200 dark:border-neutral-800">
                   {course.image ? (
                     <Image src={course.image} alt={course.title} fill className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" />
                   ) : (
-                    <ImageIcon className="w-8 h-8 text-neutral-700" />
+                    <ImageIcon className="w-8 h-8 text-gray-400 dark:text-neutral-700" />
                   )}
                 </div>
                 
                 {/* Content */}
                 <div className="p-5 flex-grow flex flex-col">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#E6C875]">{course.category}</span>
-                  <h3 className="font-bold text-lg text-white mt-1 mb-2 leading-tight">{course.title}</h3>
-                  <p className="text-xs text-neutral-400 line-clamp-2 mb-4">{course.about}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4B55E] dark:text-[#E6C875]">{course.category}</span>
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mt-1 mb-2 leading-tight">{course.title}</h3>
+                  <p className="text-xs text-gray-600 dark:text-neutral-400 line-clamp-2 mb-4">{course.about}</p>
                   
-                  <div className="mt-auto pt-4 border-t border-neutral-800/50 flex justify-between text-[11px] text-neutral-500 font-mono">
+                  <div className="mt-auto pt-4 border-t border-gray-200 dark:border-neutral-800/50 flex justify-between text-[11px] text-gray-500 dark:text-neutral-500 font-mono">
                     <span className="truncate pr-2">/{course.slug}</span>
                     <span className="flex-shrink-0">{new Date(course.createdAt).toLocaleDateString()}</span>
                   </div>

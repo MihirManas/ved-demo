@@ -1,6 +1,8 @@
 "use client";
 
+import { useTheme } from 'next-themes';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
+import { useEffect, useState } from 'react';
 
 const COLORS = {
   'Tier 1': '#3b82f6',
@@ -11,8 +13,24 @@ const COLORS = {
 };
 
 export default function CityCategoriesChart({ data }: { data: { name: string, value: number }[] }) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Sort data so Tier 1 is first
   const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
+
+  if (!mounted) return <div className="h-[250px] w-full" />;
+
+  const isDark = resolvedTheme === 'dark';
+  const tickColor = isDark ? '#aaa' : '#6b7280';
+  const cursorFill = isDark ? '#333' : '#e5e7eb';
+  const tooltipBg = isDark ? '#111' : '#fff';
+  const tooltipBorder = isDark ? '#333' : '#e5e7eb';
+  const tooltipText = isDark ? '#fff' : '#111';
 
   return (
     <div className="h-[250px] w-full">
@@ -24,18 +42,18 @@ export default function CityCategoriesChart({ data }: { data: { name: string, va
             dataKey="name" 
             axisLine={false} 
             tickLine={false} 
-            tick={{ fill: '#aaa', fontSize: 13 }}
+            tick={{ fill: tickColor, fontSize: 13 }}
             width={70}
           />
           <Tooltip 
-            cursor={{ fill: '#333', opacity: 0.4 }}
-            contentStyle={{ backgroundColor: '#111', borderColor: '#333', borderRadius: '12px', color: '#fff' }}
+            cursor={{ fill: cursorFill, opacity: isDark ? 0.4 : 0.6 }}
+            contentStyle={{ backgroundColor: tooltipBg, borderColor: tooltipBorder, borderRadius: '12px', color: tooltipText }}
           />
           <Bar dataKey="value" radius={[0, 8, 8, 0]} barSize={24} animationDuration={1500}>
             {sortedData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[entry.name as keyof typeof COLORS] || COLORS['Other']} />
             ))}
-            <LabelList dataKey="value" position="right" fill="#aaa" fontSize={13} />
+            <LabelList dataKey="value" position="right" fill={tickColor} fontSize={13} />
           </Bar>
         </BarChart>
       </ResponsiveContainer>

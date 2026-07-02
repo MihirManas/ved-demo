@@ -87,39 +87,39 @@ export default function MentorManager() {
   return (
     <div className="space-y-8">
       {/* Create Mentor Form */}
-      <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-3xl p-7 shadow-2xl relative overflow-hidden">
-        <h2 className="text-xl font-bold mb-6 text-neutral-200">Add New Mentor</h2>
+      <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden">
+        <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-neutral-200">Add New Mentor</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Mentor Name</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Mentor Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Designation / Role</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Designation / Role</label>
                 <input
                   type="text"
                   value={designation}
                   onChange={(e) => setDesignation(e.target.value)}
                   placeholder="e.g. Senior Software Engineer at Google"
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Bio / Details</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Bio / Details</label>
                 <textarea
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                   rows={4}
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all resize-none"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all resize-none"
                   required
                 />
               </div>
@@ -127,8 +127,8 @@ export default function MentorManager() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Mentor Photo</label>
-                <div className="border-2 border-dashed border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-black/30 relative overflow-hidden group">
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Mentor Photo</label>
+                <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-gray-400 dark:hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-white dark:bg-black/30 relative overflow-hidden group">
                   {imagePreview ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -136,7 +136,7 @@ export default function MentorManager() {
                       <button 
                         type="button"
                         onClick={() => setImagePreview(null)}
-                        className="absolute z-10 bg-black/70 hover:bg-red-500/80 text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100"
+                        className="absolute z-10 bg-white/90 dark:bg-black/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100 shadow-md"
                       >
                         Remove Image
                       </button>
@@ -154,8 +154,8 @@ export default function MentorManager() {
                       }}
                       appearance={{
                         container: "border-none bg-transparent w-full p-0 py-2 m-0",
-                        label: "text-[#E6C875] hover:text-white transition-colors",
-                        allowedContent: "text-neutral-500 text-xs mt-2",
+                        label: "text-[#D4B55E] dark:text-[#E6C875] hover:text-gray-900 dark:hover:text-white transition-colors",
+                        allowedContent: "text-gray-500 dark:text-neutral-500 text-xs mt-2",
                         button: "bg-[#E6C875] text-black font-bold mt-4 px-4 py-2 text-sm"
                       }}
                     />
@@ -163,13 +163,13 @@ export default function MentorManager() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-neutral-400 mb-2">Image Alt Text (SEO)</label>
+                <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Image Alt Text (SEO)</label>
                 <input
                   type="text"
                   value={imageAlt}
                   onChange={(e) => setImageAlt(e.target.value)}
                   placeholder="e.g. John Doe - Full Stack Developer"
-                  className="w-full bg-black/50 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 transition-all"
+                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                 />
               </div>
             </div>
@@ -186,41 +186,41 @@ export default function MentorManager() {
       </div>
 
       {/* Mentor List */}
-      <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-3xl p-7 shadow-2xl relative overflow-hidden">
-        <h2 className="text-xl font-bold mb-6 text-neutral-200">Manage Mentors</h2>
+      <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden">
+        <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-neutral-200">Manage Mentors</h2>
         
         {loading ? (
           <div className="flex justify-center py-12">
             <Loader2 className="w-8 h-8 text-[#E6C875] animate-spin" />
           </div>
         ) : mentors.length === 0 ? (
-          <div className="text-center py-12 text-neutral-500">
+          <div className="text-center py-12 text-gray-500 dark:text-neutral-500">
             No mentors added yet.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mentors.map((mentor) => (
-              <div key={mentor.id} className="bg-black/40 border border-neutral-800 rounded-2xl overflow-hidden group">
-                <div className="h-48 bg-neutral-900 relative">
+              <div key={mentor.id} className="bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden group shadow-sm">
+                <div className="h-48 bg-gray-200 dark:bg-neutral-900 relative">
                   {mentor.imagePath ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={mentor.imagePath} alt={mentor.imageAlt || mentor.name} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-neutral-700">
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-neutral-700">
                       <ImageIcon className="w-12 h-12" />
                     </div>
                   )}
                   <button 
                     onClick={() => handleDelete(mentor.id)}
-                    className="absolute top-3 right-3 p-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/40 transition-colors backdrop-blur-md opacity-0 group-hover:opacity-100"
+                    className="absolute top-3 right-3 p-2 bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-500/40 transition-colors backdrop-blur-md opacity-0 group-hover:opacity-100 shadow-md"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-lg text-white">{mentor.name}</h3>
-                  <p className="text-sm font-medium text-[#E6C875] mb-2">{mentor.designation}</p>
-                  <p className="text-sm text-neutral-400 line-clamp-3">{mentor.bio}</p>
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">{mentor.name}</h3>
+                  <p className="text-sm font-medium text-[#D4B55E] dark:text-[#E6C875] mb-2">{mentor.designation}</p>
+                  <p className="text-sm text-gray-600 dark:text-neutral-400 line-clamp-3">{mentor.bio}</p>
                 </div>
               </div>
             ))}

@@ -16,7 +16,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Traditional relational databases struggle with unstructured data at scale. This combination allows for rapid iteration and massive horizontal scaling.",
     marketGrowth: "NoSQL database usage is growing at 31% CAGR as applications demand more flexible schema designs.",
     hiring: "Companies like Meta, Google, and hyper-growth startups actively recruit engineers capable of designing NoSQL-backed Django microservices.",
-    syllabus: ["NoSQL Architecture Principles", "Django ORM with MongoDB", "Advanced Query Optimization", "REST Framework Integration", "Horizontal Scaling & Sharding"]
+    syllabus: ["Week 1: NoSQL Architecture Principles|Introduction to NoSQL Architecture Principles|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in NoSQL Architecture Principles|Assessment and project work", "Week 2: Django ORM with MongoDB|Introduction to Django ORM with MongoDB|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Django ORM with MongoDB|Assessment and project work", "Week 3: Advanced Query Optimization|Introduction to Advanced Query Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Query Optimization|Assessment and project work", "Week 4: REST Framework Integration|Introduction to REST Framework Integration|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in REST Framework Integration|Assessment and project work", "Week 5: Horizontal Scaling & Sharding|Introduction to Horizontal Scaling & Sharding|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Horizontal Scaling & Sharding|Assessment and project work"]
   },
   "mongodb-nodejs": {
     id: "mongodb-nodejs",
@@ -34,7 +34,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Node.js combined with MongoDB provides a unified JavaScript ecosystem across the entire stack, drastically reducing context switching and improving development velocity.",
     marketGrowth: "Node.js remains the most used web framework globally, driving demand for specialized backend architects.",
     hiring: "Heavily utilized by Netflix, Uber, and PayPal for microservices architecture.",
-    syllabus: ["Event-Driven Architecture", "MongoDB Aggregation Pipeline", "Authentication & JWT", "Real-time WebSockets", "Performance Profiling"]
+    syllabus: ["Week 1: Event-Driven Architecture|Introduction to Event-Driven Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Event-Driven Architecture|Assessment and project work", "Week 2: MongoDB Aggregation Pipeline|Introduction to MongoDB Aggregation Pipeline|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in MongoDB Aggregation Pipeline|Assessment and project work", "Week 3: Authentication & JWT|Introduction to Authentication & JWT|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Authentication & JWT|Assessment and project work", "Week 4: Real-time WebSockets|Introduction to Real-time WebSockets|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Real-time WebSockets|Assessment and project work", "Week 5: Performance Profiling|Introduction to Performance Profiling|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Performance Profiling|Assessment and project work"]
   },
   "advanced-java": {
     id: "advanced-java",
@@ -52,7 +52,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Java remains the absolute gold standard for high-security, high-reliability enterprise systems.",
     marketGrowth: "Continuous demand from banking, insurance, and large-scale enterprise sectors.",
     hiring: "Top investment banks and fortune 500 companies relentlessly seek advanced Java architects.",
-    syllabus: ["JVM Internals & Garbage Collection", "Advanced Multithreading", "Design Patterns", "Microservices with Spring", "Enterprise Security"]
+    syllabus: ["Week 1: JVM Internals & Garbage Collection|Introduction to JVM Internals & Garbage Collection|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in JVM Internals & Garbage Collection|Assessment and project work", "Week 2: Advanced Multithreading|Introduction to Advanced Multithreading|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Multithreading|Assessment and project work", "Week 3: Design Patterns|Introduction to Design Patterns|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Design Patterns|Assessment and project work", "Week 4: Microservices with Spring|Introduction to Microservices with Spring|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Microservices with Spring|Assessment and project work", "Week 5: Enterprise Security|Introduction to Enterprise Security|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Enterprise Security|Assessment and project work"]
   },
   "fullstack": {
     id: "fullstack",
@@ -70,7 +70,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "True full-stack architects are rare. Understanding how the frontend impacts the backend database queries is a critical skill for senior roles.",
     marketGrowth: "Full stack engineering consistently ranks among the top 3 most in-demand roles globally.",
     hiring: "Universal demand across all tech tiers, from early-stage startups to FAANG.",
-    syllabus: ["System Design Fundamentals", "Advanced React Patterns", "Backend Optimization", "Caching with Redis", "CI/CD Deployment Pipelines"]
+    syllabus: ["Week 1: System Design Fundamentals|Introduction to System Design Fundamentals|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in System Design Fundamentals|Assessment and project work", "Week 2: Advanced React Patterns|Introduction to Advanced React Patterns|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced React Patterns|Assessment and project work", "Week 3: Backend Optimization|Introduction to Backend Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Backend Optimization|Assessment and project work", "Week 4: Caching with Redis|Introduction to Caching with Redis|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Caching with Redis|Assessment and project work", "Week 5: CI/CD Deployment Pipelines|Introduction to CI/CD Deployment Pipelines|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in CI/CD Deployment Pipelines|Assessment and project work"]
   },
   "web-development": {
     id: "web-development",
@@ -88,7 +88,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "A deep understanding of the DOM and vanilla JavaScript is what separates average developers from elite frontend engineers.",
     marketGrowth: "The foundation of all web technologies ensures permanent relevance in the job market.",
     hiring: "Required baseline for any specialized frontend or full-stack role.",
-    syllabus: ["Advanced DOM Manipulation", "CSS Architecture & Variables", "Web Accessibility (a11y)", "Browser Rendering Optimization", "Modern JavaScript (ES6+)"]
+    syllabus: ["Week 1: Advanced DOM Manipulation|Introduction to Advanced DOM Manipulation|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced DOM Manipulation|Assessment and project work", "Week 2: CSS Architecture & Variables|Introduction to CSS Architecture & Variables|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in CSS Architecture & Variables|Assessment and project work", "Week 3: Web Accessibility (a11y)|Introduction to Web Accessibility (a11y)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Web Accessibility (a11y)|Assessment and project work", "Week 4: Browser Rendering Optimization|Introduction to Browser Rendering Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Browser Rendering Optimization|Assessment and project work", "Week 5: Modern JavaScript (ES6+)|Introduction to Modern JavaScript (ES6+)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Modern JavaScript (ES6+)|Assessment and project work"]
   },
   "reactjs": {
     id: "reactjs",
@@ -106,7 +106,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "React dominates the frontend landscape. Deep mastery of its internals is required to build performant apps at scale.",
     marketGrowth: "React holds the largest market share among frontend frameworks, continuing to grow with Server Components.",
     hiring: "The standard for frontend development at companies like Meta, Airbnb, and Shopify.",
-    syllabus: ["Reconciliation & Virtual DOM", "Advanced Hooks & Custom Hooks", "State Management Strategies", "Performance Tuning", "Server-Side Rendering Context"]
+    syllabus: ["Week 1: Reconciliation & Virtual DOM|Introduction to Reconciliation & Virtual DOM|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Reconciliation & Virtual DOM|Assessment and project work", "Week 2: Advanced Hooks & Custom Hooks|Introduction to Advanced Hooks & Custom Hooks|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Hooks & Custom Hooks|Assessment and project work", "Week 3: State Management Strategies|Introduction to State Management Strategies|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in State Management Strategies|Assessment and project work", "Week 4: Performance Tuning|Introduction to Performance Tuning|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Performance Tuning|Assessment and project work", "Week 5: Server-Side Rendering Context|Introduction to Server-Side Rendering Context|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Server-Side Rendering Context|Assessment and project work"]
   },
   "mysql-spring-boot": {
     id: "mysql-spring-boot",
@@ -124,7 +124,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "The industry standard for mission-critical transactional systems that require strict data integrity.",
     marketGrowth: "Spring Boot remains the dominant framework for Java-based microservices architecture.",
     hiring: "Crucial for fintech, healthcare, and enterprise software domains.",
-    syllabus: ["Spring Data JPA", "Advanced MySQL Indexing", "Transaction Management", "Microservices Security", "API Gateway Integration"]
+    syllabus: ["Week 1: Spring Data JPA|Introduction to Spring Data JPA|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Spring Data JPA|Assessment and project work", "Week 2: Advanced MySQL Indexing|Introduction to Advanced MySQL Indexing|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced MySQL Indexing|Assessment and project work", "Week 3: Transaction Management|Introduction to Transaction Management|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Transaction Management|Assessment and project work", "Week 4: Microservices Security|Introduction to Microservices Security|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Microservices Security|Assessment and project work", "Week 5: API Gateway Integration|Introduction to API Gateway Integration|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in API Gateway Integration|Assessment and project work"]
   },
 
   // 2. Data Science & AI
@@ -144,7 +144,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "AI is reshaping every industry. Engineering reliable, scalable AI models is the highest-leverage skill in the modern economy.",
     marketGrowth: "The AI sector is experiencing exponential growth, outstripping available talent supply.",
     hiring: "Intense competition among top tech firms to acquire competent AI engineers.",
-    syllabus: ["Search Algorithms & Heuristics", "Deep Learning Fundamentals", "Computer Vision Architectures", "Natural Language Processing", "Model Deployment & MLOps"]
+    syllabus: ["Week 1: Search Algorithms & Heuristics|Introduction to Search Algorithms & Heuristics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Search Algorithms & Heuristics|Assessment and project work", "Week 2: Deep Learning Fundamentals|Introduction to Deep Learning Fundamentals|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Deep Learning Fundamentals|Assessment and project work", "Week 3: Computer Vision Architectures|Introduction to Computer Vision Architectures|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Computer Vision Architectures|Assessment and project work", "Week 4: Natural Language Processing|Introduction to Natural Language Processing|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Natural Language Processing|Assessment and project work", "Week 5: Model Deployment & MLOps|Introduction to Model Deployment & MLOps|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Model Deployment & MLOps|Assessment and project work"]
   },
   "data-science-python": {
     id: "data-science-python",
@@ -162,7 +162,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Data is the new oil, but only if you have the engineering rigor to refine it into actionable intelligence.",
     marketGrowth: "Data science roles are projected to grow 36% over the next decade.",
     hiring: "Ubiquitous demand across finance, e-commerce, and logistics sectors.",
-    syllabus: ["Data Manipulation with Pandas", "Statistical Inference", "Predictive Modeling", "Feature Engineering", "Data Visualization"]
+    syllabus: ["Week 1: Data Manipulation with Pandas|Introduction to Data Manipulation with Pandas|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Data Manipulation with Pandas|Assessment and project work", "Week 2: Statistical Inference|Introduction to Statistical Inference|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Statistical Inference|Assessment and project work", "Week 3: Predictive Modeling|Introduction to Predictive Modeling|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Predictive Modeling|Assessment and project work", "Week 4: Feature Engineering|Introduction to Feature Engineering|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Feature Engineering|Assessment and project work", "Week 5: Data Visualization|Introduction to Data Visualization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Data Visualization|Assessment and project work"]
   },
   "machine-learning": {
     id: "machine-learning",
@@ -180,7 +180,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Understanding the underlying math allows you to optimize models far beyond what basic library wrappers permit.",
     marketGrowth: "Machine Learning Engineers are among the highest-paid technical roles globally.",
     hiring: "Required by specialized AI labs and data-driven product companies.",
-    syllabus: ["Linear Algebra & Calculus for ML", "Supervised Learning Algorithms", "Unsupervised Learning", "Hyperparameter Optimization", "Ensemble Methods"]
+    syllabus: ["Week 1: Linear Algebra & Calculus for ML|Introduction to Linear Algebra & Calculus for ML|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Linear Algebra & Calculus for ML|Assessment and project work", "Week 2: Supervised Learning Algorithms|Introduction to Supervised Learning Algorithms|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Supervised Learning Algorithms|Assessment and project work", "Week 3: Unsupervised Learning|Introduction to Unsupervised Learning|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Unsupervised Learning|Assessment and project work", "Week 4: Hyperparameter Optimization|Introduction to Hyperparameter Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Hyperparameter Optimization|Assessment and project work", "Week 5: Ensemble Methods|Introduction to Ensemble Methods|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Ensemble Methods|Assessment and project work"]
   },
   "business-analytics": {
     id: "business-analytics",
@@ -198,7 +198,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "The ability to translate complex data into business strategy is a rare, highly valued hybrid skill.",
     marketGrowth: "Exponential increase as companies pivot to data-driven decision making.",
     hiring: "Consulting firms, venture capital, and corporate strategy teams.",
-    syllabus: ["Advanced SQL for Analytics", "Dashboard Architecture", "KPI Engineering", "A/B Testing Frameworks", "Executive Communication"]
+    syllabus: ["Week 1: Advanced SQL for Analytics|Introduction to Advanced SQL for Analytics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced SQL for Analytics|Assessment and project work", "Week 2: Dashboard Architecture|Introduction to Dashboard Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Dashboard Architecture|Assessment and project work", "Week 3: KPI Engineering|Introduction to KPI Engineering|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in KPI Engineering|Assessment and project work", "Week 4: A/B Testing Frameworks|Introduction to A/B Testing Frameworks|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in A/B Testing Frameworks|Assessment and project work", "Week 5: Executive Communication|Introduction to Executive Communication|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Executive Communication|Assessment and project work"]
   },
 
   // 3. Hardware, IoT & Core Engineering
@@ -218,7 +218,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Hardware is experiencing a renaissance. Specialized silicon (AI chips, custom CPUs) requires elite VLSI engineers.",
     marketGrowth: "The semiconductor industry is doubling in size, driven by AI and IoT demands.",
     hiring: "NVIDIA, Intel, AMD, and Apple Silicon aggressively recruit top VLSI talent.",
-    syllabus: ["Digital Logic & RTL Design", "SystemVerilog & UVM", "FPGA Prototyping", "Static Timing Analysis", "Physical Design & Verification"]
+    syllabus: ["Week 1: Digital Logic & RTL Design|Introduction to Digital Logic & RTL Design|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Digital Logic & RTL Design|Assessment and project work", "Week 2: SystemVerilog & UVM|Introduction to SystemVerilog & UVM|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in SystemVerilog & UVM|Assessment and project work", "Week 3: FPGA Prototyping|Introduction to FPGA Prototyping|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in FPGA Prototyping|Assessment and project work", "Week 4: Static Timing Analysis|Introduction to Static Timing Analysis|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Static Timing Analysis|Assessment and project work", "Week 5: Physical Design & Verification|Introduction to Physical Design & Verification|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Physical Design & Verification|Assessment and project work"]
   },
   "embedded": {
     id: "embedded",
@@ -236,7 +236,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "The intersection of hardware and software is critical for automotive, aerospace, and medical devices.",
     marketGrowth: "Steady, robust growth fueled by the automation and automotive sectors.",
     hiring: "Automotive companies, defense contractors, and consumer electronics firms.",
-    syllabus: ["Bare-metal C Programming", "Microcontroller Architecture", "Interrupts & Timers", "Hardware Simulation in Proteus", "Real-Time Operating Systems (RTOS)"]
+    syllabus: ["Week 1: Bare-metal C Programming|Introduction to Bare-metal C Programming|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Bare-metal C Programming|Assessment and project work", "Week 2: Microcontroller Architecture|Introduction to Microcontroller Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Microcontroller Architecture|Assessment and project work", "Week 3: Interrupts & Timers|Introduction to Interrupts & Timers|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Interrupts & Timers|Assessment and project work", "Week 4: Hardware Simulation in Proteus|Introduction to Hardware Simulation in Proteus|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Hardware Simulation in Proteus|Assessment and project work", "Week 5: Real-Time Operating Systems (RTOS)|Introduction to Real-Time Operating Systems (RTOS)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Real-Time Operating Systems (RTOS)|Assessment and project work"]
   },
   "ic-engine": {
     id: "ic-engine",
@@ -254,7 +254,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Fundamental mechanical engineering principles that translate to aerospace, power generation, and advanced propulsion systems.",
     marketGrowth: "Critical for heavy machinery, aerospace, and specialized automotive sectors.",
     hiring: "Aerospace firms, heavy industries, and specialized automotive manufacturers.",
-    syllabus: ["Advanced Thermodynamics", "Combustion Dynamics", "Emission Control Systems", "Engine Simulation", "Performance Optimization"]
+    syllabus: ["Week 1: Advanced Thermodynamics|Introduction to Advanced Thermodynamics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Thermodynamics|Assessment and project work", "Week 2: Combustion Dynamics|Introduction to Combustion Dynamics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Combustion Dynamics|Assessment and project work", "Week 3: Emission Control Systems|Introduction to Emission Control Systems|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Emission Control Systems|Assessment and project work", "Week 4: Engine Simulation|Introduction to Engine Simulation|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Engine Simulation|Assessment and project work", "Week 5: Performance Optimization|Introduction to Performance Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Performance Optimization|Assessment and project work"]
   },
   "car-design": {
     id: "car-design",
@@ -272,7 +272,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Automotive design is undergoing a massive shift with the advent of EVs and autonomous vehicles.",
     marketGrowth: "High demand for engineers who understand both traditional mechanical design and modern aerodynamics.",
     hiring: "Top automotive OEMs and specialized EV startups.",
-    syllabus: ["Automotive Aerodynamics", "Chassis Design & Dynamics", "Material Selection", "Crash Simulation", "Ergonomics & Packaging"]
+    syllabus: ["Week 1: Automotive Aerodynamics|Introduction to Automotive Aerodynamics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Automotive Aerodynamics|Assessment and project work", "Week 2: Chassis Design & Dynamics|Introduction to Chassis Design & Dynamics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Chassis Design & Dynamics|Assessment and project work", "Week 3: Material Selection|Introduction to Material Selection|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Material Selection|Assessment and project work", "Week 4: Crash Simulation|Introduction to Crash Simulation|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Crash Simulation|Assessment and project work", "Week 5: Ergonomics & Packaging|Introduction to Ergonomics & Packaging|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Ergonomics & Packaging|Assessment and project work"]
   },
   "hybrid-ev": {
     id: "hybrid-ev",
@@ -290,7 +290,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "The global transition to electric vehicles is creating an unprecedented demand for specialized EV engineers.",
     marketGrowth: "EV engineering is one of the fastest-growing sectors in the global economy.",
     hiring: "Tesla, Rivian, traditional OEMs pivoting to EV, and battery technology firms.",
-    syllabus: ["Battery Management Systems (BMS)", "Power Electronics & Inverters", "Electric Motor Control", "Thermal Management", "Charging Infrastructure Protocol"]
+    syllabus: ["Week 1: Battery Management Systems (BMS)|Introduction to Battery Management Systems (BMS)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Battery Management Systems (BMS)|Assessment and project work", "Week 2: Power Electronics & Inverters|Introduction to Power Electronics & Inverters|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Power Electronics & Inverters|Assessment and project work", "Week 3: Electric Motor Control|Introduction to Electric Motor Control|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Electric Motor Control|Assessment and project work", "Week 4: Thermal Management|Introduction to Thermal Management|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Thermal Management|Assessment and project work", "Week 5: Charging Infrastructure Protocol|Introduction to Charging Infrastructure Protocol|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Charging Infrastructure Protocol|Assessment and project work"]
   },
   "robotics": {
     id: "robotics",
@@ -308,7 +308,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Robotics represents the convergence of software, AI, and mechanical engineering.",
     marketGrowth: "Explosive growth in logistics automation, manufacturing, and autonomous navigation.",
     hiring: "Automation firms, logistics giants (Amazon), and autonomous vehicle companies.",
-    syllabus: ["Robot Kinematics & Dynamics", "Robot Operating System (ROS)", "Sensor Fusion & Computer Vision", "Path Planning Algorithms", "Control Theory"]
+    syllabus: ["Week 1: Robot Kinematics & Dynamics|Introduction to Robot Kinematics & Dynamics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Robot Kinematics & Dynamics|Assessment and project work", "Week 2: Robot Operating System (ROS)|Introduction to Robot Operating System (ROS)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Robot Operating System (ROS)|Assessment and project work", "Week 3: Sensor Fusion & Computer Vision|Introduction to Sensor Fusion & Computer Vision|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Sensor Fusion & Computer Vision|Assessment and project work", "Week 4: Path Planning Algorithms|Introduction to Path Planning Algorithms|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Path Planning Algorithms|Assessment and project work", "Week 5: Control Theory|Introduction to Control Theory|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Control Theory|Assessment and project work"]
   },
   "iot": {
     id: "iot",
@@ -326,7 +326,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "IoT is connecting the physical world to the digital infrastructure, requiring engineers who understand both hardware constraints and cloud scalability.",
     marketGrowth: "Billions of devices are coming online, driving massive demand for secure IoT architecture.",
     hiring: "Smart home companies, industrial automation, and cloud providers.",
-    syllabus: ["IoT Communication Protocols", "Edge Device Programming", "Data Telemetry & Ingestion", "IoT Security Protocols", "Cloud Integration for IoT"]
+    syllabus: ["Week 1: IoT Communication Protocols|Introduction to IoT Communication Protocols|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in IoT Communication Protocols|Assessment and project work", "Week 2: Edge Device Programming|Introduction to Edge Device Programming|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Edge Device Programming|Assessment and project work", "Week 3: Data Telemetry & Ingestion|Introduction to Data Telemetry & Ingestion|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Data Telemetry & Ingestion|Assessment and project work", "Week 4: IoT Security Protocols|Introduction to IoT Security Protocols|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in IoT Security Protocols|Assessment and project work", "Week 5: Cloud Integration for IoT|Introduction to Cloud Integration for IoT|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Cloud Integration for IoT|Assessment and project work"]
   },
 
   // 4. Cloud Computing & Cyber Security
@@ -346,7 +346,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Azure is the dominant cloud platform for enterprise companies, offering deep integration with the Microsoft ecosystem.",
     marketGrowth: "Azure continues to capture significant market share in the enterprise cloud sector.",
     hiring: "Fortune 500 companies, government agencies, and large-scale enterprises.",
-    syllabus: ["Azure Virtual Networks", "Serverless Architecture", "Azure Kubernetes Service (AKS)", "Infrastructure as Code (IaC)", "Enterprise Identity & Security"]
+    syllabus: ["Week 1: Azure Virtual Networks|Introduction to Azure Virtual Networks|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Azure Virtual Networks|Assessment and project work", "Week 2: Serverless Architecture|Introduction to Serverless Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Serverless Architecture|Assessment and project work", "Week 3: Azure Kubernetes Service (AKS)|Introduction to Azure Kubernetes Service (AKS)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Azure Kubernetes Service (AKS)|Assessment and project work", "Week 4: Infrastructure as Code (IaC)|Introduction to Infrastructure as Code (IaC)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Infrastructure as Code (IaC)|Assessment and project work", "Week 5: Enterprise Identity & Security|Introduction to Enterprise Identity & Security|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Enterprise Identity & Security|Assessment and project work"]
   },
   "aws": {
     id: "aws",
@@ -364,7 +364,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "AWS remains the largest and most widely used cloud provider globally.",
     marketGrowth: "Cloud computing is the backbone of the modern internet, with AWS leading the charge.",
     hiring: "Startups, tech giants, and almost every company migrating to the cloud.",
-    syllabus: ["AWS VPC Architecture", "Serverless & AWS Lambda", "Database Scaling on RDS & DynamoDB", "High Availability & Fault Tolerance", "Cost Optimization"]
+    syllabus: ["Week 1: AWS VPC Architecture|Introduction to AWS VPC Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in AWS VPC Architecture|Assessment and project work", "Week 2: Serverless & AWS Lambda|Introduction to Serverless & AWS Lambda|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Serverless & AWS Lambda|Assessment and project work", "Week 3: Database Scaling on RDS & DynamoDB|Introduction to Database Scaling on RDS & DynamoDB|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Database Scaling on RDS & DynamoDB|Assessment and project work", "Week 4: High Availability & Fault Tolerance|Introduction to High Availability & Fault Tolerance|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in High Availability & Fault Tolerance|Assessment and project work", "Week 5: Cost Optimization|Introduction to Cost Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Cost Optimization|Assessment and project work"]
   },
   "cyber-security": {
     id: "cyber-security",
@@ -382,7 +382,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "As infrastructure scales, security vulnerabilities multiply. Offensive security engineers are critical to uncovering flaws before malicious actors do.",
     marketGrowth: "Cybersecurity demand continues to vastly outpace supply due to increasing global threats.",
     hiring: "Defense contractors, financial institutions, and specialized security firms.",
-    syllabus: ["Network Reconnaissance", "Vulnerability Exploitation", "Web Application Security", "Cryptography Principles", "Incident Response Protocols"]
+    syllabus: ["Week 1: Network Reconnaissance|Introduction to Network Reconnaissance|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Network Reconnaissance|Assessment and project work", "Week 2: Vulnerability Exploitation|Introduction to Vulnerability Exploitation|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Vulnerability Exploitation|Assessment and project work", "Week 3: Web Application Security|Introduction to Web Application Security|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Web Application Security|Assessment and project work", "Week 4: Cryptography Principles|Introduction to Cryptography Principles|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Cryptography Principles|Assessment and project work", "Week 5: Incident Response Protocols|Introduction to Incident Response Protocols|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Incident Response Protocols|Assessment and project work"]
   },
   "blockchain": {
     id: "blockchain",
@@ -400,7 +400,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Blockchain offers a paradigm shift in trust and data verification, requiring engineers with a deep understanding of cryptography and distributed systems.",
     marketGrowth: "High growth in DeFi, supply chain verification, and decentralized identity.",
     hiring: "Fintech companies, Web3 startups, and enterprise blockchain consortiums.",
-    syllabus: ["Cryptography & Consensus Mechanisms", "Smart Contract Development (Solidity)", "Web3 Integration", "DeFi Protocols", "Blockchain Security Auditing"]
+    syllabus: ["Week 1: Cryptography & Consensus Mechanisms|Introduction to Cryptography & Consensus Mechanisms|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Cryptography & Consensus Mechanisms|Assessment and project work", "Week 2: Smart Contract Development (Solidity)|Introduction to Smart Contract Development (Solidity)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Smart Contract Development (Solidity)|Assessment and project work", "Week 3: Web3 Integration|Introduction to Web3 Integration|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Web3 Integration|Assessment and project work", "Week 4: DeFi Protocols|Introduction to DeFi Protocols|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in DeFi Protocols|Assessment and project work", "Week 5: Blockchain Security Auditing|Introduction to Blockchain Security Auditing|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Blockchain Security Auditing|Assessment and project work"]
   },
 
   // 5. Design & UI/UX
@@ -420,7 +420,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Exceptional design is the foundation of brand trust and user engagement.",
     marketGrowth: "Steady demand across all sectors for high-quality visual communication.",
     hiring: "Design agencies, marketing firms, and in-house corporate design teams.",
-    syllabus: ["Design Theory & Psychology", "Vector Graphics Engineering", "Advanced Typography", "Brand Identity Systems", "Digital Asset Production"]
+    syllabus: ["Week 1: Design Theory & Psychology|Introduction to Design Theory & Psychology|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Design Theory & Psychology|Assessment and project work", "Week 2: Vector Graphics Engineering|Introduction to Vector Graphics Engineering|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Vector Graphics Engineering|Assessment and project work", "Week 3: Advanced Typography|Introduction to Advanced Typography|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Typography|Assessment and project work", "Week 4: Brand Identity Systems|Introduction to Brand Identity Systems|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Brand Identity Systems|Assessment and project work", "Week 5: Digital Asset Production|Introduction to Digital Asset Production|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Digital Asset Production|Assessment and project work"]
   },
   "ui-ux": {
     id: "ui-ux",
@@ -438,7 +438,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "The barrier to entry for software is lower than ever; superior UX is often the only competitive differentiator.",
     marketGrowth: "Explosive growth as companies recognize the ROI of frictionless user experiences.",
     hiring: "Tech product companies, design consultancies, and specialized digital agencies.",
-    syllabus: ["UX Research Methodologies", "Information Architecture", "Wireframing & Prototyping in Figma", "Interaction Design", "Usability Testing"]
+    syllabus: ["Week 1: UX Research Methodologies|Introduction to UX Research Methodologies|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in UX Research Methodologies|Assessment and project work", "Week 2: Information Architecture|Introduction to Information Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Information Architecture|Assessment and project work", "Week 3: Wireframing & Prototyping in Figma|Introduction to Wireframing & Prototyping in Figma|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Wireframing & Prototyping in Figma|Assessment and project work", "Week 4: Interaction Design|Introduction to Interaction Design|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Interaction Design|Assessment and project work", "Week 5: Usability Testing|Introduction to Usability Testing|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Usability Testing|Assessment and project work"]
   },
   "autocad": {
     id: "autocad",
@@ -456,7 +456,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "AutoCAD remains the foundational tool for architectural and engineering documentation globally.",
     marketGrowth: "Consistent demand tied to global infrastructure and real estate development.",
     hiring: "Architecture firms, civil engineering contractors, and manufacturing companies.",
-    syllabus: ["Precision 2D Drafting", "Isometric Projection", "3D Modeling Fundamentals", "Engineering Drawing Standards", "Rendering & Layout"]
+    syllabus: ["Week 1: Precision 2D Drafting|Introduction to Precision 2D Drafting|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Precision 2D Drafting|Assessment and project work", "Week 2: Isometric Projection|Introduction to Isometric Projection|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Isometric Projection|Assessment and project work", "Week 3: 3D Modeling Fundamentals|Introduction to 3D Modeling Fundamentals|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in 3D Modeling Fundamentals|Assessment and project work", "Week 4: Engineering Drawing Standards|Introduction to Engineering Drawing Standards|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Engineering Drawing Standards|Assessment and project work", "Week 5: Rendering & Layout|Introduction to Rendering & Layout|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Rendering & Layout|Assessment and project work"]
   },
 
   // 6. Business, Management & Finance
@@ -476,7 +476,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Understanding capital markets is essential for financial engineering and strategic investment.",
     marketGrowth: "Increased retail and institutional participation in global equity markets.",
     hiring: "Investment firms, proprietary trading desks, and financial consultancies.",
-    syllabus: ["Market Microstructure", "Fundamental Valuation Models", "Technical Charting Strategies", "Risk & Portfolio Management", "Algorithmic Trading Concepts"]
+    syllabus: ["Week 1: Market Microstructure|Introduction to Market Microstructure|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Market Microstructure|Assessment and project work", "Week 2: Fundamental Valuation Models|Introduction to Fundamental Valuation Models|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Fundamental Valuation Models|Assessment and project work", "Week 3: Technical Charting Strategies|Introduction to Technical Charting Strategies|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Technical Charting Strategies|Assessment and project work", "Week 4: Risk & Portfolio Management|Introduction to Risk & Portfolio Management|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Risk & Portfolio Management|Assessment and project work", "Week 5: Algorithmic Trading Concepts|Introduction to Algorithmic Trading Concepts|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Algorithmic Trading Concepts|Assessment and project work"]
   },
   "marketing-management": {
     id: "marketing-management",
@@ -494,7 +494,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "The best product fails without a precise, execution-oriented go-to-market strategy.",
     marketGrowth: "High demand for data-literate marketing executives who can drive measurable ROI.",
     hiring: "FMCG companies, tech startups, and global marketing agencies.",
-    syllabus: ["Market Segmentation & Positioning", "Consumer Psychology", "Pricing Strategy", "Integrated Campaign Architecture", "Marketing Analytics"]
+    syllabus: ["Week 1: Market Segmentation & Positioning|Introduction to Market Segmentation & Positioning|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Market Segmentation & Positioning|Assessment and project work", "Week 2: Consumer Psychology|Introduction to Consumer Psychology|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Consumer Psychology|Assessment and project work", "Week 3: Pricing Strategy|Introduction to Pricing Strategy|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Pricing Strategy|Assessment and project work", "Week 4: Integrated Campaign Architecture|Introduction to Integrated Campaign Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Integrated Campaign Architecture|Assessment and project work", "Week 5: Marketing Analytics|Introduction to Marketing Analytics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Marketing Analytics|Assessment and project work"]
   },
   "human-resource": {
     id: "human-resource",
@@ -512,7 +512,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Human capital is the most expensive and valuable asset in tech; optimizing it requires rigorous analytics.",
     marketGrowth: "Rapid transition from traditional HR to data-driven People Operations.",
     hiring: "Enterprise organizations and hyper-growth tech companies.",
-    syllabus: ["Strategic Talent Acquisition", "Performance Metrics & Analytics", "Organizational Behavior", "Compensation Engineering", "Predictive Attrition Modeling"]
+    syllabus: ["Week 1: Strategic Talent Acquisition|Introduction to Strategic Talent Acquisition|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Strategic Talent Acquisition|Assessment and project work", "Week 2: Performance Metrics & Analytics|Introduction to Performance Metrics & Analytics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Performance Metrics & Analytics|Assessment and project work", "Week 3: Organizational Behavior|Introduction to Organizational Behavior|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Organizational Behavior|Assessment and project work", "Week 4: Compensation Engineering|Introduction to Compensation Engineering|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Compensation Engineering|Assessment and project work", "Week 5: Predictive Attrition Modeling|Introduction to Predictive Attrition Modeling|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Predictive Attrition Modeling|Assessment and project work"]
   },
   "digital-marketing": {
     id: "digital-marketing",
@@ -530,7 +530,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Growth engineering relies on automated, scalable systems rather than manual effort.",
     marketGrowth: "The shift to digital-first customer acquisition continues unabated.",
     hiring: "E-commerce giants, SaaS companies, and digital growth agencies.",
-    syllabus: ["Technical SEO Architecture", "Marketing Automation Workflows", "CRM Integration (HubSpot/Salesforce)", "Conversion Rate Optimization (CRO)", "Advanced Web Analytics"]
+    syllabus: ["Week 1: Technical SEO Architecture|Introduction to Technical SEO Architecture|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Technical SEO Architecture|Assessment and project work", "Week 2: Marketing Automation Workflows|Introduction to Marketing Automation Workflows|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Marketing Automation Workflows|Assessment and project work", "Week 3: CRM Integration (HubSpot/Salesforce)|Introduction to CRM Integration (HubSpot/Salesforce)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in CRM Integration (HubSpot/Salesforce)|Assessment and project work", "Week 4: Conversion Rate Optimization (CRO)|Introduction to Conversion Rate Optimization (CRO)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Conversion Rate Optimization (CRO)|Assessment and project work", "Week 5: Advanced Web Analytics|Introduction to Advanced Web Analytics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Web Analytics|Assessment and project work"]
   },
   "finance": {
     id: "finance",
@@ -548,7 +548,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Capital allocation and financial strategy dictate the survival and growth of any enterprise.",
     marketGrowth: "Continuous demand for quantitatively rigorous financial analysts.",
     hiring: "Investment banking, private equity, and corporate finance departments.",
-    syllabus: ["Advanced Financial Modeling", "Corporate Valuation Methods", "Mergers & Acquisitions (M&A)", "Capital Structure Optimization", "Financial Risk Management"]
+    syllabus: ["Week 1: Advanced Financial Modeling|Introduction to Advanced Financial Modeling|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Advanced Financial Modeling|Assessment and project work", "Week 2: Corporate Valuation Methods|Introduction to Corporate Valuation Methods|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Corporate Valuation Methods|Assessment and project work", "Week 3: Mergers & Acquisitions (M&A)|Introduction to Mergers & Acquisitions (M&A)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Mergers & Acquisitions (M&A)|Assessment and project work", "Week 4: Capital Structure Optimization|Introduction to Capital Structure Optimization|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Capital Structure Optimization|Assessment and project work", "Week 5: Financial Risk Management|Introduction to Financial Risk Management|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Financial Risk Management|Assessment and project work"]
   },
 
   // 7. Specialized Sciences
@@ -568,7 +568,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Infrastructure projects require zero-margin-for-error engineering and rigorous planning.",
     marketGrowth: "Driven by global infrastructure development and urbanization trends.",
     hiring: "Civil engineering firms, government infrastructure departments, and global construction contractors.",
-    syllabus: ["Structural Dynamics", "Load Bearing Analysis", "Large-Scale Project Scheduling", "Construction Material Science", "Safety Protocol Engineering"]
+    syllabus: ["Week 1: Structural Dynamics|Introduction to Structural Dynamics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Structural Dynamics|Assessment and project work", "Week 2: Load Bearing Analysis|Introduction to Load Bearing Analysis|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Load Bearing Analysis|Assessment and project work", "Week 3: Large-Scale Project Scheduling|Introduction to Large-Scale Project Scheduling|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Large-Scale Project Scheduling|Assessment and project work", "Week 4: Construction Material Science|Introduction to Construction Material Science|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Construction Material Science|Assessment and project work", "Week 5: Safety Protocol Engineering|Introduction to Safety Protocol Engineering|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Safety Protocol Engineering|Assessment and project work"]
   },
   "nanoscience": {
     id: "nanoscience",
@@ -586,7 +586,7 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Nanotechnology is the frontier of material science, enabling breakthroughs from ultra-dense batteries to targeted medicine.",
     marketGrowth: "High growth in specialized R&D, pharmaceuticals, and advanced electronics.",
     hiring: "Advanced R&D labs, semiconductor manufacturers, and biotech firms.",
-    syllabus: ["Quantum Mechanics Basics", "Nanomaterial Synthesis", "Characterization Techniques (SEM/TEM)", "Nanoelectronics", "Nanomedicine Applications"]
+    syllabus: ["Week 1: Quantum Mechanics Basics|Introduction to Quantum Mechanics Basics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Quantum Mechanics Basics|Assessment and project work", "Week 2: Nanomaterial Synthesis|Introduction to Nanomaterial Synthesis|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Nanomaterial Synthesis|Assessment and project work", "Week 3: Characterization Techniques (SEM/TEM)|Introduction to Characterization Techniques (SEM/TEM)|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Characterization Techniques (SEM/TEM)|Assessment and project work", "Week 4: Nanoelectronics|Introduction to Nanoelectronics|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Nanoelectronics|Assessment and project work", "Week 5: Nanomedicine Applications|Introduction to Nanomedicine Applications|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Nanomedicine Applications|Assessment and project work"]
   },
   "genetic-engineering": {
     id: "genetic-engineering",
@@ -604,6 +604,6 @@ export const domainsData: Record<string, any> = {
     whyChoose: "Biology has become an engineering discipline. Editing DNA allows for unprecedented solutions to disease and food security.",
     marketGrowth: "Biotech is experiencing a golden age, driven by recent advances in gene editing tools.",
     hiring: "Pharmaceutical companies, agritech startups, and genetic research institutes.",
-    syllabus: ["Molecular Biology Fundamentals", "CRISPR & Gene Editing", "Genomic Sequencing", "Bioinformatics Pipelines", "Synthetic Biology Engineering"]
+    syllabus: ["Week 1: Molecular Biology Fundamentals|Introduction to Molecular Biology Fundamentals|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Molecular Biology Fundamentals|Assessment and project work", "Week 2: CRISPR & Gene Editing|Introduction to CRISPR & Gene Editing|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in CRISPR & Gene Editing|Assessment and project work", "Week 3: Genomic Sequencing|Introduction to Genomic Sequencing|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Genomic Sequencing|Assessment and project work", "Week 4: Bioinformatics Pipelines|Introduction to Bioinformatics Pipelines|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Bioinformatics Pipelines|Assessment and project work", "Week 5: Synthetic Biology Engineering|Introduction to Synthetic Biology Engineering|Core principles and architecture|Hands-on implementation and best practices|Advanced concepts in Synthetic Biology Engineering|Assessment and project work"]
   }
 };

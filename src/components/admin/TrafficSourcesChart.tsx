@@ -1,10 +1,27 @@
 "use client";
 
+import { useTheme } from 'next-themes';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { useEffect, useState } from 'react';
 
 const COLORS = ['#E6C875', '#a855f7', '#3b82f6', '#10b981', '#f43f5e', '#64748b'];
 
 export default function TrafficSourcesChart({ data }: { data: { name: string, value: number }[] }) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <div className="h-[250px] w-full" />;
+
+  const isDark = resolvedTheme === 'dark';
+  const tooltipBg = isDark ? '#111' : '#fff';
+  const tooltipBorder = isDark ? '#333' : '#e5e7eb';
+  const tooltipText = isDark ? '#fff' : '#111';
+  const legendTextClass = isDark ? "text-neutral-300" : "text-gray-600";
+
   return (
     <div className="h-[250px] w-full">
       <ResponsiveContainer width="100%" height="100%">
@@ -25,14 +42,14 @@ export default function TrafficSourcesChart({ data }: { data: { name: string, va
             ))}
           </Pie>
           <Tooltip 
-            contentStyle={{ backgroundColor: '#111', borderColor: '#333', borderRadius: '12px', color: '#fff' }}
-            itemStyle={{ color: '#fff' }}
+            contentStyle={{ backgroundColor: tooltipBg, borderColor: tooltipBorder, borderRadius: '12px', color: tooltipText }}
+            itemStyle={{ color: tooltipText }}
           />
           <Legend 
             verticalAlign="bottom" 
             height={36} 
             iconType="circle"
-            formatter={(value) => <span className="text-neutral-300 text-sm">{value}</span>}
+            formatter={(value) => <span className={`${legendTextClass} text-sm`}>{value}</span>}
           />
         </PieChart>
       </ResponsiveContainer>

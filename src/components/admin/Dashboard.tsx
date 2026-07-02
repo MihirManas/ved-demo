@@ -29,7 +29,7 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black text-black dark:text-white">
         <Loader2 className="w-12 h-12 text-[#E6C875] animate-spin" />
       </div>
     );
@@ -37,49 +37,49 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   if (!stats) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <p className="text-red-400">Failed to load dashboard data. Ensure the database is initialized.</p>
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black text-black dark:text-white">
+        <p className="text-red-500 dark:text-red-400">Failed to load dashboard data. Ensure the database is initialized.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black text-white p-4 md:p-8 font-sans selection:bg-[#E6C875]/30">
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-100 via-gray-50 to-white dark:from-neutral-900 dark:via-black dark:to-black text-gray-900 dark:text-white p-4 md:p-8 font-sans selection:bg-[#E6C875]/30">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4 relative">
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#E6C875] blur-[100px] opacity-10 rounded-full pointer-events-none"></div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 w-full">
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-neutral-200 to-neutral-500">
+            <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-black via-gray-800 to-gray-500 dark:from-white dark:via-neutral-200 dark:to-neutral-500">
               Admin Portal
             </h1>
-            <p className="text-neutral-400 mt-2 text-sm font-medium tracking-wide uppercase">Manage your platform</p>
+            <p className="text-gray-500 dark:text-neutral-400 mt-2 text-sm font-medium tracking-wide uppercase">Manage your platform</p>
           </div>
           
-          <div className="flex bg-white/5 rounded-xl p-1 border border-white/10 overflow-x-auto">
+          <div className="flex bg-gray-100 dark:bg-white/5 rounded-xl p-1 border border-gray-200 dark:border-white/10 overflow-x-auto">
             <button 
               onClick={() => setActiveTab("analytics")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'analytics' ? 'bg-white/10 text-white shadow-lg' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'analytics' ? 'bg-white dark:bg-white/10 text-black dark:text-white shadow-lg border border-gray-200 dark:border-transparent' : 'text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'}`}
             >
               <LineChart className="w-4 h-4" />
               Analytics
             </button>
             <button 
               onClick={() => setActiveTab("courses")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'courses' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'courses' ? 'bg-[#E6C875]/10 dark:bg-[#E6C875]/20 text-[#D4B55E] dark:text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'}`}
             >
               <BookOpen className="w-4 h-4" />
               Courses
             </button>
             <button 
               onClick={() => setActiveTab("mentors")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'mentors' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'mentors' ? 'bg-[#E6C875]/10 dark:bg-[#E6C875]/20 text-[#D4B55E] dark:text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'}`}
             >
               <GraduationCap className="w-4 h-4" />
               Mentors
             </button>
             <button 
               onClick={() => setActiveTab("content")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'content' ? 'bg-[#E6C875]/20 text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-neutral-400 hover:text-white hover:bg-white/5'}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'content' ? 'bg-[#E6C875]/10 dark:bg-[#E6C875]/20 text-[#D4B55E] dark:text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'}`}
             >
               <LayoutTemplate className="w-4 h-4" />
               Site Content
@@ -88,7 +88,7 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
         </div>
         <button
           onClick={onLogout}
-          className="relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 text-sm font-medium text-neutral-300 hover:text-white hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] whitespace-nowrap"
+          className="relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10 transition-all duration-300 text-sm font-medium text-gray-600 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:border-gray-300 dark:hover:border-white/20 hover:shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] whitespace-nowrap"
         >
           <LogOut className="w-4 h-4" />
           Logout
@@ -127,22 +127,22 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10">
         {/* Left Column (Charts) */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-2xl relative overflow-hidden group">
+          <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] hover:border-gray-200 dark:hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 group-hover:bg-blue-500/10 transition-colors duration-700 pointer-events-none"></div>
-            <h2 className="text-xl font-bold mb-8 text-neutral-200">Daily Leads Generation</h2>
+            <h2 className="text-xl font-bold mb-8 text-gray-900 dark:text-neutral-200">Daily Leads Generation</h2>
             <DailyLeadsChart data={stats.dailyLeads} />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-2xl relative overflow-hidden group">
+            <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] hover:border-gray-200 dark:hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/5 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 group-hover:bg-purple-500/10 transition-colors duration-700 pointer-events-none"></div>
-              <h2 className="text-xl font-bold mb-8 text-neutral-200">Traffic Sources</h2>
+              <h2 className="text-xl font-bold mb-8 text-gray-900 dark:text-neutral-200">Traffic Sources</h2>
               <TrafficSourcesChart data={stats.sources} />
             </div>
             
-            <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-2xl relative overflow-hidden group">
+            <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] hover:border-gray-200 dark:hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-xl dark:shadow-2xl relative overflow-hidden group">
               <div className="absolute top-1/2 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-[50px] translate-x-1/2 group-hover:bg-pink-500/10 transition-colors duration-700 pointer-events-none"></div>
-              <h2 className="text-xl font-bold mb-8 text-neutral-200">City Categories</h2>
+              <h2 className="text-xl font-bold mb-8 text-gray-900 dark:text-neutral-200">City Categories</h2>
               <CityCategoriesChart data={stats.cityCategories} />
             </div>
           </div>
@@ -150,10 +150,10 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
 
         {/* Right Column (Map) */}
         <div className="lg:col-span-1">
-          <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-2xl h-full min-h-[500px] relative overflow-hidden group">
+          <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] hover:border-gray-200 dark:hover:border-white/[0.08] transition-colors duration-500 rounded-3xl p-7 shadow-xl dark:shadow-2xl h-full min-h-[500px] relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-full h-full bg-[#E6C875]/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 group-hover:bg-[#E6C875]/10 transition-colors duration-700 pointer-events-none"></div>
-            <h2 className="text-xl font-bold mb-2 text-neutral-200 relative z-10">Traffic by State (India)</h2>
-            <p className="text-neutral-500 text-sm mb-8 font-medium relative z-10">Hover over states to see distribution.</p>
+            <h2 className="text-xl font-bold mb-2 text-gray-900 dark:text-neutral-200 relative z-10">Traffic by State (India)</h2>
+            <p className="text-gray-500 dark:text-neutral-500 text-sm mb-8 font-medium relative z-10">Hover over states to see distribution.</p>
             <div className="relative z-10 h-[calc(100%-80px)]">
               <IndiaMapWidget data={stats.states} />
             </div>
@@ -168,13 +168,13 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
 
 function StatCard({ title, value, icon, color }: { title: string, value: string | number, icon: React.ReactNode, color: string }) {
   return (
-    <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-3xl p-7 flex items-center justify-between group hover:bg-white/[0.04] hover:border-white/[0.08] transition-all duration-500 relative overflow-hidden shadow-xl">
-      <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-white/5 rounded-full blur-[40px] group-hover:bg-white/10 transition-colors duration-700 pointer-events-none"></div>
+    <div className="bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-100 dark:border-white/[0.05] rounded-3xl p-7 flex items-center justify-between group hover:bg-gray-50 dark:hover:bg-white/[0.04] hover:border-gray-200 dark:hover:border-white/[0.08] transition-all duration-500 relative overflow-hidden shadow-lg dark:shadow-xl">
+      <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-gray-100 dark:bg-white/5 rounded-full blur-[40px] group-hover:bg-gray-200 dark:group-hover:bg-white/10 transition-colors duration-700 pointer-events-none"></div>
       <div className="relative z-10">
-        <p className="text-neutral-400 text-sm font-semibold mb-2 uppercase tracking-wider">{title}</p>
-        <p className="text-4xl font-extrabold tracking-tight text-white">{value}</p>
+        <p className="text-gray-500 dark:text-neutral-400 text-sm font-semibold mb-2 uppercase tracking-wider">{title}</p>
+        <p className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">{value}</p>
       </div>
-      <div className={`relative z-10 p-4 bg-black/40 rounded-2xl ${color} border border-white/[0.05] shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
+      <div className={`relative z-10 p-4 bg-gray-50 dark:bg-black/40 rounded-2xl ${color} border border-gray-100 dark:border-white/[0.05] shadow-inner group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
         {icon}
       </div>
     </div>
