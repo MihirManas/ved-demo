@@ -209,7 +209,7 @@ export default function Domains() {
                     {categoryCourses.map((course, courseIdx) => (
                       <ScrollReveal key={course.id} delay={courseIdx * 100}>
                         <Link
-                          href={`/domains/${course.id}`}
+                          href={`/domains/${course.slug}`}
                           className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                         >
                           <div className="h-48 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
