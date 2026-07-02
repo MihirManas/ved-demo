@@ -1,5 +1,7 @@
 import { Target, Lightbulb, Shield, Zap, Users, Award, BookOpen, Star } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import Image from "next/image";
+import { getMentors } from "@/app/admin/mentor-actions";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,7 +9,10 @@ export const metadata: Metadata = {
   description: "Ved Upskilling is a community of learners, mentors, and industry leaders committed to creating meaningful career transformations with 8-10 years of expertise.",
 };
 
-export default function About() {
+export default async function About() {
+  const mentorRes = await getMentors();
+  const mentors = mentorRes.success ? (mentorRes.mentors || []) : [];
+
   return (
     <div className="min-h-screen pt-40 pb-40 animate-in fade-in duration-1000 ease-out relative overflow-hidden">
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-[#E6C875]/5 rounded-full blur-[150px] pointer-events-none"></div>
@@ -163,10 +168,30 @@ export default function About() {
           <div className="border-t border-gray-200 dark:border-white/5 pt-32 text-center">
             <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-24">Meet Our Expert Instructors.</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-              {[1, 2, 3, 4].map((item) => (
+              {mentors.length > 0 ? mentors.map((mentor: any) => (
+                <div key={mentor.id} className="group cursor-pointer">
+                  <div className="w-56 h-56 mx-auto rounded-full overflow-hidden border-4 border-white dark:border-[#111] mb-8 relative shadow-2xl group-hover:border-[#E6C875]/50 transition-all duration-700">
+                    {mentor.imagePath ? (
+                      <Image 
+                        src={mentor.imagePath} 
+                        alt={mentor.name} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, 224px"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-neutral-800 flex items-center justify-center">
+                        <Users className="w-12 h-12 text-neutral-500" />
+                      </div>
+                    )}
+                  </div>
+                  <h4 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">{mentor.name}</h4>
+                  <p className="text-[#E6C875] text-sm uppercase tracking-[0.2em] font-bold mb-4">{mentor.designation}</p>
+                  <p className="text-gray-500 dark:text-white/50 text-sm max-w-[250px] mx-auto leading-relaxed">{mentor.bio}</p>
+                </div>
+              )) : [1, 2, 3, 4].map((item) => (
                 <div key={item} className="group cursor-pointer">
                   <div className="w-56 h-56 mx-auto rounded-full overflow-hidden border-4 border-white dark:border-[#111] mb-8 relative shadow-2xl group-hover:border-[#E6C875]/50 transition-all duration-700">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
                       src="https://vedupskilling.in/wp-content/uploads/2025/01/Team-2-1.jpg" 
                       alt="Instructor" 
