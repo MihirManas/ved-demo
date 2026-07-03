@@ -60,11 +60,11 @@ export default function HRPage() {
   const fetchJobsAndApplications = async () => {
     try {
       // Fetch Jobs
-      const jobsRes = await fetch(`/api/jobs?password=${encodeURIComponent(password)}`);
+      const jobsRes = await fetch(`/api/jobs?password=${encodeURIComponent(password)}`, { cache: 'no-store' });
       const jobsData = await jobsRes.json();
       
       // Fetch Applications
-      const appRes = await fetch(`/api/applications?password=${encodeURIComponent(password)}`);
+      const appRes = await fetch(`/api/applications?password=${encodeURIComponent(password)}`, { cache: 'no-store' });
       const appData = await appRes.json();
       
       if (jobsData.jobs) {
