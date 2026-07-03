@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
         
         {/* Microsoft Clarity */}
         <Script id="ms-clarity" strategy="afterInteractive">
