@@ -15,29 +15,37 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
 
-    // Format phone number for WhatsApp API (Country code + number, no '+' or special chars)
-    // Example: "919876543210" for an Indian number
-    const formattedPhone = phone.replace(/[^0-9]/g, '');
+    // Format phone number for Twilio (Must start with 'whatsapp:+' followed by country code)
+    // Example: "whatsapp:+919876543210" for an Indian number
+    const cleanedNumber = phone.replace(/[^0-9]/g, '');
+    const twilioFormattedPhone = `whatsapp:+${cleanedNumber}`;
 
     if (type === 'student_application') {
       // 1. [PLACEHOLDER] Save the student data to your Database here
       console.log(`Processing student application for ${name}`);
 
       // 2. Send Congratulations WhatsApp Message
-      // Replace 'student_congrats_template' with the actual template name from Meta Dashboard
-      await sendWhatsAppTemplateMessage(formattedPhone, 'student_congrats_template');
+      // Replace with your actual Twilio template Content SID
+      await sendWhatsAppTemplateMessage(
+        twilioFormattedPhone, 
+        'HXb5b62575e6e4ff6129ad7c8efe1f983e', // Example ContentSid from Twilio Dashboard
+        JSON.stringify({"1": name, "2": "Student Application"})
+      );
       
-      return NextResponse.json({ success: true, message: "Student application processed and WhatsApp message sent." });
+      return NextResponse.json({ success: true, message: "Student application processed and WhatsApp message sent via Twilio." });
       
     } else if (type === 'job_application') {
       // 1. [PLACEHOLDER] Save the job application data to your Database here
       console.log(`Processing job application for ${name}`);
 
       // 2. Send Job Application Received Message
-      // Replace 'job_application_received' with the actual template name from Meta Dashboard
-      await sendWhatsAppTemplateMessage(formattedPhone, 'job_application_received');
+      await sendWhatsAppTemplateMessage(
+        twilioFormattedPhone, 
+        'HXb5b62575e6e4ff6129ad7c8efe1f983e', // Replace with job template ContentSid
+        JSON.stringify({"1": name, "2": "Job Application"})
+      );
 
-      return NextResponse.json({ success: true, message: "Job application processed and WhatsApp message sent." });
+      return NextResponse.json({ success: true, message: "Job application processed and WhatsApp message sent via Twilio." });
     }
 
     return NextResponse.json({ error: "Invalid application type provided" }, { status: 400 });

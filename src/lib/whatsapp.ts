@@ -1,107 +1,68 @@
 // src/lib/whatsapp.ts
+import twilio from 'twilio';
 
-const WHATSAPP_API_VERSION = 'v19.0'; // Meta Graph API version
-const WHATSAPP_PHONE_NUMBER_ID = process.env.WHATSAPP_PHONE_NUMBER_ID || '';
-const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_ACCESS_TOKEN || '';
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+// Ensure this starts with 'whatsapp:+' (e.g., 'whatsapp:+14155238886')
+const fromWhatsAppNumber = process.env.TWILIO_WHATSAPP_NUMBER; 
+
+// Initialize the Twilio Client
+const client = accountSid && authToken ? twilio(accountSid, authToken) : null;
 
 /**
- * Sends a pre-approved template message.
- * Use this for sending "Congratulations" or "Application Received" messages.
+ * Sends a template message via Twilio using Content API.
+ * This exactly matches the Node.js code from the Twilio dashboard.
  */
 export async function sendWhatsAppTemplateMessage(
   toPhoneNumber: string,
-  templateName: string,
-  languageCode: string = 'en'
+  contentSid: string,
+  contentVariables: string = '{}'
 ) {
-  if (!WHATSAPP_PHONE_NUMBER_ID || !WHATSAPP_ACCESS_TOKEN) {
-    console.warn("WhatsApp credentials are not configured. Message not sent.");
+  if (!client || !fromWhatsAppNumber) {
+    console.warn("Twilio credentials missing in .env. Message not sent.");
     return;
   }
 
-  const url = `https://graph.facebook.com/${WHATSAPP_API_VERSION}/${WHATSAPP_PHONE_NUMBER_ID}/messages`;
-
-  const payload = {
-    messaging_product: "whatsapp",
-    to: toPhoneNumber,
-    type: "template",
-    template: {
-      name: templateName,
-      language: {
-        code: languageCode
-      }
-      // If your template has variables (like {{1}} for Name), you would pass a 'components' array here.
-    }
-  };
-
   try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${WHATSAPP_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
+    const message = await client.messages.create({
+      from: fromWhatsAppNumber,
+      contentSid: contentSid,
+      contentVariables: contentVariables,
+      to: toPhoneNumber
     });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Failed to send WhatsApp message:", JSON.stringify(errorData, null, 2));
-      throw new Error("Failed to send WhatsApp template message");
-    }
-
-    const data = await response.json();
-    return data;
+    
+    console.log("Message sent via Twilio:", message.sid);
+    return message;
   } catch (error) {
-    console.error("Error in sendWhatsAppTemplateMessage:", error);
+    console.error("Twilio sending error:", error);
     throw error;
   }
 }
 
 /**
- * Sends a free-form text message.
- * Use this for replying to user support queries within the 24-hour customer service window.
+ * Sends a free-form text message via Twilio.
+ * Use this for replying to user support queries.
  */
 export async function sendWhatsAppTextMessage(
   toPhoneNumber: string,
   text: string
 ) {
-  if (!WHATSAPP_PHONE_NUMBER_ID || !WHATSAPP_ACCESS_TOKEN) {
-    console.warn("WhatsApp credentials are not configured. Message not sent.");
+  if (!client || !fromWhatsAppNumber) {
+    console.warn("Twilio credentials missing in .env. Message not sent.");
     return;
   }
 
-  const url = `https://graph.facebook.com/${WHATSAPP_API_VERSION}/${WHATSAPP_PHONE_NUMBER_ID}/messages`;
-
-  const payload = {
-    messaging_product: "whatsapp",
-    recipient_type: "individual",
-    to: toPhoneNumber,
-    type: "text",
-    text: {
-      preview_url: false,
-      body: text
-    }
-  };
-
   try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${WHATSAPP_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload)
+    const message = await client.messages.create({
+      body: text,
+      from: fromWhatsAppNumber,
+      to: toPhoneNumber
     });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Failed to send WhatsApp text message:", JSON.stringify(errorData, null, 2));
-      throw new Error("Failed to send WhatsApp text message");
-    }
-
-    return await response.json();
+    
+    console.log("Message sent via Twilio:", message.sid);
+    return message;
   } catch (error) {
-    console.error("Error in sendWhatsAppTextMessage:", error);
+    console.error("Twilio Text sending error:", error);
     throw error;
   }
 }
