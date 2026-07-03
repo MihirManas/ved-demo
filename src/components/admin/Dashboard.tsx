@@ -10,11 +10,12 @@ import IndiaMapWidget from "./IndiaMapWidget";
 import CourseManager from "./CourseManager";
 import MentorManager from "./MentorManager";
 import ContentManager from "./ContentManager";
+import PasswordSettings from "@/components/PasswordSettings";
 
 type Stats = Awaited<ReturnType<typeof getDashboardStats>>;
 
 export default function Dashboard({ onLogout }: { onLogout: () => void }) {
-  const [activeTab, setActiveTab] = useState<"analytics" | "courses" | "mentors" | "content">("mentors");
+  const [activeTab, setActiveTab] = useState<"analytics" | "courses" | "mentors" | "content" | "settings">("mentors");
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -84,6 +85,13 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
               <LayoutTemplate className="w-4 h-4" />
               Site Content
             </button>
+            <button 
+              onClick={() => setActiveTab("settings")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${activeTab === 'settings' ? 'bg-[#E6C875]/10 dark:bg-[#E6C875]/20 text-[#D4B55E] dark:text-[#E6C875] shadow-lg border border-[#E6C875]/30' : 'text-gray-500 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/5'}`}
+            >
+              <LogOut className="w-4 h-4" />
+              Settings
+            </button>
           </div>
         </div>
         <button
@@ -110,6 +118,12 @@ export default function Dashboard({ onLogout }: { onLogout: () => void }) {
       {activeTab === "content" && (
         <div className="relative z-10">
           <ContentManager />
+        </div>
+      )}
+
+      {activeTab === "settings" && (
+        <div className="relative z-10 flex justify-center py-10">
+          <PasswordSettings role="admin" />
         </div>
       )}
 

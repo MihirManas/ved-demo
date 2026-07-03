@@ -18,16 +18,24 @@ export default function AdminPage() {
     }
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Dummy secure password for now. In production, use a proper backend auth.
-    if (password === "VedAdmin2026!") {
-      setIsAuthenticated(true);
-      sessionStorage.setItem("admin_auth", "true");
-      setError(false);
-    } else {
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role: 'admin', password })
+      });
+      if (res.ok) {
+        setIsAuthenticated(true);
+        sessionStorage.setItem("admin_auth", "true");
+        setError(false);
+      } else {
+        setError(true);
+        setPassword("");
+      }
+    } catch (err) {
       setError(true);
-      setPassword("");
     }
   };
 

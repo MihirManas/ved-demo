@@ -1,12 +1,18 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { getHRPassword } from '@/lib/auth';
 
 const prisma = new PrismaClient();
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const password = searchParams.get('password');
+    const correctPassword = await getHRPassword(prisma);
+    const isHR = password === correctPassword;
+
     const jobs = await prisma.job.findMany({
-      where: { isActive: true },
+      where: isHR ? undefined : { isActive: true },
       orderBy: { createdAt: 'desc' },
     });
     return NextResponse.json({ jobs });
@@ -22,7 +28,8 @@ export async function POST(request: Request) {
     const { title, description, location, type, salary, password, requiresGithub } = body;
 
     // Verify master password
-    if (password !== (process.env.HR_MASTER_PASSWORD || 'Ved-HR-Password-2026!')) {
+    const correctPassword = await getHRPassword(prisma);
+    if (password !== correctPassword) {
       return NextResponse.json({ error: "Unauthorized: Invalid master password" }, { status: 401 });
     }
 

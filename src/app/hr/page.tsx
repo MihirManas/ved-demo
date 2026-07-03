@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Lock, Plus, Trash2, MapPin, IndianRupee, Briefcase, FileText, User, Mail, Phone, ExternalLink, ChevronDown, ChevronUp, Github, Linkedin } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Lock, Plus, Trash2, MapPin, IndianRupee, Briefcase, FileText, User, Mail, Phone, ExternalLink, ChevronDown, ChevronUp, Github, Linkedin, Edit2, EyeOff, Eye, Settings, X } from 'lucide-react';
 import ScrollReveal from "@/components/ScrollReveal";
+import PasswordSettings from "@/components/PasswordSettings";
 
 interface Application {
   id: number;
@@ -31,12 +33,15 @@ interface Job {
 }
 
 export default function HRPage() {
+  const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [expandedJobId, setExpandedJobId] = useState<number | null>(null);
+  const [editingJobId, setEditingJobId] = useState<number | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
 
   // Form state
   const [title, setTitle] = useState('');
@@ -55,7 +60,7 @@ export default function HRPage() {
   const fetchJobsAndApplications = async () => {
     try {
       // Fetch Jobs
-      const jobsRes = await fetch('/api/jobs');
+      const jobsRes = await fetch(`/api/jobs?password=${encodeURIComponent(password)}`);
       const jobsData = await jobsRes.json();
       
       // Fetch Applications
@@ -76,11 +81,28 @@ export default function HRPage() {
     }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password) {
-      setIsAuthenticated(true);
+      setLoading(true);
       setError('');
+      try {
+        const res = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role: 'hr', password })
+        });
+        if (!res.ok) {
+          const data = await res.json();
+          setError(data.error || 'Invalid master password');
+          return;
+        }
+        setIsAuthenticated(true);
+      } catch (err) {
+        setError('Login failed');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -90,23 +112,30 @@ export default function HRPage() {
     setError('');
 
     try {
-      // Modify the POST payload to include requiresGithub, but we also need to update the API for this
-      // Wait, in our /api/jobs/route.ts, we need to make sure requiresGithub is accepted.
-      // We will send it anyway, if Prisma schema has it, the route might need an update.
-      const res = await fetch('/api/jobs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title, description, location, type, salary, password, requiresGithub
-        })
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || 'Failed to add job');
+      if (editingJobId) {
+        const res = await fetch(`/api/jobs/${editingJobId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title, description, location, type, salary, password, requiresGithub
+          })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to update job');
+      } else {
+        const res = await fetch('/api/jobs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title, description, location, type, salary, password, requiresGithub
+          })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to add job');
       }
 
       // Reset form
+      setEditingJobId(null);
       setTitle('');
       setDescription('');
       setLocation('');
@@ -156,6 +185,34 @@ export default function HRPage() {
     }
   };
 
+  const handleEditJobClick = (job: Job) => {
+    setEditingJobId(job.id);
+    setTitle(job.title);
+    setDescription(job.description);
+    setLocation(job.location);
+    setType(job.type);
+    setSalary(job.salary || '');
+    setRequiresGithub(job.requiresGithub);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleToggleArchive = async (job: Job) => {
+    try {
+      const res = await fetch(`/api/jobs/${job.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, isActive: !job.isActive })
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to update job status');
+      }
+      fetchJobsAndApplications();
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-white dark:bg-black flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -172,14 +229,15 @@ export default function HRPage() {
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white dark:bg-white/[0.02] py-8 px-4 shadow-[0_0_40px_rgba(0,0,0,0.05)] dark:shadow-none sm:rounded-2xl sm:px-10 border border-gray-100 dark:border-white/10">
               <form className="space-y-6" onSubmit={handleLogin}>
+                {error && <div className="p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm rounded-xl border border-red-100 dark:border-red-900/50">{error}</div>}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Master Password</label>
                   <div className="mt-1">
                     <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="appearance-none block w-full px-4 py-3 bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-xl shadow-sm focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                   </div>
                 </div>
-                <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-black dark:text-black bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300">
-                  Access Dashboard
+                <button type="submit" disabled={loading} className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-black dark:text-black bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50">
+                  {loading ? 'Verifying...' : 'Access Dashboard'}
                 </button>
               </form>
             </div>
@@ -198,11 +256,24 @@ export default function HRPage() {
               <h1 className="text-3xl font-medium text-gray-900 dark:text-white tracking-tight">HR Control Center</h1>
               <p className="text-sm text-gray-500 dark:text-white/50 mt-1">Manage active job postings and applications</p>
             </div>
-            <button onClick={() => setIsAuthenticated(false)} className="mt-4 md:mt-0 px-4 py-2 text-sm uppercase tracking-widest font-bold text-gray-600 dark:text-white/60 hover:text-red-500 dark:hover:text-red-400 transition-colors border border-gray-200 dark:border-white/10 rounded-full hover:border-red-200 dark:hover:border-red-900/30 hover:bg-red-50 dark:hover:bg-red-900/10">
-              Secure Logout
-            </button>
+            <div className="flex items-center gap-3 mt-4 md:mt-0">
+              <button onClick={() => setShowSettings(!showSettings)} className="p-2 text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors border border-gray-200 dark:border-white/10 rounded-full hover:bg-gray-50 dark:hover:bg-white/5">
+                {showSettings ? <X className="w-5 h-5" /> : <Settings className="w-5 h-5" />}
+              </button>
+              <button onClick={() => setIsAuthenticated(false)} className="px-4 py-2 text-sm uppercase tracking-widest font-bold text-gray-600 dark:text-white/60 hover:text-red-500 dark:hover:text-red-400 transition-colors border border-gray-200 dark:border-white/10 rounded-full hover:border-red-200 dark:hover:border-red-900/30 hover:bg-red-50 dark:hover:bg-red-900/10">
+                Secure Logout
+              </button>
+            </div>
           </div>
         </ScrollReveal>
+
+        {showSettings && (
+          <ScrollReveal>
+            <div className="flex justify-center mb-12">
+              <PasswordSettings role="hr" />
+            </div>
+          </ScrollReveal>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Add Job Form */}
@@ -210,8 +281,11 @@ export default function HRPage() {
             <ScrollReveal delay={100}>
               <div className="bg-gray-50 dark:bg-white/[0.02] p-8 rounded-2xl border border-gray-200 dark:border-white/10 h-fit">
                 <h2 className="text-xl font-medium mb-6 text-gray-900 dark:text-white flex items-center">
-                  <Plus className="w-5 h-5 mr-2 text-[#E6C875]" />
-                  New Posting
+                  {editingJobId ? (
+                    <><Edit2 className="w-5 h-5 mr-2 text-[#E6C875]" /> Edit Posting</>
+                  ) : (
+                    <><Plus className="w-5 h-5 mr-2 text-[#E6C875]" /> New Posting</>
+                  )}
                 </h2>
                 {error && <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm rounded-xl border border-red-100 dark:border-red-900/50">{error}</div>}
                 
@@ -253,9 +327,28 @@ export default function HRPage() {
                     <textarea required rows={5} value={description} onChange={(e) => setDescription(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors resize-none" />
                   </div>
 
-                  <button type="submit" disabled={loading} className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-black dark:text-black bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50 mt-4">
-                    {loading ? 'Posting...' : 'Publish Job'}
-                  </button>
+                  <div className="flex gap-4 mt-4">
+                    <button type="submit" disabled={loading} className="flex-1 flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-black dark:text-black bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50">
+                      {loading ? (editingJobId ? 'Updating...' : 'Posting...') : (editingJobId ? 'Update Job' : 'Publish Job')}
+                    </button>
+                    {editingJobId && (
+                      <button 
+                        type="button" 
+                        onClick={() => {
+                          setEditingJobId(null);
+                          setTitle('');
+                          setDescription('');
+                          setLocation('');
+                          setType('Full-time');
+                          setSalary('');
+                          setRequiresGithub(false);
+                        }} 
+                        className="flex-1 flex justify-center py-3 px-4 border border-gray-300 dark:border-white/20 rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-gray-700 dark:text-white bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
+                      >
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
             </ScrollReveal>
@@ -289,6 +382,11 @@ export default function HRPage() {
                                 GitHub Req
                               </span>
                             )}
+                            {!job.isActive && (
+                              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-500">
+                                Archived
+                              </span>
+                            )}
                           </div>
                           <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-white/50 font-medium">
                             <span className="flex items-center"><MapPin className="w-3.5 h-3.5 mr-1" /> {job.location}</span>
@@ -298,11 +396,17 @@ export default function HRPage() {
                             </span>
                           </div>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <button onClick={() => toggleJobExpanded(job.id)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
                             {expandedJobId === job.id ? <ChevronUp /> : <ChevronDown />}
                           </button>
-                          <button onClick={() => handleDeleteJob(job.id)} className="p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all">
+                          <button onClick={() => handleEditJobClick(job)} className="p-2 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all">
+                            <Edit2 className="w-5 h-5" />
+                          </button>
+                          <button onClick={() => handleToggleArchive(job)} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="p-2 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all">
+                            {job.isActive ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                          </button>
+                          <button onClick={() => handleDeleteJob(job.id)} title="Delete Job" className="p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all">
                             <Trash2 className="w-5 h-5" />
                           </button>
                         </div>
