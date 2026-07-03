@@ -45,7 +45,7 @@ export default function IndiaMapWidget({ data }: { data: { name: string, value: 
     <div className="w-full h-full min-h-[400px] relative flex flex-col items-center">
       
       {tooltipContent && (
-        <div className="absolute top-4 bg-white dark:bg-[#2B4461] border border-gray-200 dark:border-neutral-700 text-gray-900 dark:text-white px-3 py-2 rounded-xl shadow-lg z-10 text-sm pointer-events-none transform -translate-x-1/2 left-1/2">
+        <div className="absolute top-4 bg-white dark:bg-[#1F3145] border border-gray-200 dark:border-neutral-700 text-gray-900 dark:text-white px-3 py-2 rounded-xl shadow-lg z-10 text-sm pointer-events-none transform -translate-x-1/2 left-1/2">
           {tooltipContent}
         </div>
       )}

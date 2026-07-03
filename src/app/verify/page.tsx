@@ -71,7 +71,7 @@ export default function Verify() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#E6C875]/10 rounded-full blur-[150px] pointer-events-none"></div>
 
               <div className="relative z-10">
-                <div className="inline-flex justify-center items-center w-28 h-28 rounded-full bg-gray-50 dark:bg-[#2B4461]/50 border border-[#E6C875]/50 dark:border-[#E6C875]/30 mb-12 backdrop-blur-md shadow-lg dark:shadow-[0_0_40px_rgba(230,200,117,0.15)]">
+                <div className="inline-flex justify-center items-center w-28 h-28 rounded-full bg-gray-50 dark:bg-[#1F3145]/50 border border-[#E6C875]/50 dark:border-[#E6C875]/30 mb-12 backdrop-blur-md shadow-lg dark:shadow-[0_0_40px_rgba(230,200,117,0.15)]">
                   <ShieldCheck size={50} strokeWidth={1} className={state === 'loading' ? 'text-[#E6C875] animate-pulse' : 'text-[#E6C875]'} />
                 </div>
 
@@ -90,13 +90,13 @@ export default function Verify() {
                       onChange={(e) => setCertId(e.target.value)}
                       disabled={state === 'loading'}
                       placeholder="e.g. VED-2026-AI-001"
-                      className="w-full bg-gray-50 dark:bg-[#2B4461]/60 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[2rem] px-10 py-8 text-center text-xl focus:outline-none focus:border-[#E6C875] dark:focus:border-[#E6C875] transition-all duration-500 font-light tracking-[0.2em] placeholder:text-gray-400 dark:placeholder:text-white/20 shadow-inner"
+                      className="w-full bg-gray-50 dark:bg-[#1F3145]/60 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[2rem] px-10 py-8 text-center text-xl focus:outline-none focus:border-[#E6C875] dark:focus:border-[#E6C875] transition-all duration-500 font-light tracking-[0.2em] placeholder:text-gray-400 dark:placeholder:text-white/20 shadow-inner"
                     />
                   </div>
 
                   {error && <p className="text-red-500 font-bold tracking-widest text-sm uppercase animate-in fade-in">{error}</p>}
 
-                  <button disabled={state === 'loading'} className="w-full bg-[#2B4461] dark:bg-white text-white dark:text-[#2B4461] font-bold tracking-widest uppercase text-lg rounded-[2rem] px-10 py-8 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-[1.02] transition-all duration-500 shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:hover:scale-100">
+                  <button disabled={state === 'loading'} className="w-full bg-[#1F3145] dark:bg-white text-white dark:text-[#1F3145] font-bold tracking-widest uppercase text-lg rounded-[2rem] px-10 py-8 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-[1.02] transition-all duration-500 shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)] disabled:opacity-50 disabled:hover:scale-100">
                     {state === 'loading' ? 'Querying Blockchain...' : 'Consult Ledger'}
                   </button>
                 </form>
@@ -114,7 +114,7 @@ export default function Verify() {
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#E6C875]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
               <div className="text-center mb-12 relative z-10 border-b border-gray-200 dark:border-white/10 pb-12">
-                <div className="inline-flex justify-center items-center w-20 h-20 rounded-full bg-gray-50 dark:bg-[#2B4461]/50 border border-[#E6C875]/50 dark:border-[#E6C875]/30 mb-8 backdrop-blur-md shadow-lg dark:shadow-[0_0_40px_rgba(230,200,117,0.15)]">
+                <div className="inline-flex justify-center items-center w-20 h-20 rounded-full bg-gray-50 dark:bg-[#1F3145]/50 border border-[#E6C875]/50 dark:border-[#E6C875]/30 mb-8 backdrop-blur-md shadow-lg dark:shadow-[0_0_40px_rgba(230,200,117,0.15)]">
                   <Award size={36} strokeWidth={1.5} className="text-[#E6C875]" />
                 </div>
                 <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-4">Cryptographic Identity Verified.</h2>
@@ -138,7 +138,7 @@ export default function Verify() {
                     </div>
                   </div>
 
-                  <button onClick={() => setState('review')} className="bg-[#2B4461] dark:bg-white text-white dark:text-[#2B4461] px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#E6C875] dark:hover:bg-[#E6C875] transition-all duration-500 shadow-xl w-full md:w-auto">
+                  <button onClick={() => setState('review')} className="bg-[#1F3145] dark:bg-white text-white dark:text-[#1F3145] px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#E6C875] dark:hover:bg-[#E6C875] transition-all duration-500 shadow-xl w-full md:w-auto">
                     Write Domain Review
                   </button>
                 </div>
@@ -179,13 +179,13 @@ export default function Verify() {
               <form className="space-y-8" onSubmit={handleReviewSubmit}>
                 <div>
                   <label className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-4 block">Current Position</label>
-                  <input type="text" defaultValue={profile.position} className="w-full bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-2xl px-6 py-5 focus:outline-none focus:border-[#E6C875]/50 transition-colors font-light" />
+                  <input type="text" defaultValue={profile.position} className="w-full bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-2xl px-6 py-5 focus:outline-none focus:border-[#E6C875]/50 transition-colors font-light" />
                 </div>
                 <div>
                   <label className="text-gray-500 dark:text-white/50 text-xs uppercase tracking-[0.2em] font-bold mb-4 block">Execution Review</label>
-                  <textarea rows={5} placeholder="Detail your learning trajectory, the mentorship quality, and your ultimate placement outcome..." className="w-full bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-2xl px-6 py-5 focus:outline-none focus:border-[#E6C875]/50 transition-colors font-light resize-none"></textarea>
+                  <textarea rows={5} placeholder="Detail your learning trajectory, the mentorship quality, and your ultimate placement outcome..." className="w-full bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-2xl px-6 py-5 focus:outline-none focus:border-[#E6C875]/50 transition-colors font-light resize-none"></textarea>
                 </div>
-                <button className="w-full bg-[#2B4461] dark:bg-white text-white dark:text-[#2B4461] font-bold uppercase tracking-widest text-lg rounded-2xl px-8 py-6 mt-4 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] transition-all duration-500 shadow-xl">
+                <button className="w-full bg-[#1F3145] dark:bg-white text-white dark:text-[#1F3145] font-bold uppercase tracking-widest text-lg rounded-2xl px-8 py-6 mt-4 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] transition-all duration-500 shadow-xl">
                   Publish to Public Ledger
                 </button>
               </form>
@@ -194,7 +194,7 @@ export default function Verify() {
         ) : (
           <ScrollReveal>
             <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] rounded-[4rem] p-16 md:p-24 backdrop-blur-3xl text-center shadow-2xl dark:shadow-[0_0_100px_rgba(0,0,0,0.5)] animate-in slide-in-from-bottom-10 fade-in duration-1000">
-              <div className="inline-flex justify-center items-center w-24 h-24 rounded-full bg-gray-50 dark:bg-[#2B4461]/50 border border-[#E6C875]/50 dark:border-[#E6C875]/30 mb-10 backdrop-blur-md shadow-lg dark:shadow-[0_0_40px_rgba(230,200,117,0.15)]">
+              <div className="inline-flex justify-center items-center w-24 h-24 rounded-full bg-gray-50 dark:bg-[#1F3145]/50 border border-[#E6C875]/50 dark:border-[#E6C875]/30 mb-10 backdrop-blur-md shadow-lg dark:shadow-[0_0_40px_rgba(230,200,117,0.15)]">
                 <Star size={40} strokeWidth={1.5} className="text-[#E6C875]" />
               </div>
               <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Review Published.</h2>

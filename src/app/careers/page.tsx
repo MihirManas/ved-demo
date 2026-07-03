@@ -100,11 +100,11 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#2B4461] pt-32 pb-20 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-1000 ease-out">
+    <div className="min-h-screen bg-white dark:bg-[#1F3145] pt-32 pb-20 px-4 sm:px-6 lg:px-8 animate-in fade-in duration-1000 ease-out">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal delay={100}>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-[#2B4461]/[0.03] dark:bg-white/[0.03] border border-[#2B4461]/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
+            <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-[#1F3145]/[0.03] dark:bg-white/[0.03] border border-[#1F3145]/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#E6C875] animate-pulse shadow-[0_0_10px_#E6C875]"></span>
               <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Join Our Mission</span>
             </div>
@@ -199,7 +199,7 @@ export default function CareersPage() {
 
       {/* Application Modal */}
       {selectedJob && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2B4461]/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1F3145]/60 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-white dark:bg-[#111] border border-gray-200 dark:border-white/10 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="sticky top-0 bg-white dark:bg-[#111] z-10 p-6 border-b border-gray-200 dark:border-white/10 flex justify-between items-center">
               <div>
@@ -234,37 +234,37 @@ export default function CareersPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Full Name *</label>
-                      <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                      <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Email Address *</label>
-                      <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                      <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Phone Number *</label>
-                      <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                      <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">City/Address *</label>
-                      <input required type="text" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                      <input required type="text" value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Resume Link (Google Drive, Dropbox, etc.) *</label>
-                    <input required type="url" placeholder="https://..." value={formData.resumeLink} onChange={e => setFormData({...formData, resumeLink: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                    <input required type="url" placeholder="https://..." value={formData.resumeLink} onChange={e => setFormData({...formData, resumeLink: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                     <p className="mt-2 text-xs text-gray-500 dark:text-white/40">Please ensure the link is publicly accessible.</p>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">LinkedIn URL (Optional)</label>
-                    <input type="url" placeholder="https://linkedin.com/in/..." value={formData.linkedinUrl} onChange={e => setFormData({...formData, linkedinUrl: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                    <input type="url" placeholder="https://linkedin.com/in/..." value={formData.linkedinUrl} onChange={e => setFormData({...formData, linkedinUrl: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                   </div>
 
                   {selectedJob.requiresGithub && (
                     <div>
                       <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">GitHub URL *</label>
-                      <input required type="url" placeholder="https://github.com/..." value={formData.githubUrl} onChange={e => setFormData({...formData, githubUrl: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                      <input required type="url" placeholder="https://github.com/..." value={formData.githubUrl} onChange={e => setFormData({...formData, githubUrl: e.target.value})} className="block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                       <p className="mt-2 text-xs text-[#E6C875]">This role requires a GitHub profile.</p>
                     </div>
                   )}
@@ -273,7 +273,7 @@ export default function CareersPage() {
                     <button type="button" onClick={() => setSelectedJob(null)} className="px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-widest text-gray-600 dark:text-white/60 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
                       Cancel
                     </button>
-                    <button type="submit" disabled={submitting} className="px-8 py-3 bg-[#E6C875] hover:bg-[#D4B55E] text-[#2B4461] rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-[#E6C875]/30 disabled:opacity-50 flex items-center">
+                    <button type="submit" disabled={submitting} className="px-8 py-3 bg-[#E6C875] hover:bg-[#D4B55E] text-[#1F3145] rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-[#E6C875]/30 disabled:opacity-50 flex items-center">
                       {submitting ? 'Submitting...' : 'Submit Application'}
                     </button>
                   </div>

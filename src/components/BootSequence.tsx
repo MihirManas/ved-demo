@@ -42,7 +42,7 @@ export default function BootSequence({ onComplete }: { onComplete: () => void })
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center transition-colors duration-1000 bg-[#F8F9FA] dark:bg-[#2B4461] ${phase === 4 ? 'bg-transparent pointer-events-none' : ''}`}
+      className={`fixed inset-0 z-[100] flex items-center justify-center transition-colors duration-1000 bg-[#F8F9FA] dark:bg-[#1F3145] ${phase === 4 ? 'bg-transparent pointer-events-none' : ''}`}
     >
       <div
         id="boot-logo"

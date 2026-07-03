@@ -16,10 +16,10 @@ export default function Error({
   return (
     <div className="fixed inset-0 z-[999] bg-red-900 text-white flex flex-col items-center justify-center p-8">
       <h2 className="text-2xl font-bold mb-4">Something went wrong in the Admin Portal!</h2>
-      <pre className="bg-[#2B4461]/50 p-4 rounded text-sm w-full max-w-2xl overflow-auto">
+      <pre className="bg-[#1F3145]/50 p-4 rounded text-sm w-full max-w-2xl overflow-auto">
         {error.message}
       </pre>
-      <pre className="bg-[#2B4461]/50 p-4 rounded text-xs w-full max-w-2xl overflow-auto mt-4">
+      <pre className="bg-[#1F3145]/50 p-4 rounded text-xs w-full max-w-2xl overflow-auto mt-4">
         {error.stack}
       </pre>
       <button

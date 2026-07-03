@@ -28,7 +28,7 @@ export default function CourseAccordion({ syllabus }: CourseAccordionProps) {
         return (
           <div 
             key={idx} 
-            className="border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden bg-white dark:bg-[#2B4461]/40 shadow-sm backdrop-blur-sm transition-all duration-300"
+            className="border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden bg-white dark:bg-[#1F3145]/40 shadow-sm backdrop-blur-sm transition-all duration-300"
           >
             <button
               onClick={() => toggleWeek(idx)}
@@ -51,7 +51,7 @@ export default function CourseAccordion({ syllabus }: CourseAccordionProps) {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden border-t border-gray-100 dark:border-white/5"
                 >
-                  <div className="p-6 space-y-4 bg-gray-50/50 dark:bg-[#2B4461]/20">
+                  <div className="p-6 space-y-4 bg-gray-50/50 dark:bg-[#1F3145]/20">
                     {topics.map((topic, tIdx) => (
                       <div key={tIdx} className="flex items-start gap-4">
                         <Lock className="text-gray-400 dark:text-white/30 mt-1 flex-shrink-0" size={16} />

@@ -41,7 +41,7 @@ export default function AdminPage() {
 
   if (isAuthenticated) {
     return (
-      <div className="relative w-full z-50 bg-white dark:bg-[#2B4461] text-[#2B4461] dark:text-white mt-8 rounded-3xl">
+      <div className="relative w-full z-50 bg-white dark:bg-[#1F3145] text-[#1F3145] dark:text-white mt-8 rounded-3xl">
         <Dashboard onLogout={() => {
           setIsAuthenticated(false);
           sessionStorage.removeItem("admin_auth");
@@ -51,14 +51,14 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="relative w-full min-h-[80vh] z-50 bg-gray-50 dark:bg-[#2B4461] flex items-center justify-center p-4 rounded-3xl overflow-hidden mt-8">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-200 via-gray-50 to-gray-50 dark:from-neutral-900 dark:via-[#2B4461] dark:to-[#2B4461]"></div>
+    <div className="relative w-full min-h-[80vh] z-50 bg-gray-50 dark:bg-[#1F3145] flex items-center justify-center p-4 rounded-3xl overflow-hidden mt-8">
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-200 via-gray-50 to-gray-50 dark:from-neutral-900 dark:via-[#1F3145] dark:to-[#1F3145]"></div>
       
       <div className="relative z-10 w-full max-w-md">
         <div className="bg-white/80 dark:bg-neutral-900/50 backdrop-blur-xl border border-gray-200 dark:border-neutral-800 rounded-3xl p-8 shadow-2xl">
           <div className="flex flex-col items-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-tr from-[#E6C875] to-yellow-200 rounded-2xl flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(230,200,117,0.3)]">
-              <Lock className="w-8 h-8 text-[#2B4461]" />
+              <Lock className="w-8 h-8 text-[#1F3145]" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Admin Portal</h1>
             <p className="text-gray-500 dark:text-neutral-400 text-sm mt-2 text-center">
@@ -73,7 +73,7 @@ export default function AdminPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-[#E6C875] transition-all"
+                className="w-full bg-white dark:bg-[#1F3145]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-[#E6C875] transition-all"
               />
               <button
                 type="button"
@@ -92,7 +92,7 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full bg-[#E6C875] hover:bg-[#d4b55e] text-[#2B4461] font-semibold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] hover:shadow-[0_0_30px_rgba(230,200,117,0.4)]"
+              className="w-full bg-[#E6C875] hover:bg-[#d4b55e] text-[#1F3145] font-semibold py-3 rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] hover:shadow-[0_0_30px_rgba(230,200,117,0.4)]"
             >
               Verify & Enter
             </button>

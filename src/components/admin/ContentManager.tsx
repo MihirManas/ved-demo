@@ -71,7 +71,7 @@ export default function ContentManager() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {PREDEFINED_SECTIONS.map((section) => (
-              <div key={section.id} className="bg-gray-50 dark:bg-[#2B4461]/40 border border-gray-200 dark:border-neutral-800 rounded-2xl p-5">
+              <div key={section.id} className="bg-gray-50 dark:bg-[#1F3145]/40 border border-gray-200 dark:border-neutral-800 rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-4">
                   {section.type === "IMAGE" ? <ImageIcon className="w-4 h-4 text-purple-500 dark:text-purple-400" /> : <Type className="w-4 h-4 text-blue-500 dark:text-blue-400" />}
                   <h3 className="font-semibold text-gray-900 dark:text-white">{section.label}</h3>
@@ -83,7 +83,7 @@ export default function ContentManager() {
                     <textarea
                       value={contents[section.id] || ""}
                       onChange={(e) => handleTextChange(section.id, e.target.value)}
-                      className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent dark:focus:border-[#E6C875]/50 transition-all resize-none min-h-[100px]"
+                      className="w-full bg-white dark:bg-[#1F3145]/50 border border-gray-300 dark:border-neutral-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent dark:focus:border-[#E6C875]/50 transition-all resize-none min-h-[100px]"
                       placeholder={`Enter text for ${section.label.toLowerCase()}`}
                     />
                     <button
@@ -97,7 +97,7 @@ export default function ContentManager() {
                   </div>
                 ) : (
                   <div className="space-y-3">
-                    <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-gray-400 dark:hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-white dark:bg-[#2B4461]/30 relative overflow-hidden group">
+                    <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-gray-400 dark:hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-white dark:bg-[#1F3145]/30 relative overflow-hidden group">
                       {contents[section.id] ? (
                         <>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -109,7 +109,7 @@ export default function ContentManager() {
                               delete newContents[section.id];
                               setContents(newContents);
                             }}
-                            className="absolute z-10 bg-white/90 dark:bg-[#2B4461]/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100 shadow-md"
+                            className="absolute z-10 bg-white/90 dark:bg-[#1F3145]/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100 shadow-md"
                           >
                             Remove Image
                           </button>
@@ -147,7 +147,7 @@ export default function ContentManager() {
                                 container: "border-none bg-transparent w-full p-0 py-2 m-0",
                                 label: "text-[#E6C875] hover:text-white transition-colors",
                                 allowedContent: "text-neutral-500 text-xs mt-2",
-                                button: "bg-[#E6C875] text-[#2B4461] font-bold mt-4 px-4 py-2 text-sm"
+                                button: "bg-[#E6C875] text-[#1F3145] font-bold mt-4 px-4 py-2 text-sm"
                               }}
                             />
                           )}

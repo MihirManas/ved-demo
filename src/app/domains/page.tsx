@@ -90,7 +90,7 @@ export default function Domains() {
             </div>
             
             <div className="flex flex-col gap-4 w-full lg:w-auto">
-              <div className="flex items-center gap-3 bg-white/50 dark:bg-[#2B4461]/30 p-2 px-4 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md">
+              <div className="flex items-center gap-3 bg-white/50 dark:bg-[#1F3145]/30 p-2 px-4 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md">
                 <Search size={18} className="text-gray-400" />
                 <input
                   type="text"
@@ -100,17 +100,17 @@ export default function Domains() {
                   className="bg-transparent border-none text-gray-900 dark:text-white font-medium outline-none focus:ring-0 text-sm py-1 w-full lg:w-64 placeholder:text-gray-400"
                 />
               </div>
-              <div className="flex items-center gap-4 bg-white/50 dark:bg-[#2B4461]/30 p-2 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md self-start lg:self-end w-full lg:w-auto justify-between lg:justify-start">
+              <div className="flex items-center gap-4 bg-white/50 dark:bg-[#1F3145]/30 p-2 rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-md self-start lg:self-end w-full lg:w-auto justify-between lg:justify-start">
                 <span className="text-sm font-bold text-gray-600 dark:text-gray-400 uppercase tracking-widest pl-3">Sort:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
                   className="bg-transparent border-none text-gray-900 dark:text-white font-medium outline-none focus:ring-0 cursor-pointer text-sm pr-4 appearance-none w-full lg:w-auto"
                 >
-                  <option value="default" className="text-[#2B4461]">Default</option>
-                  <option value="nameAsc" className="text-[#2B4461]">Name (A-Z)</option>
-                  <option value="nameDesc" className="text-[#2B4461]">Name (Z-A)</option>
-                  <option value="dateAdded" className="text-[#2B4461]">Date Added (Newest)</option>
+                  <option value="default" className="text-[#1F3145]">Default</option>
+                  <option value="nameAsc" className="text-[#1F3145]">Name (A-Z)</option>
+                  <option value="nameDesc" className="text-[#1F3145]">Name (Z-A)</option>
+                  <option value="dateAdded" className="text-[#1F3145]">Date Added (Newest)</option>
                 </select>
                 <div className="pr-3 text-gray-400 pointer-events-none">
                   <ChevronRight size={16} className="rotate-90" />
@@ -210,7 +210,7 @@ export default function Domains() {
                       <ScrollReveal key={course.id} delay={courseIdx * 100}>
                         <Link
                           href={`/domains/${course.slug}`}
-                          className="group block bg-white dark:bg-[#2B4461]/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
+                          className="group block bg-white dark:bg-[#1F3145]/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                         >
                           <div className="h-48 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
                             <Image 
@@ -220,8 +220,8 @@ export default function Domains() {
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out" 
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#2B4461]/80 to-transparent z-10"></div>
-                            <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-[#2B4461]/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
+                            <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#1F3145]/80 to-transparent z-10"></div>
+                            <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-[#1F3145]/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
                               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>
                             </div>
                           </div>
@@ -229,7 +229,7 @@ export default function Domains() {
                           <div className="p-8 relative z-20 flex-grow flex flex-col justify-between">
                             <div>
                               <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E6C875] mb-4">{course.tag}</div>
-                              <h3 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white mb-3 group-hover:text-[#2B4461] dark:group-hover:text-white transition-colors duration-500">{course.title}</h3>
+                              <h3 className="text-2xl font-medium tracking-tight text-gray-900 dark:text-white mb-3 group-hover:text-[#1F3145] dark:group-hover:text-white transition-colors duration-500">{course.title}</h3>
                               <p className="text-gray-600 dark:text-white/50 font-light text-sm mb-6 leading-relaxed line-clamp-2">{course.about}</p>
 
                               <div className="flex flex-wrap gap-2 mb-6">

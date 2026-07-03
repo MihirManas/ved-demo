@@ -98,7 +98,7 @@ export default function MentorManager() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
+                  className="w-full bg-white dark:bg-[#1F3145]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -109,7 +109,7 @@ export default function MentorManager() {
                   value={designation}
                   onChange={(e) => setDesignation(e.target.value)}
                   placeholder="e.g. Senior Software Engineer at Google"
-                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
+                  className="w-full bg-white dark:bg-[#1F3145]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -119,7 +119,7 @@ export default function MentorManager() {
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                   rows={4}
-                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all resize-none"
+                  className="w-full bg-white dark:bg-[#1F3145]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all resize-none"
                   required
                 />
               </div>
@@ -128,7 +128,7 @@ export default function MentorManager() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Mentor Photo</label>
-                <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-gray-400 dark:hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-white dark:bg-[#2B4461]/30 relative overflow-hidden group">
+                <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-4 flex flex-col items-center justify-center hover:border-gray-400 dark:hover:border-[#E6C875]/50 transition-colors min-h-[160px] bg-white dark:bg-[#1F3145]/30 relative overflow-hidden group">
                   {imagePreview ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -136,7 +136,7 @@ export default function MentorManager() {
                       <button 
                         type="button"
                         onClick={() => setImagePreview(null)}
-                        className="absolute z-10 bg-white/90 dark:bg-[#2B4461]/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100 shadow-md"
+                        className="absolute z-10 bg-white/90 dark:bg-[#1F3145]/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white px-3 py-1 rounded-md transition-colors text-sm font-medium opacity-0 group-hover:opacity-100 shadow-md"
                       >
                         Remove Image
                       </button>
@@ -156,7 +156,7 @@ export default function MentorManager() {
                         container: "border-none bg-transparent w-full p-0 py-2 m-0",
                         label: "text-[#D4B55E] dark:text-[#E6C875] hover:text-gray-900 dark:hover:text-white transition-colors",
                         allowedContent: "text-gray-500 dark:text-neutral-500 text-xs mt-2",
-                        button: "bg-[#E6C875] text-[#2B4461] font-bold mt-4 px-4 py-2 text-sm"
+                        button: "bg-[#E6C875] text-[#1F3145] font-bold mt-4 px-4 py-2 text-sm"
                       }}
                     />
                   )}
@@ -169,7 +169,7 @@ export default function MentorManager() {
                   value={imageAlt}
                   onChange={(e) => setImageAlt(e.target.value)}
                   placeholder="e.g. John Doe - Full Stack Developer"
-                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
+                  className="w-full bg-white dark:bg-[#1F3145]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                 />
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function MentorManager() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center justify-center gap-2 w-full md:w-auto px-8 py-3 bg-[#E6C875] hover:bg-[#d4b55e] text-[#2B4461] font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] disabled:opacity-50"
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-8 py-3 bg-[#E6C875] hover:bg-[#d4b55e] text-[#1F3145] font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] disabled:opacity-50"
           >
             {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />}
             {isSubmitting ? "Adding..." : "Add Mentor"}
@@ -200,7 +200,7 @@ export default function MentorManager() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mentors.map((mentor) => (
-              <div key={mentor.id} className="bg-gray-50 dark:bg-[#2B4461]/40 border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden group shadow-sm">
+              <div key={mentor.id} className="bg-gray-50 dark:bg-[#1F3145]/40 border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden group shadow-sm">
                 <div className="h-48 bg-gray-200 dark:bg-neutral-900 relative">
                   {mentor.imagePath ? (
                     // eslint-disable-next-line @next/next/no-img-element

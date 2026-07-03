@@ -221,11 +221,11 @@ export default function HRPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-white dark:bg-[#2B4461] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-white dark:bg-[#1F3145] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 rounded-full bg-[#2B4461]/[0.03] dark:bg-white/[0.03] border border-[#2B4461]/10 dark:border-white/[0.08] flex items-center justify-center backdrop-blur-md">
+              <div className="w-16 h-16 rounded-full bg-[#1F3145]/[0.03] dark:bg-white/[0.03] border border-[#1F3145]/10 dark:border-white/[0.08] flex items-center justify-center backdrop-blur-md">
                 <Lock className="w-6 h-6 text-[#E6C875]" />
               </div>
             </div>
@@ -239,10 +239,10 @@ export default function HRPage() {
                 <div>
                   <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Master Password</label>
                   <div className="mt-1">
-                    <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="appearance-none block w-full px-4 py-3 bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl shadow-sm focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                    <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="appearance-none block w-full px-4 py-3 bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl shadow-sm focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                   </div>
                 </div>
-                <button type="submit" disabled={loading} className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-[#2B4461] dark:text-[#2B4461] bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50">
+                <button type="submit" disabled={loading} className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-[#1F3145] dark:text-[#1F3145] bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50">
                   {loading ? 'Verifying...' : 'Access Dashboard'}
                 </button>
               </form>
@@ -254,7 +254,7 @@ export default function HRPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#2B4461] py-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-[#1F3145] py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-gray-200 dark:border-white/10 pb-6">
@@ -263,7 +263,7 @@ export default function HRPage() {
               <p className="text-sm text-gray-500 dark:text-white/50 mt-1">Manage active job postings and applications</p>
             </div>
             <div className="flex items-center gap-3 mt-4 md:mt-0">
-              <button onClick={() => setShowSettings(!showSettings)} className="p-2 text-gray-600 dark:text-white/60 hover:text-[#2B4461] dark:hover:text-white transition-colors border border-gray-200 dark:border-white/10 rounded-full hover:bg-gray-50 dark:hover:bg-white/5">
+              <button onClick={() => setShowSettings(!showSettings)} className="p-2 text-gray-600 dark:text-white/60 hover:text-[#1F3145] dark:hover:text-white transition-colors border border-gray-200 dark:border-white/10 rounded-full hover:bg-gray-50 dark:hover:bg-white/5">
                 {showSettings ? <X className="w-5 h-5" /> : <Settings className="w-5 h-5" />}
               </button>
               <button onClick={() => setIsAuthenticated(false)} className="px-4 py-2 text-sm uppercase tracking-widest font-bold text-gray-600 dark:text-white/60 hover:text-red-500 dark:hover:text-red-400 transition-colors border border-gray-200 dark:border-white/10 rounded-full hover:border-red-200 dark:hover:border-red-900/30 hover:bg-red-50 dark:hover:bg-red-900/10">
@@ -298,17 +298,17 @@ export default function HRPage() {
                 <form onSubmit={handleAddJob} className="space-y-5">
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Job Title</label>
-                    <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                    <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Location</label>
-                    <input type="text" required value={location} onChange={(e) => setLocation(e.target.value)} placeholder="e.g. Remote, Mumbai" className="block w-full px-4 py-3 bg-white dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                    <input type="text" required value={location} onChange={(e) => setLocation(e.target.value)} placeholder="e.g. Remote, Mumbai" className="block w-full px-4 py-3 bg-white dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Type</label>
-                    <select value={type} onChange={(e) => setType(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors appearance-none">
+                    <select value={type} onChange={(e) => setType(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors appearance-none">
                       <option>Full-time</option>
                       <option>Part-time</option>
                       <option>Internship</option>
@@ -318,7 +318,7 @@ export default function HRPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Salary (Optional)</label>
-                    <input type="text" value={salary} onChange={(e) => setSalary(e.target.value)} placeholder="e.g. ₹5L - ₹8L" className="block w-full px-4 py-3 bg-white dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
+                    <input type="text" value={salary} onChange={(e) => setSalary(e.target.value)} placeholder="e.g. ₹5L - ₹8L" className="block w-full px-4 py-3 bg-white dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors" />
                   </div>
 
                   <div>
@@ -330,11 +330,11 @@ export default function HRPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 dark:text-white/70 uppercase tracking-wider mb-2">Description</label>
-                    <textarea required rows={5} value={description} onChange={(e) => setDescription(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors resize-none" />
+                    <textarea required rows={5} value={description} onChange={(e) => setDescription(e.target.value)} className="block w-full px-4 py-3 bg-white dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#E6C875] focus:border-[#E6C875] sm:text-sm text-gray-900 dark:text-white transition-colors resize-none" />
                   </div>
 
                   <div className="flex gap-4 mt-4">
-                    <button type="submit" disabled={loading} className="flex-1 flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-[#2B4461] dark:text-[#2B4461] bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50">
+                    <button type="submit" disabled={loading} className="flex-1 flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm uppercase tracking-widest font-bold text-[#1F3145] dark:text-[#1F3145] bg-[#E6C875] hover:bg-[#D4B55E] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E6C875] transition-all duration-300 disabled:opacity-50">
                       {loading ? (editingJobId ? 'Updating...' : 'Posting...') : (editingJobId ? 'Update Job' : 'Publish Job')}
                     </button>
                     {editingJobId && (
@@ -420,7 +420,7 @@ export default function HRPage() {
 
                       {/* Applications List */}
                       {expandedJobId === job.id && (
-                        <div className="bg-gray-50 dark:bg-[#2B4461]/50 p-6 border-t border-gray-200 dark:border-white/10">
+                        <div className="bg-gray-50 dark:bg-[#1F3145]/50 p-6 border-t border-gray-200 dark:border-white/10">
                           <h4 className="text-sm font-bold uppercase tracking-widest text-gray-900 dark:text-white mb-6 flex items-center">
                             Applications
                           </h4>
