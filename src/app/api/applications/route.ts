@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     try {
       await sendWhatsAppTemplateMessage(
         phone, 
-        'HXb5b62575e6e4ff6129ad7c8efe1f983e', // REPLACE with actual Job ContentSID
+        'HXbf8d814c7886f34e926c21a2504355fe', // Actual Job ContentSID
         JSON.stringify({"1": name, "2": job.title})
       );
     } catch (err) {
