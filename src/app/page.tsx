@@ -182,7 +182,7 @@ export default function Home() {
                   <div className="col-span-1 sm:col-span-2 bg-gradient-to-r from-[#E6C875]/10 to-transparent border border-[#E6C875]/30 p-8 rounded-[2rem] backdrop-blur-xl animate-float shadow-lg dark:shadow-[0_20px_40px_rgba(0,0,0,0.5)] hover:border-[#E6C875]/50 transition-colors duration-500">
                     <ShieldCheck className="text-[#E6C875] w-10 h-10 mb-6" strokeWidth={1.5} />
                     <h4 className="text-gray-900 dark:text-white font-medium text-lg">Verification</h4>
-                    <p className="text-[#D4AF37] dark:text-[#E6C875]/70 text-sm mt-3 font-light leading-relaxed">Cryptographically secured achievements backed by Wipro DICE ID.</p>
+                    <p className="text-[#D4AF37] dark:text-[#E6C875]/70 text-sm mt-3 font-light leading-relaxed">Cryptographically secured achievements backed by our secure verification system.</p>
                   </div>
                 </div>
               </div>
@@ -560,7 +560,7 @@ export default function Home() {
               <AccordionItem value="item-3" className="border-b border-gray-200 dark:border-white/10 py-4">
                 <AccordionTrigger className="text-xl font-medium hover:text-[#E6C875] transition-colors text-left">How does the cryptographic verification work?</AccordionTrigger>
                 <AccordionContent className="text-gray-600 dark:text-white/60 text-lg font-light pt-4 leading-relaxed">
-                  Upon successful completion, your credentials are minted on the Wipro DICE ID blockchain. This provides an immutable, universally trusted record of your technical competence that recruiters can verify instantly.
+                  Upon successful completion, your credentials are minted on our secure verification system. This provides an immutable, universally trusted record of your technical competence that recruiters can verify instantly.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4" className="border-b border-gray-200 dark:border-white/10 py-4">

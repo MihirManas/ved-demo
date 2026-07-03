@@ -79,7 +79,7 @@ export default function Verify() {
                   {state === 'loading' ? 'Verifying Ledger...' : 'Verify Protocol.'}
                 </h2>
                 <p className="text-gray-600 dark:text-white/60 mb-16 max-w-2xl mx-auto font-light text-2xl leading-relaxed">
-                  Confirm cryptographic authenticity. Issued in exclusive partnership with Wipro DICE ID blockchain infrastructure.
+                  Confirm cryptographic authenticity. Backed by our secure verification infrastructure.
                 </p>
 
                 <form className="space-y-6 max-w-lg mx-auto" onSubmit={handleVerify}>
