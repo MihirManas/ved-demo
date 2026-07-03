@@ -34,7 +34,7 @@ const FloatingActionButton = () => {
             <span className="bg-white dark:bg-[#1a1a1a] text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-xl shadow-lg border border-gray-100 dark:border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
               {item.label}
             </span>
-            <div className="w-12 h-12 rounded-full bg-white dark:bg-black/50 backdrop-blur-xl border border-gray-200 dark:border-white/10 shadow-lg flex items-center justify-center text-gray-800 dark:text-white hover:text-[#E6C875] dark:hover:text-[#E6C875] hover:scale-110 hover:border-[#E6C875]/50 transition-all duration-300">
+            <div className="w-12 h-12 rounded-full bg-white dark:bg-[#2B4461]/50 backdrop-blur-xl border border-gray-200 dark:border-white/10 shadow-lg flex items-center justify-center text-gray-800 dark:text-white hover:text-[#E6C875] dark:hover:text-[#E6C875] hover:scale-110 hover:border-[#E6C875]/50 transition-all duration-300">
               {item.icon}
             </div>
           </a>
@@ -44,7 +44,7 @@ const FloatingActionButton = () => {
       {/* Main Button */}
       <button 
         onClick={toggleMenu}
-        className="w-14 h-14 sm:w-16 sm:h-16 bg-black dark:bg-white/[0.05] backdrop-blur-2xl border border-gray-800 dark:border-white/10 hover:bg-gray-900 dark:hover:bg-[#E6C875]/10 hover:border-[#E6C875]/50 dark:hover:border-[#E6C875]/30 rounded-full flex items-center justify-center transition-all duration-500 ease-out hover:scale-110 shadow-2xl text-white group focus:outline-none"
+        className="w-14 h-14 sm:w-16 sm:h-16 bg-[#2B4461] dark:bg-white/[0.05] backdrop-blur-2xl border border-gray-800 dark:border-white/10 hover:bg-gray-900 dark:hover:bg-[#E6C875]/10 hover:border-[#E6C875]/50 dark:hover:border-[#E6C875]/30 rounded-full flex items-center justify-center transition-all duration-500 ease-out hover:scale-110 shadow-2xl text-white group focus:outline-none"
       >
         <div className={`transition-transform duration-500 ${isOpen ? 'rotate-[135deg]' : 'rotate-0'}`}>
           <Plus size={32} strokeWidth={1} className="group-hover:text-[#E6C875] transition-colors duration-300" />

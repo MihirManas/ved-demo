@@ -76,7 +76,7 @@ export default async function CourseDetail({ params }: { params: { id: string } 
             <p className="text-gray-600 dark:text-white/50 text-xl font-light mb-12 max-w-2xl mx-auto">Admissions for the upcoming intensive cohort are strictly limited. Submit your credentials for evaluation.</p>
             <Link
               href="/apply"
-              className="inline-block bg-black dark:bg-white text-white dark:text-black px-16 py-6 rounded-full font-bold uppercase tracking-widest text-xl hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 ease-out shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+              className="inline-block bg-[#2B4461] dark:bg-white text-white dark:text-[#2B4461] px-16 py-6 rounded-full font-bold uppercase tracking-widest text-xl hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 ease-out shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
             >
               Apply For Domain
             </Link>

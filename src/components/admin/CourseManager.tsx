@@ -159,14 +159,14 @@ export default function CourseManager() {
               {/* Image Upload Area */}
               <div>
                 <label className="block text-sm font-medium text-gray-600 dark:text-neutral-400 mb-2">Course Image</label>
-                <div className={`relative border-2 border-dashed ${image ? 'border-[#E6C875]/50 bg-[#E6C875]/5' : 'border-gray-300 dark:border-neutral-800 bg-white dark:bg-black/50'} rounded-xl p-4 flex flex-col items-center justify-center transition-all hover:border-gray-400 dark:hover:border-[#E6C875]/50 group overflow-hidden min-h-[160px]`}>
+                <div className={`relative border-2 border-dashed ${image ? 'border-[#E6C875]/50 bg-[#E6C875]/5' : 'border-gray-300 dark:border-neutral-800 bg-white dark:bg-[#2B4461]/50'} rounded-xl p-4 flex flex-col items-center justify-center transition-all hover:border-gray-400 dark:hover:border-[#E6C875]/50 group overflow-hidden min-h-[160px]`}>
                   {image ? (
                     <div className="relative w-full h-32 mb-4">
                       <Image src={image} alt="Preview" fill className="object-cover rounded-lg opacity-80 group-hover:opacity-60 transition-opacity" />
                       <button 
                         type="button"
                         onClick={() => setImage("")}
-                        className="absolute top-2 right-2 bg-white/90 dark:bg-black/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white p-1.5 rounded-md transition-colors shadow-md"
+                        className="absolute top-2 right-2 bg-white/90 dark:bg-[#2B4461]/70 hover:bg-red-50 dark:hover:bg-red-500/80 text-red-600 dark:text-white p-1.5 rounded-md transition-colors shadow-md"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -186,7 +186,7 @@ export default function CourseManager() {
                         container: "border-none bg-transparent w-full p-0 py-2 m-0",
                         label: "text-[#D4B55E] dark:text-[#E6C875] hover:text-gray-900 dark:hover:text-white transition-colors",
                         allowedContent: "text-gray-500 dark:text-neutral-500 text-xs mt-2",
-                        button: "bg-[#E6C875] text-black font-bold mt-4"
+                        button: "bg-[#E6C875] text-[#2B4461] font-bold mt-4"
                       }}
                     />
                   )}
@@ -199,7 +199,7 @@ export default function CourseManager() {
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
+                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -214,7 +214,7 @@ export default function CourseManager() {
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                     placeholder="e.g. react-mastery"
-                    className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all text-sm"
+                    className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all text-sm"
                     required
                   />
                 </div>
@@ -225,7 +225,7 @@ export default function CourseManager() {
                     value={tag}
                     onChange={(e) => setTag(e.target.value)}
                     placeholder="e.g. Frontend"
-                    className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all text-sm"
+                    className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all text-sm"
                   />
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default function CourseManager() {
                   type="text"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
+                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all"
                   required
                 />
               </div>
@@ -247,7 +247,7 @@ export default function CourseManager() {
                   value={about}
                   onChange={(e) => setAbout(e.target.value)}
                   rows={3}
-                  className="w-full bg-white dark:bg-black/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all resize-none text-sm"
+                  className="w-full bg-white dark:bg-[#2B4461]/50 border border-gray-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#E6C875]/50 focus:border-transparent transition-all resize-none text-sm"
                   required
                 />
               </div>
@@ -257,7 +257,7 @@ export default function CourseManager() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center justify-center gap-2 w-full md:w-auto px-10 py-3 bg-[#E6C875] hover:bg-[#d4b55e] text-black font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] disabled:opacity-50"
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-10 py-3 bg-[#E6C875] hover:bg-[#d4b55e] text-[#2B4461] font-semibold rounded-xl transition-all shadow-[0_0_20px_rgba(230,200,117,0.2)] disabled:opacity-50"
           >
             {isSubmitting ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -286,7 +286,7 @@ export default function CourseManager() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {courses.map((course) => (
-              <div key={course.id} className="bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden relative group hover:border-gray-300 dark:hover:border-neutral-700 transition-colors flex flex-col h-full shadow-sm">
+              <div key={course.id} className="bg-gray-50 dark:bg-[#2B4461]/40 border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden relative group hover:border-gray-300 dark:hover:border-neutral-700 transition-colors flex flex-col h-full shadow-sm">
                 {/* Actions */}
                 <div className="absolute top-4 right-4 z-20 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <button 

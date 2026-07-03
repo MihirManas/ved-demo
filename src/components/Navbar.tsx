@@ -26,7 +26,7 @@ export default function Navbar() {
   const currentTheme = mounted ? resolvedTheme : 'light';
 
   return (
-    <nav className="fixed w-full z-50 bg-white/80 dark:bg-black/60 backdrop-blur-2xl border-b border-gray-200 dark:border-white/5 transition-all duration-500">
+    <nav className="fixed w-full z-50 bg-white/80 dark:bg-[#2B4461]/60 backdrop-blur-2xl border-b border-gray-200 dark:border-white/5 transition-all duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <Link href="/" className="flex items-center cursor-pointer group">
@@ -45,7 +45,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm uppercase tracking-[0.15em] transition-all duration-500 ease-out ${isActive ? 'text-[#E6C875] font-semibold' : 'text-gray-500 dark:text-white/60 hover:text-black dark:hover:text-white'}`}
+                  className={`text-sm uppercase tracking-[0.15em] transition-all duration-500 ease-out ${isActive ? 'text-[#E6C875] font-semibold' : 'text-gray-500 dark:text-white/60 hover:text-[#2B4461] dark:hover:text-white'}`}
                 >
                   {link.label}
                 </Link>
@@ -53,7 +53,7 @@ export default function Navbar() {
             })}
 
             {mounted && (
-              <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors mr-2">
+              <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-[#2B4461]/5 dark:hover:bg-white/5 transition-colors mr-2">
                 <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 -translate-x-10 opacity-0 -rotate-90' : 'translate-y-0 translate-x-0 opacity-100 rotate-0'}`}>
                   <Sun size={20} className="text-[#E6C875]" />
                 </div>
@@ -65,14 +65,14 @@ export default function Navbar() {
 
             <Link
               href="/apply"
-              className="bg-black dark:bg-white hover:bg-[#E6C875] dark:hover:bg-[#E6C875] text-white dark:text-black px-8 py-3 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-500 ease-out shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[#E6C875]/30">
+              className="bg-[#2B4461] dark:bg-white hover:bg-[#E6C875] dark:hover:bg-[#E6C875] text-white dark:text-[#2B4461] px-8 py-3 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-500 ease-out shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[#E6C875]/30">
               Apply
             </Link>
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
             {mounted && (
-              <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+              <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-[#2B4461]/5 dark:hover:bg-white/5 transition-colors">
                 <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 -translate-x-10 opacity-0 -rotate-90' : 'translate-y-0 translate-x-0 opacity-100 rotate-0'}`}>
                   <Sun size={24} className="text-[#E6C875]" />
                 </div>
@@ -88,7 +88,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`md:hidden absolute w-full bg-white/95 dark:bg-black/95 backdrop-blur-3xl border-b border-gray-200 dark:border-white/5 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div className={`md:hidden absolute w-full bg-white/95 dark:bg-[#2B4461]/95 backdrop-blur-3xl border-b border-gray-200 dark:border-white/5 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="px-6 py-8 space-y-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || (pathname.startsWith('/domains') && link.href === '/domains');

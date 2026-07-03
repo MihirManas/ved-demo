@@ -112,7 +112,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal delay={100}>
               <div>
-                <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
+                <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-[#2B4461]/[0.03] dark:bg-white/[0.03] border border-[#2B4461]/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-[#E6C875] animate-pulse shadow-[0_0_10px_#E6C875]"></span>
                   <span className="text-xs font-bold text-gray-700 dark:text-white/80 uppercase tracking-[0.25em]">Online Education Feels Like Real Classroom</span>
                 </div>
@@ -133,14 +133,14 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-5">
                   <Link
                     href={heroData[heroIndex].route}
-                    className="bg-black dark:bg-white text-white dark:text-black px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm flex items-center justify-center space-x-3 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 ease-out shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+                    className="bg-[#2B4461] dark:bg-white text-white dark:text-[#2B4461] px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm flex items-center justify-center space-x-3 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 ease-out shadow-xl dark:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
                   >
                     <span className="transition-all duration-500">{heroData[heroIndex].buttonText}</span>
                     <ArrowRight size={20} />
                   </Link>
                   <Link
                     href="/about"
-                    className="flex justify-center bg-transparent text-gray-900 dark:text-white border border-gray-300 dark:border-white/20 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-500 ease-out"
+                    className="flex justify-center bg-transparent text-gray-900 dark:text-white border border-gray-300 dark:border-white/20 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#2B4461]/5 dark:hover:bg-white/5 transition-colors duration-500 ease-out"
                   >
                     Discover Our Method
                   </Link>
@@ -236,7 +236,7 @@ export default function Home() {
               <ScrollReveal key={course.id} delay={idx * 150}>
                 <Link
                   href={`/domains/${course.slug}`}
-                  className="group block bg-white dark:bg-black/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
+                  className="group block bg-white dark:bg-[#2B4461]/40 rounded-3xl border border-gray-200 dark:border-white/[0.05] overflow-hidden hover:shadow-2xl dark:hover:bg-white/[0.03] dark:hover:border-[#E6C875]/30 transition-all duration-700 ease-out backdrop-blur-xl flex flex-col h-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] cursor-pointer"
                 >
                   <div className="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 dark:from-white/[0.01] to-transparent border-b border-gray-100 dark:border-white/[0.02]">
                     <Image 
@@ -246,8 +246,8 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-black/80 to-transparent z-10"></div>
-                    <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-black/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/60 dark:from-[#2B4461]/80 to-transparent z-10"></div>
+                    <div className="absolute top-6 left-6 z-20 bg-white/80 dark:bg-[#2B4461]/50 backdrop-blur-md border border-gray-200 dark:border-white/10 px-4 py-1.5 rounded-full flex items-center shadow-lg">
                       <span className="text-[10px] font-bold uppercase tracking-widest text-gray-900 dark:text-white">{course.length}</span>
                     </div>
                   </div>
@@ -255,7 +255,7 @@ export default function Home() {
                   <div className="p-10 relative z-20 flex-grow flex flex-col justify-between">
                     <div>
                       <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E6C875] mb-4">{course.tag}</div>
-                      <h3 className="text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-4 group-hover:text-black dark:group-hover:text-white transition-colors duration-500">{course.title}</h3>
+                      <h3 className="text-3xl font-medium tracking-tight text-gray-900 dark:text-white mb-4 group-hover:text-[#2B4461] dark:group-hover:text-white transition-colors duration-500">{course.title}</h3>
                       <p className="text-gray-600 dark:text-white/50 font-light text-base mb-8 leading-relaxed line-clamp-3">{course.about}</p>
 
                       <div className="flex flex-wrap gap-2 mb-8">
@@ -281,7 +281,7 @@ export default function Home() {
       </div>
 
       {/* VED UPSKILLING Offers */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gradient-to-b from-gray-50 dark:from-black to-white dark:to-black/50">
+      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gradient-to-b from-gray-50 dark:from-[#2B4461] to-white dark:to-[#2B4461]/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-24">
@@ -404,7 +404,7 @@ export default function Home() {
       </div>
 
       {/* Testimonials */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-black/20">
+      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#2B4461]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="mb-24 max-w-3xl">
@@ -420,8 +420,8 @@ export default function Home() {
               <div 
                 className="w-full overflow-hidden relative"
                 style={{ 
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', 
-                  maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, #2B4461 10%, #2B4461 90%, transparent)', 
+                  maskImage: 'linear-gradient(to right, transparent, #2B4461 10%, #2B4461 90%, transparent)' 
                 }}
               >
                 <div className="flex w-max animate-marquee hover:[animation-play-state:paused] will-change-transform transform-gpu">
@@ -457,8 +457,8 @@ export default function Home() {
               <div 
                 className="w-full overflow-hidden relative"
                 style={{ 
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', 
-                  maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, #2B4461 10%, #2B4461 90%, transparent)', 
+                  maskImage: 'linear-gradient(to right, transparent, #2B4461 10%, #2B4461 90%, transparent)' 
                 }}
               >
                 <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused] will-change-transform transform-gpu">
@@ -496,8 +496,8 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="flex items-center space-x-6 border-t border-gray-200 dark:border-white/10 pt-8 mt-auto">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${review.bg} rounded-full border border-black/10 dark:border-white/20 flex items-center justify-center overflow-hidden shadow-lg dark:shadow-[0_0_20px_rgba(230,200,117,0.2)]`}>
-                      <span className="text-white dark:text-black font-bold text-xl tracking-widest">{review.initials}</span>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${review.bg} rounded-full border border-[#2B4461]/10 dark:border-white/20 flex items-center justify-center overflow-hidden shadow-lg dark:shadow-[0_0_20px_rgba(230,200,117,0.2)]`}>
+                      <span className="text-white dark:text-[#2B4461] font-bold text-xl tracking-widest">{review.initials}</span>
                     </div>
                     <div>
                       <h4 className="text-gray-900 dark:text-white font-medium text-xl">{review.name}</h4>
@@ -534,7 +534,7 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-black/50">
+      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#2B4461]/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-24">

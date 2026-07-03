@@ -64,7 +64,7 @@ export default function ParticleCanvas() {
 
       draw() {
         const currentColors = themeRef.current === 'light'
-          ? ['#E6C875', '#000000', '#555555']
+          ? ['#E6C875', '#2B4461', '#555555']
           : ['#E6C875', '#ffffff', '#444444'];
         
         ctx!.fillStyle = currentColors[this.colorType];

@@ -83,8 +83,8 @@ const validateStep = (step: number, data: any) => {
 };
 
 // ─── Hyper-Premium Glassmorphic Styles ───
-const inputBase = "w-full bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[1.5rem] px-6 py-5 focus:outline-none focus:border-[#E6C875] focus:bg-white dark:focus:bg-black/80 transition-all duration-500 font-light placeholder:text-gray-400 dark:placeholder:text-white/30 hover:border-[#E6C875]/50 hover:bg-white dark:hover:bg-white/[0.05] shadow-inner dark:shadow-[inset_0_2px_20px_rgba(255,255,255,0.02)]";
-const selectBase = "w-full bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[1.5rem] px-6 py-5 focus:outline-none focus:border-[#E6C875] focus:bg-white dark:focus:bg-black/80 transition-all duration-500 appearance-none font-light hover:border-[#E6C875]/50 hover:bg-white dark:hover:bg-white/[0.05] shadow-inner dark:shadow-[inset_0_2px_20px_rgba(255,255,255,0.02)] cursor-pointer";
+const inputBase = "w-full bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[1.5rem] px-6 py-5 focus:outline-none focus:border-[#E6C875] focus:bg-white dark:focus:bg-[#2B4461]/80 transition-all duration-500 font-light placeholder:text-gray-400 dark:placeholder:text-white/30 hover:border-[#E6C875]/50 hover:bg-white dark:hover:bg-white/[0.05] shadow-inner dark:shadow-[inset_0_2px_20px_rgba(255,255,255,0.02)]";
+const selectBase = "w-full bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[1.5rem] px-6 py-5 focus:outline-none focus:border-[#E6C875] focus:bg-white dark:focus:bg-[#2B4461]/80 transition-all duration-500 appearance-none font-light hover:border-[#E6C875]/50 hover:bg-white dark:hover:bg-white/[0.05] shadow-inner dark:shadow-[inset_0_2px_20px_rgba(255,255,255,0.02)] cursor-pointer";
 const errorText = "text-red-400 text-sm mt-3 font-medium tracking-wide flex items-center";
 
 // ─── Step Progress Indicator ───
@@ -94,8 +94,8 @@ const StepIndicator = ({ currentStep, totalSteps }: { currentStep: number, total
       {stepLabels.map((label, i) => (
         <div key={i} className="flex flex-col items-center flex-1 relative z-10">
           <div className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-700 ease-out border backdrop-blur-md ${
-            i < currentStep ? 'bg-[#E6C875] text-black border-[#E6C875] scale-90' :
-            i === currentStep ? 'bg-[#E6C875] text-black border-[#E6C875] scale-110 shadow-[0_0_30px_rgba(230,200,117,0.5)]' :
+            i < currentStep ? 'bg-[#E6C875] text-[#2B4461] border-[#E6C875] scale-90' :
+            i === currentStep ? 'bg-[#E6C875] text-[#2B4461] border-[#E6C875] scale-110 shadow-[0_0_30px_rgba(230,200,117,0.5)]' :
             'bg-white/50 dark:bg-white/5 text-gray-400 dark:text-white/30 border-gray-200 dark:border-white/10'
           }`}>
             {i < currentStep ? <CheckCircle size={20} /> : i + 1}
@@ -225,7 +225,7 @@ export default function ApplyView() {
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
-              <div className="bg-white/80 dark:bg-black/40 border border-gray-200 dark:border-white/[0.08] rounded-[3rem] sm:rounded-[4rem] p-8 sm:p-14 md:p-20 backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_80px_rgba(0,0,0,0.8)] relative overflow-hidden">
+              <div className="bg-white/80 dark:bg-[#2B4461]/40 border border-gray-200 dark:border-white/[0.08] rounded-[3rem] sm:rounded-[4rem] p-8 sm:p-14 md:p-20 backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_80px_rgba(0,0,0,0.8)] relative overflow-hidden">
                 
                 {/* Inner Glow border effect */}
                 <div className="absolute inset-0 border border-white/40 dark:border-white/5 rounded-[3rem] sm:rounded-[4rem] pointer-events-none"></div>
@@ -330,7 +330,7 @@ export default function ApplyView() {
                               onClick={() => toggleLanguage(lang)}
                               className={`px-6 py-4 rounded-[1.5rem] text-sm font-bold tracking-wider uppercase border transition-all duration-500 ease-out ${
                                 formData.languages.includes(lang as never)
-                                  ? 'bg-[#E6C875] border-[#E6C875] text-black shadow-[0_0_20px_rgba(230,200,117,0.3)] scale-105'
+                                  ? 'bg-[#E6C875] border-[#E6C875] text-[#2B4461] shadow-[0_0_20px_rgba(230,200,117,0.3)] scale-105'
                                   : 'bg-white/50 dark:bg-white/[0.02] border-gray-200 dark:border-white/10 text-gray-600 dark:text-white/50 hover:border-[#E6C875]/50 hover:text-[#E6C875] hover:bg-white dark:hover:bg-white/[0.05]'
                               }`}
                             >
@@ -409,7 +409,7 @@ export default function ApplyView() {
                               }`}
                             >
                               {idx === 2 && (
-                                <div className="absolute top-0 right-0 bg-[#E6C875] text-black text-[9px] uppercase tracking-[0.2em] font-bold px-4 py-1.5 rounded-bl-xl shadow-lg">
+                                <div className="absolute top-0 right-0 bg-[#E6C875] text-[#2B4461] text-[9px] uppercase tracking-[0.2em] font-bold px-4 py-1.5 rounded-bl-xl shadow-lg">
                                   Highest ROI
                                 </div>
                               )}
@@ -480,7 +480,7 @@ export default function ApplyView() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-sm rounded-full px-10 py-5 flex items-center gap-3 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                      className="bg-[#2B4461] dark:bg-white text-white dark:text-[#2B4461] font-bold uppercase tracking-widest text-sm rounded-full px-10 py-5 flex items-center gap-3 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-105 transition-all duration-500 shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
                     >
                       Continue Phase <ChevronRight size={18} />
                     </button>
@@ -489,7 +489,7 @@ export default function ApplyView() {
                       type="button"
                       onClick={handleSubmit}
                       disabled={isSubmitting}
-                      className="bg-[#E6C875] text-black font-bold uppercase tracking-widest text-sm rounded-full px-10 py-5 flex items-center gap-3 hover:scale-105 transition-all duration-500 shadow-[0_0_30px_rgba(230,200,117,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                      className="bg-[#E6C875] text-[#2B4461] font-bold uppercase tracking-widest text-sm rounded-full px-10 py-5 flex items-center gap-3 hover:scale-105 transition-all duration-500 shadow-[0_0_30px_rgba(230,200,117,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                     >
                       {isSubmitting ? (
                         <>
@@ -522,7 +522,7 @@ export default function ApplyView() {
                 Based on your selected communication vector, an execution engineer will initiate contact.
               </p>
               
-              <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-black/[0.03] dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 backdrop-blur-md">
+              <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-[#2B4461]/[0.03] dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 backdrop-blur-md">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#E6C875] animate-pulse shadow-[0_0_10px_#E6C875]" />
                 <span className="text-gray-900 dark:text-white text-sm font-bold uppercase tracking-widest">SLA: 24–48 Hours</span>
               </div>

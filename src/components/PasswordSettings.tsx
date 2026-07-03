@@ -61,7 +61,7 @@ export default function PasswordSettings({ role }: { role: "admin" | "hr" }) {
             required
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            className="w-full bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#E6C875]"
+            className="w-full bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#E6C875]"
           />
         </div>
         <div>
@@ -71,7 +71,7 @@ export default function PasswordSettings({ role }: { role: "admin" | "hr" }) {
             required
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#E6C875]"
+            className="w-full bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#E6C875]"
           />
         </div>
         <div>
@@ -81,7 +81,7 @@ export default function PasswordSettings({ role }: { role: "admin" | "hr" }) {
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full bg-gray-50 dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#E6C875]"
+            className="w-full bg-gray-50 dark:bg-[#2B4461]/50 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#E6C875]"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function PasswordSettings({ role }: { role: "admin" | "hr" }) {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="w-full bg-[#E6C875] hover:bg-[#d4b55e] text-black font-bold py-3 rounded-xl transition-all disabled:opacity-50 mt-4 uppercase tracking-widest text-sm"
+          className="w-full bg-[#E6C875] hover:bg-[#d4b55e] text-[#2B4461] font-bold py-3 rounded-xl transition-all disabled:opacity-50 mt-4 uppercase tracking-widest text-sm"
         >
           {status === "loading" ? "Updating..." : "Update Password"}
         </button>
