@@ -153,14 +153,33 @@ export default function HRPage() {
     }
   };
 
-  const handleDeleteJob = async (id: number) => {
+  const handleToggleArchive = async (e: React.MouseEvent, job: Job) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      const res = await fetch(`/api/jobs/${job.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, isActive: !job.isActive })
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to update job status');
+      }
+      fetchJobsAndApplications();
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
+  const handleDeleteJob = async (e: React.MouseEvent, id: number) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!confirm('Are you sure you want to delete this job and all its applications?')) return;
     
     try {
-      const res = await fetch(`/api/jobs/${id}`, {
+      const res = await fetch(`/api/jobs/${id}?password=${encodeURIComponent(password)}`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password })
       });
 
       if (!res.ok) {
@@ -177,7 +196,9 @@ export default function HRPage() {
     }
   };
 
-  const toggleJobExpanded = (id: number) => {
+  const toggleJobExpanded = (e: React.MouseEvent, id: number) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (expandedJobId === id) {
       setExpandedJobId(null);
     } else {
@@ -185,7 +206,9 @@ export default function HRPage() {
     }
   };
 
-  const handleEditJobClick = (job: Job) => {
+  const handleEditJobClick = (e: React.MouseEvent, job: Job) => {
+    e.preventDefault();
+    e.stopPropagation();
     setEditingJobId(job.id);
     setTitle(job.title);
     setDescription(job.description);
@@ -194,23 +217,6 @@ export default function HRPage() {
     setSalary(job.salary || '');
     setRequiresGithub(job.requiresGithub);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleToggleArchive = async (job: Job) => {
-    try {
-      const res = await fetch(`/api/jobs/${job.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password, isActive: !job.isActive })
-      });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Failed to update job status');
-      }
-      fetchJobsAndApplications();
-    } catch (err: any) {
-      alert(err.message);
-    }
   };
 
   if (!isAuthenticated) {
@@ -371,7 +377,7 @@ export default function HRPage() {
                     <div key={job.id} className="bg-white dark:bg-white/[0.02] rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden transition-all duration-300">
                       {/* Job Header */}
                       <div className="p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start group hover:bg-gray-50 dark:hover:bg-white/[0.01]">
-                        <div className="flex-1 mb-6 sm:mb-0 cursor-pointer" onClick={() => toggleJobExpanded(job.id)}>
+                        <div className="flex-1 mb-6 sm:mb-0 cursor-pointer" onClick={(e) => toggleJobExpanded(e, job.id)}>
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-[#E6C875] transition-colors">{job.title}</h3>
                             <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-white/70">
@@ -397,16 +403,16 @@ export default function HRPage() {
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <button onClick={() => toggleJobExpanded(job.id)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
+                          <button onClick={(e) => toggleJobExpanded(e, job.id)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
                             {expandedJobId === job.id ? <ChevronUp /> : <ChevronDown />}
                           </button>
-                          <button onClick={() => handleEditJobClick(job)} className="p-2 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all">
+                          <button onClick={(e) => handleEditJobClick(e, job)} className="p-2 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all">
                             <Edit2 className="w-5 h-5" />
                           </button>
-                          <button onClick={() => handleToggleArchive(job)} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="p-2 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all">
+                          <button onClick={(e) => handleToggleArchive(e, job)} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="p-2 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all">
                             {job.isActive ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
-                          <button onClick={() => handleDeleteJob(job.id)} title="Delete Job" className="p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all">
+                          <button onClick={(e) => handleDeleteJob(e, job.id)} title="Delete Job" className="p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all">
                             <Trash2 className="w-5 h-5" />
                           </button>
                         </div>

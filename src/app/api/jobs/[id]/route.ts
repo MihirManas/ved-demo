@@ -49,8 +49,8 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const body = await request.json();
-    const { password } = body;
+    const { searchParams } = new URL(request.url);
+    const password = searchParams.get('password');
 
     // Verify master password
     const correctPassword = await getHRPassword(prisma);
