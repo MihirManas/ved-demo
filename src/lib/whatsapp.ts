@@ -23,12 +23,19 @@ export async function sendWhatsAppTemplateMessage(
     return;
   }
 
+  // Auto-format Indian numbers: If exactly 10 digits, prepend +91
+  let formattedPhone = toPhoneNumber.replace(/[^0-9]/g, '');
+  if (formattedPhone.length === 10) {
+    formattedPhone = `91${formattedPhone}`;
+  }
+  const twilioFormattedPhone = `whatsapp:+${formattedPhone}`;
+
   try {
     const message = await client.messages.create({
       from: fromWhatsAppNumber,
       contentSid: contentSid,
       contentVariables: contentVariables,
-      to: toPhoneNumber
+      to: twilioFormattedPhone
     });
     
     console.log("Message sent via Twilio:", message.sid);

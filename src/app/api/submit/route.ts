@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { sendWhatsAppTemplateMessage } from '@/lib/whatsapp';
 
 export async function POST(req: Request) {
   try {
@@ -59,6 +60,17 @@ export async function POST(req: Request) {
       // Simulating a successful backend processing delay if no URL is provided yet
       console.log("No Webhook URL provided. Simulating success with payload:", payloadForAppScript);
       await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+
+    // Twilio WhatsApp Integration for Student Applications
+    try {
+      await sendWhatsAppTemplateMessage(
+        data.phone, 
+        'HXb5b62575e6e4ff6129ad7c8efe1f983e', // REPLACE with actual Student ContentSID
+        JSON.stringify({"1": data.fullName, "2": data.program})
+      );
+    } catch (err) {
+      console.error("Non-fatal: Twilio student alert failed to send", err);
     }
 
     return NextResponse.json({ 

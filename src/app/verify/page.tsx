@@ -147,7 +147,7 @@ export default function Verify() {
                 <div className="bg-gradient-to-br from-gray-50 dark:from-white/[0.03] to-gray-200 dark:to-transparent border border-gray-300 dark:border-white/10 p-8 rounded-3xl relative overflow-hidden shadow-2xl transform md:rotate-2 hover:rotate-0 transition-transform duration-700">
                   <div className="absolute inset-2 border border-[#E6C875]/30 rounded-2xl pointer-events-none"></div>
                   <div className="text-center pt-6 pb-10">
-                    <h5 className="text-[#E6C875] tracking-[0.4em] uppercase text-xs font-bold mb-6">Ved / Upskilling</h5>
+                    <h5 className="text-[#E6C875] tracking-[0.4em] uppercase text-xs font-bold mb-6">Ved Upskilling</h5>
                     <h3 className="text-2xl text-gray-900 dark:text-white font-medium mb-1">Certificate of Execution</h3>
                     <p className="text-gray-500 dark:text-white/50 text-[10px] tracking-widest uppercase mb-8">Blockchain Verified</p>
 

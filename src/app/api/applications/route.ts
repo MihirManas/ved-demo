@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 export const dynamic = 'force-dynamic';
 import { getHRPassword } from '@/lib/auth';
+import { sendWhatsAppTemplateMessage } from '@/lib/whatsapp';
 
 const prisma = new PrismaClient();
 
@@ -35,6 +36,17 @@ export async function POST(request: Request) {
         githubUrl,
       },
     });
+
+    // Twilio WhatsApp Integration for Job Applications
+    try {
+      await sendWhatsAppTemplateMessage(
+        phone, 
+        'HXb5b62575e6e4ff6129ad7c8efe1f983e', // REPLACE with actual Job ContentSID
+        JSON.stringify({"1": name, "2": job.title})
+      );
+    } catch (err) {
+      console.error("Non-fatal: Twilio job alert failed to send", err);
+    }
 
     return NextResponse.json({ success: true, application });
   } catch (error) {

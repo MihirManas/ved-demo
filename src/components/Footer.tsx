@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-20 mb-24">
           <div className="md:col-span-2">
             <span className="text-4xl font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
-              Ved<span className="text-[#E6C875] mx-2 font-light">/</span>Upskilling
+              Ved Upskilling
             </span>
             <p className="text-gray-600 dark:text-white/50 max-w-lg font-light text-xl leading-relaxed">
               Elevating careers through precision engineering, rigorous curriculums, and real-world execution. The apex of technical education.
