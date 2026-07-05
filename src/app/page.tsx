@@ -158,7 +158,7 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="relative min-h-[600px] py-12 md:py-0 rounded-3xl md:rounded-[3rem] border border-gray-200 dark:border-white/10 flex items-center justify-center group overflow-hidden bg-white/50 dark:bg-[#0a0a0a]/60 backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_100px_rgba(230,200,117,0.05)]">
+              <div className="relative min-h-[600px] py-12 md:py-0 rounded-3xl md:rounded-[3rem] border border-gray-200 dark:border-white/10 flex items-center justify-center group overflow-hidden bg-white/50 dark:bg-white/[0.02] backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_100px_rgba(230,200,117,0.05)]">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#E6C875]/10 rounded-full blur-[80px] group-hover:bg-[#E6C875]/20 group-hover:scale-110 transition-all duration-1000"></div>
                 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
