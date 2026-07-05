@@ -433,14 +433,14 @@ export default function HRPage() {
                           <button onClick={(e) => toggleJobExpanded(e, job.id)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
                             {expandedJobId === job.id ? <ChevronUp /> : <ChevronDown />}
                           </button>
-                          <button type="button" onClick={(e) => handleEditJobClick(e, job)} disabled={loading} className="relative z-10 pointer-events-auto cursor-pointer p-2 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all disabled:opacity-50">
-                            <Edit2 className="w-5 h-5 pointer-events-none" />
+                          <button type="button" onClick={(e) => handleEditJobClick(e, job)} disabled={loading} className="relative z-10 pointer-events-auto cursor-pointer px-3 py-1.5 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all disabled:opacity-50 text-xs font-bold uppercase tracking-wider">
+                            <Edit2 className="w-4 h-4 inline-block mr-1" /> Edit
                           </button>
-                          <button type="button" onClick={(e) => handleToggleArchive(e, job)} disabled={loading} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="relative z-10 pointer-events-auto cursor-pointer p-2 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all disabled:opacity-50">
-                            {job.isActive ? <EyeOff className="w-5 h-5 pointer-events-none" /> : <Eye className="w-5 h-5 pointer-events-none" />}
+                          <button type="button" onClick={(e) => handleToggleArchive(e, job)} disabled={loading} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="relative z-10 pointer-events-auto cursor-pointer px-3 py-1.5 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all disabled:opacity-50 text-xs font-bold uppercase tracking-wider">
+                            {job.isActive ? 'Archive' : 'Unarchive'}
                           </button>
-                          <button type="button" onClick={(e) => handleDeleteJob(e, job.id)} disabled={loading} title="Delete Job" className="relative z-10 pointer-events-auto cursor-pointer p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all disabled:opacity-50">
-                            <Trash2 className="w-5 h-5 pointer-events-none" />
+                          <button type="button" onClick={(e) => handleDeleteJob(e, job.id)} disabled={loading} title="Delete Job" className="relative z-10 pointer-events-auto cursor-pointer px-3 py-1.5 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-100 dark:hover:bg-red-900/40 hover:border-red-300 dark:hover:border-red-900 transition-all disabled:opacity-50 text-xs font-bold uppercase tracking-wider">
+                            Delete
                           </button>
                         </div>
                       </div>
