@@ -3,16 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -22,8 +17,6 @@ export default function Navbar() {
     { href: '/careers', label: 'Careers' },
     { href: '/contact', label: 'Contact' }
   ];
-
-  const currentTheme = mounted ? resolvedTheme : 'light';
 
   return (
     <nav className="fixed w-full z-50 bg-white/80 dark:bg-[#1F3145]/60 backdrop-blur-2xl border-b border-gray-200 dark:border-white/5 transition-all duration-500">
@@ -52,17 +45,6 @@ export default function Navbar() {
               );
             })}
 
-            {mounted && (
-              <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-[#1F3145]/5 dark:hover:bg-white/5 transition-colors mr-2">
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 -translate-x-10 opacity-0 -rotate-90' : 'translate-y-0 translate-x-0 opacity-100 rotate-0'}`}>
-                  <Sun size={20} className="text-[#E6C875]" />
-                </div>
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-0 translate-x-0 opacity-100 rotate-0' : 'translate-y-10 translate-x-10 opacity-0 rotate-90'}`}>
-                  <Moon size={20} className="text-gray-500 dark:text-white/80" />
-                </div>
-              </button>
-            )}
-
             <Link
               href="/apply"
               className="bg-[#1F3145] dark:bg-white hover:bg-[#E6C875] dark:hover:bg-[#E6C875] text-white dark:text-[#1F3145] px-8 py-3 rounded-full text-sm uppercase tracking-widest font-bold transition-all duration-500 ease-out shadow-lg dark:shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[#E6C875]/30">
@@ -71,16 +53,6 @@ export default function Navbar() {
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
-            {mounted && (
-              <button onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')} className="relative w-10 h-10 flex items-center justify-center overflow-hidden rounded-full hover:bg-[#1F3145]/5 dark:hover:bg-white/5 transition-colors">
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-10 -translate-x-10 opacity-0 -rotate-90' : 'translate-y-0 translate-x-0 opacity-100 rotate-0'}`}>
-                  <Sun size={24} className="text-[#E6C875]" />
-                </div>
-                <div className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${currentTheme === 'dark' ? 'translate-y-0 translate-x-0 opacity-100 rotate-0' : 'translate-y-10 translate-x-10 opacity-0 rotate-90'}`}>
-                  <Moon size={24} className="text-gray-500 dark:text-white/80" />
-                </div>
-              </button>
-            )}
             <button onClick={() => setIsOpen(!isOpen)} className="text-gray-600 dark:text-white/80 transition-colors">
               {isOpen ? <X size={28} strokeWidth={1.5} /> : <Menu size={28} strokeWidth={1.5} />}
             </button>

@@ -85,8 +85,8 @@ export default function RootLayout({
         <TrackVisit />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <ContentProtection>
