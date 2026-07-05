@@ -25,7 +25,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center cursor-pointer group">
             <div className="flex flex-col">
               <span id="navbar-logo" className="text-3xl font-medium tracking-tight text-gray-900 dark:text-white flex items-center">
-                <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[65px] w-auto mr-[0.28em] object-contain" />
+                <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[65px] w-auto mr-[0.11em] object-contain" />
                 Ved Upskilling
               </span>
             </div>
