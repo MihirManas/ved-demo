@@ -156,6 +156,8 @@ export default function HRPage() {
   const handleToggleArchive = async (e: React.MouseEvent, job: Job) => {
     e.preventDefault();
     e.stopPropagation();
+    setLoading(true);
+    setError('');
     try {
       const res = await fetch(`/api/jobs/${job.id}`, {
         method: 'PATCH',
@@ -166,18 +168,21 @@ export default function HRPage() {
         const data = await res.json();
         throw new Error(data.error || 'Failed to update job status');
       }
-      fetchJobsAndApplications();
+      await fetchJobsAndApplications();
     } catch (err: any) {
       setError(err.message);
-      alert(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDeleteJob = async (e: React.MouseEvent, id: number) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!confirm('Are you sure you want to delete this job and all its applications?')) return;
     
+    // Use a simple prompt-less delete for now to ensure it's not blocked by browser popup blockers
+    setLoading(true);
+    setError('');
     try {
       const res = await fetch(`/api/jobs/${id}?password=${encodeURIComponent(password)}`, {
         method: 'DELETE',
@@ -199,13 +204,14 @@ export default function HRPage() {
         setRequiresGithub(false);
       }
 
-      fetchJobsAndApplications();
+      await fetchJobsAndApplications();
     } catch (err: any) {
       setError(err.message);
-      alert(err.message);
       if (err.message.includes('Unauthorized')) {
         setIsAuthenticated(false);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -427,13 +433,13 @@ export default function HRPage() {
                           <button onClick={(e) => toggleJobExpanded(e, job.id)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
                             {expandedJobId === job.id ? <ChevronUp /> : <ChevronDown />}
                           </button>
-                          <button onClick={(e) => handleEditJobClick(e, job)} className="p-2 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all">
+                          <button type="button" onClick={(e) => handleEditJobClick(e, job)} disabled={loading} className="p-2 text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all disabled:opacity-50">
                             <Edit2 className="w-5 h-5" />
                           </button>
-                          <button onClick={(e) => handleToggleArchive(e, job)} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="p-2 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all">
+                          <button type="button" onClick={(e) => handleToggleArchive(e, job)} disabled={loading} title={job.isActive ? "Archive Job" : "Unarchive Job"} className="p-2 text-yellow-600 hover:text-yellow-700 dark:hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-xl transition-all disabled:opacity-50">
                             {job.isActive ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
-                          <button onClick={(e) => handleDeleteJob(e, job.id)} title="Delete Job" className="p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all">
+                          <button type="button" onClick={(e) => handleDeleteJob(e, job.id)} disabled={loading} title="Delete Job" className="p-2 bg-white dark:bg-transparent border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-900 transition-all disabled:opacity-50">
                             <Trash2 className="w-5 h-5" />
                           </button>
                         </div>
