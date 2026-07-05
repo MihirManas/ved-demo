@@ -109,7 +109,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative min-h-screen flex flex-col justify-center pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <ScrollReveal delay={100}>
               <div>
                 <div className="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-[#1F3145]/[0.03] dark:bg-white/[0.03] border border-[#1F3145]/10 dark:border-white/[0.08] mb-8 backdrop-blur-md">
@@ -158,7 +158,7 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="relative min-h-[600px] py-12 md:py-0 rounded-[3rem] border border-gray-200 dark:border-white/10 flex items-center justify-center group overflow-hidden bg-white/50 dark:bg-[#0a0a0a]/60 backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_100px_rgba(230,200,117,0.05)]">
+              <div className="relative min-h-[600px] py-12 md:py-0 rounded-3xl md:rounded-[3rem] border border-gray-200 dark:border-white/10 flex items-center justify-center group overflow-hidden bg-white/50 dark:bg-[#0a0a0a]/60 backdrop-blur-3xl shadow-2xl dark:shadow-[0_0_100px_rgba(230,200,117,0.05)]">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#E6C875]/10 rounded-full blur-[80px] group-hover:bg-[#E6C875]/20 group-hover:scale-110 transition-all duration-1000"></div>
                 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -214,12 +214,12 @@ export default function Home() {
       </div>
 
       {/* Featured Courses Section */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.01]">
+      <div className="py-20 md:py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/[0.01]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="flex flex-col md:flex-row justify-between items-end mb-16">
               <div>
-                <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Ved Upskilling Most Enrolled Domains.</h2>
+                <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Ved Upskilling Most Enrolled Domains.</h2>
                 <p className="text-gray-600 dark:text-white/60 text-xl font-light max-w-2xl leading-relaxed">Our most rigorous, high-demand execution protocols. Designed specifically for enterprise-level scaling.</p>
               </div>
               <Link
@@ -281,12 +281,12 @@ export default function Home() {
       </div>
 
       {/* VED UPSKILLING Offers */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gradient-to-b from-gray-50 dark:from-[#1F3145] to-white dark:to-[#1F3145]/50">
+      <div className="py-20 md:py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gradient-to-b from-gray-50 dark:from-[#1F3145] to-white dark:to-[#1F3145]/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-24">
-              <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Ved Upskilling Offers.</h2>
-              <p className="text-gray-600 dark:text-white/60 text-2xl max-w-3xl mx-auto font-light leading-relaxed">Everything you need to turn your ambitions into reality.</p>
+            <div className="text-center mb-16 md:mb-24">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Ved Upskilling Offers.</h2>
+              <p className="text-gray-600 dark:text-white/60 text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed">Everything you need to turn your ambitions into reality.</p>
             </div>
           </ScrollReveal>
 
@@ -316,9 +316,9 @@ export default function Home() {
       </div>
 
       {/* Why Choose Ved Upskilling */}
-      <div className="py-24 relative z-10 bg-[#E6C875]/5 dark:bg-[#E6C875]/[0.02] border-y border-[#E6C875]/20 dark:border-[#E6C875]/10">
+      <div className="py-16 md:py-24 relative z-10 bg-[#E6C875]/5 dark:bg-[#E6C875]/[0.02] border-y border-[#E6C875]/20 dark:border-[#E6C875]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <ScrollReveal>
               <div>
                 <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Why Choose Ved Upskilling?</h2>
@@ -404,17 +404,17 @@ export default function Home() {
       </div>
 
       {/* Testimonials */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#1F3145]/20">
+      <div className="py-20 md:py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#1F3145]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="mb-24 max-w-3xl">
-              <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Proven Trajectories.</h2>
-              <p className="text-gray-600 dark:text-white/60 text-2xl font-light leading-relaxed">Our alumni don't just find jobs; they dictate the architectural decisions at the world's leading technological firms.</p>
+            <div className="mb-16 md:mb-24 max-w-3xl">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-8">Proven Trajectories.</h2>
+              <p className="text-gray-600 dark:text-white/60 text-xl md:text-2xl font-light leading-relaxed">Our alumni don't just find jobs; they dictate the architectural decisions at the world's leading technological firms.</p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-8 md:p-12 mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
+            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
               <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Ved Upskilled Candidates Are Working In</p>
               
               <div 
@@ -451,7 +451,7 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-[3rem] p-8 md:p-12 mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
+            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
               <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Recognized By</p>
               
               <div 
@@ -485,10 +485,10 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10">
             {(showAllReviews ? reviews : reviews.slice(0, 2)).map((review, idx) => (
               <ScrollReveal key={idx} delay={(idx % 2 + 1) * 100}>
-                <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] p-12 rounded-[3rem] shadow-xl dark:shadow-none hover:shadow-2xl dark:hover:bg-white/[0.03] transition-all backdrop-blur-xl h-full flex flex-col justify-between">
+                <div className="bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] p-8 md:p-12 rounded-3xl md:rounded-[3rem] shadow-xl dark:shadow-none hover:shadow-2xl dark:hover:bg-white/[0.03] transition-all backdrop-blur-xl h-full flex flex-col justify-between">
                   <div>
                     <Quote className="text-[#E6C875]/50 dark:text-[#E6C875]/30 w-12 h-12 mb-8" />
                     <p className="text-gray-700 dark:text-white/80 text-xl font-light leading-relaxed mb-12">
@@ -534,12 +534,12 @@ export default function Home() {
       </div>
 
       {/* FAQ Section */}
-      <div className="py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#1F3145]/50">
+      <div className="py-20 md:py-40 relative z-10 border-t border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-[#1F3145]/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <div className="text-center mb-24">
-              <h2 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Frequently Asked Questions.</h2>
-              <p className="text-gray-600 dark:text-white/60 text-xl font-light">Clarifying the execution protocol.</p>
+            <div className="text-center mb-16 md:mb-24">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">Frequently Asked Questions.</h2>
+              <p className="text-gray-600 dark:text-white/60 text-lg md:text-xl font-light">Clarifying the execution protocol.</p>
             </div>
           </ScrollReveal>
 
