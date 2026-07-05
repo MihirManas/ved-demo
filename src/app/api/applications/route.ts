@@ -48,6 +48,35 @@ export async function POST(request: Request) {
       console.error("Non-fatal: Twilio job alert failed to send", err);
     }
 
+    // Sync to Google Sheet via Apps Script Webhook
+    try {
+      const webhookUrl = process.env.GOOGLE_SCRIPT_WEBAPP_URL;
+      if (webhookUrl) {
+        // Send data in the background (no await) to avoid blocking the user
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Apps Script handles text/plain better sometimes to avoid CORS preflight, but server-to-server doesn't have CORS. We'll stick to application/json
+          body: JSON.stringify({
+            jobTitle: `${job.title} (ID: ${job.id})`,
+            data: {
+              Name: name,
+              Email: email,
+              Phone: phone,
+              Address: address,
+              ResumeLink: resumeLink,
+              LinkedIn: linkedinUrl || 'N/A',
+              GitHub: githubUrl || 'N/A',
+              Date: new Date().toISOString()
+            }
+          })
+        }).catch(err => console.error("Non-fatal fetch error:", err));
+      } else {
+        console.warn("GOOGLE_SCRIPT_WEBAPP_URL is not set, skipping Google Sheet sync.");
+      }
+    } catch (err) {
+      console.error("Non-fatal: Failed to sync with Google Sheet", err);
+    }
+
     return NextResponse.json({ success: true, application });
   } catch (error) {
     console.error("Error submitting application:", error);
