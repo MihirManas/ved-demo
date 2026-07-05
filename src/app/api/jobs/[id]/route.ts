@@ -63,6 +63,10 @@ export async function DELETE(
       return NextResponse.json({ error: "Invalid job ID" }, { status: 400 });
     }
 
+    await prisma.application.deleteMany({
+      where: { jobId: id },
+    });
+
     await prisma.job.delete({
       where: { id },
     });

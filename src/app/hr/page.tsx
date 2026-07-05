@@ -187,6 +187,17 @@ export default function HRPage() {
         throw new Error(data.error || 'Failed to delete job');
       }
 
+      if (expandedJobId === id) setExpandedJobId(null);
+      if (editingJobId === id) {
+        setEditingJobId(null);
+        setTitle('');
+        setDescription('');
+        setLocation('');
+        setType('Full-time');
+        setSalary('');
+        setRequiresGithub(false);
+      }
+
       fetchJobsAndApplications();
     } catch (err: any) {
       alert(err.message);
