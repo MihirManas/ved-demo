@@ -168,6 +168,7 @@ export default function HRPage() {
       }
       fetchJobsAndApplications();
     } catch (err: any) {
+      setError(err.message);
       alert(err.message);
     }
   };
@@ -200,6 +201,7 @@ export default function HRPage() {
 
       fetchJobsAndApplications();
     } catch (err: any) {
+      setError(err.message);
       alert(err.message);
       if (err.message.includes('Unauthorized')) {
         setIsAuthenticated(false);
@@ -378,6 +380,14 @@ export default function HRPage() {
                 <Briefcase className="w-5 h-5 mr-2 text-gray-400" />
                 Active Roles & Applications
               </h2>
+              {error && (
+                <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm rounded-xl border border-red-100 dark:border-red-900/50 flex justify-between items-center">
+                  <span>{error}</span>
+                  <button onClick={() => setError('')} className="p-1 hover:bg-red-100 dark:hover:bg-red-900/40 rounded-lg">
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
               <div className="space-y-6">
                 {jobs.length === 0 ? (
                   <div className="p-12 text-center border border-dashed border-gray-300 dark:border-white/20 rounded-2xl">

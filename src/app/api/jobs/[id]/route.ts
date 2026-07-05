@@ -10,11 +10,13 @@ export async function PATCH(
 ) {
   try {
     const body = await request.json();
+    console.log("PATCH request body:", body);
     const { password, title, description, location, type, salary, requiresGithub, isActive } = body;
 
     // Verify master password
     const correctPassword = await getHRPassword(prisma);
     if (password !== correctPassword) {
+      console.log("Unauthorized PATCH");
       return NextResponse.json({ error: "Unauthorized: Invalid master password" }, { status: 401 });
     }
 
@@ -32,11 +34,14 @@ export async function PATCH(
     if (requiresGithub !== undefined) updateData.requiresGithub = !!requiresGithub;
     if (isActive !== undefined) updateData.isActive = !!isActive;
 
+    console.log("PATCH updateData:", updateData);
+
     const updatedJob = await prisma.job.update({
       where: { id },
       data: updateData,
     });
 
+    console.log("PATCH success:", updatedJob.id);
     return NextResponse.json({ success: true, job: updatedJob });
   } catch (error) {
     console.error("Error updating job:", error);
@@ -51,25 +56,30 @@ export async function DELETE(
   try {
     const { searchParams } = new URL(request.url);
     const password = searchParams.get('password');
+    console.log("DELETE password param:", password);
 
     // Verify master password
     const correctPassword = await getHRPassword(prisma);
     if (password !== correctPassword) {
+      console.log("Unauthorized DELETE");
       return NextResponse.json({ error: "Unauthorized: Invalid master password" }, { status: 401 });
     }
 
     const id = parseInt(params.id, 10);
+    console.log("DELETE job ID:", id);
     if (isNaN(id)) {
       return NextResponse.json({ error: "Invalid job ID" }, { status: 400 });
     }
 
-    await prisma.application.deleteMany({
+    const deletedApps = await prisma.application.deleteMany({
       where: { jobId: id },
     });
+    console.log("DELETE deleted applications:", deletedApps.count);
 
-    await prisma.job.delete({
+    const deletedJob = await prisma.job.delete({
       where: { id },
     });
+    console.log("DELETE success:", deletedJob.id);
 
     return NextResponse.json({ success: true });
   } catch (error) {
