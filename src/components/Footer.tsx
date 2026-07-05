@@ -4,11 +4,11 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-[#1F3145] border-t border-gray-200 dark:border-white/5 pt-32 pb-16 relative z-10 transition-colors duration-500">
+    <footer className="bg-gray-100 dark:bg-[#1F3145] border-t border-gray-200 dark:border-white/5 pt-16 md:pt-32 pb-16 relative z-10 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-20 mb-24">
+        <div className="grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-24">
           <div className="md:col-span-2">
-            <span className="text-4xl font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
+            <span className="text-3xl md:text-4xl font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
               <img src="/favicon.png" alt="Ved Upskilling Logo" className="h-[80px] w-auto mr-5 object-contain" />
               Ved Upskilling
             </span>

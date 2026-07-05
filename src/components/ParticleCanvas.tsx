@@ -18,15 +18,19 @@ export default function ParticleCanvas() {
     let particles: Particle[] = [];
     const mouse = { x: null as number | null, y: null as number | null, radius: 350, active: true };
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
       const target = e.target as HTMLElement;
-      // Disable cursor gravity if hovering over a UI card/slab
       if (target.closest('.rounded-\\[3rem\\], .rounded-3xl, .rounded-2xl, .backdrop-blur-sm, .backdrop-blur-md, .backdrop-blur-xl, button, a')) {
         mouse.active = false;
       } else {
         mouse.active = true;
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
+        if ('touches' in e) {
+          mouse.x = e.touches[0].clientX;
+          mouse.y = e.touches[0].clientY;
+        } else {
+          mouse.x = (e as MouseEvent).clientX;
+          mouse.y = (e as MouseEvent).clientY;
+        }
       }
     };
 
@@ -34,8 +38,11 @@ export default function ParticleCanvas() {
       mouse.active = false;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove as EventListener);
+    window.addEventListener('touchmove', handleMouseMove as EventListener, { passive: true });
+    window.addEventListener('touchstart', handleMouseMove as EventListener, { passive: true });
     window.addEventListener('mouseout', handleMouseOut);
+    window.addEventListener('touchend', handleMouseOut);
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -191,8 +198,11 @@ export default function ParticleCanvas() {
 
     return () => {
       window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove as EventListener);
+      window.removeEventListener('touchmove', handleMouseMove as EventListener);
+      window.removeEventListener('touchstart', handleMouseMove as EventListener);
       window.removeEventListener('mouseout', handleMouseOut);
+      window.removeEventListener('touchend', handleMouseOut);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
