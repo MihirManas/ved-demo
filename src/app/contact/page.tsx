@@ -1,7 +1,8 @@
 "use client";
 
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, ChevronDown } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { domainsData } from "@/constants/domainsData";
 
 export default function Contact() {
   return (
@@ -66,13 +67,18 @@ export default function Contact() {
                 <div>
                   <input type="email" placeholder="Professional Email" className="w-full bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[2rem] px-8 py-6 text-xl focus:outline-none focus:border-[#E6C875]/50 transition-colors font-light placeholder:text-gray-400 dark:placeholder:text-white/30" />
                 </div>
-                <div>
-                  <select className="w-full bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-white/50 rounded-[2rem] px-8 py-6 text-xl focus:outline-none focus:border-[#E6C875]/50 appearance-none font-light cursor-pointer">
-                    <option>Select Domain of Interest</option>
-                    <option>Full Stack Architecture</option>
-                    <option>Applied AI & Data Science</option>
-                    <option>Embedded Systems</option>
+                <div className="relative group">
+                  <select className="w-full bg-gray-50 dark:bg-[#1F3145]/50 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[2rem] px-8 py-6 text-xl focus:outline-none focus:border-[#E6C875]/50 appearance-none font-light cursor-pointer transition-colors focus:bg-white dark:focus:bg-[#1F3145] group-hover:border-[#E6C875]/30">
+                    <option value="" className="text-gray-500 dark:text-gray-400">Select Domain of Interest</option>
+                    {Object.values(domainsData).map((domain: any) => (
+                      <option key={domain.id} value={domain.id} className="text-gray-900 dark:text-white bg-white dark:bg-[#1F3145]">
+                        {domain.title}
+                      </option>
+                    ))}
                   </select>
+                  <div className="absolute inset-y-0 right-8 flex items-center pointer-events-none text-gray-400 dark:text-white/30 group-hover:text-[#E6C875] transition-colors">
+                    <ChevronDown size={24} strokeWidth={1.5} />
+                  </div>
                 </div>
                 <button className="w-full bg-[#1F3145] dark:bg-white text-white dark:text-[#1F3145] font-bold uppercase tracking-widest text-lg rounded-[2rem] px-8 py-7 mt-8 hover:bg-[#E6C875] dark:hover:bg-[#E6C875] hover:scale-[1.02] transition-all duration-500 shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                   Submit Inquiry
