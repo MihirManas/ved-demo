@@ -151,7 +151,7 @@ export default async function About() {
                 { step: "04", title: "Learn and Grow", desc: "Transformative learning from industry experts." },
                 { step: "05", title: "Achieve Excellence", desc: "Equip yourself to excel in your career." },
               ].map((process, i) => (
-                <div key={i} className="relative z-10 bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 p-8 rounded-3xl shadow-xl text-center group hover:-translate-y-2 transition-all duration-300">
+                <div key={i} className="relative z-10 bg-white dark:bg-white/[0.02] backdrop-blur-2xl border border-gray-200 dark:border-white/10 p-8 rounded-3xl shadow-xl text-center group hover:-translate-y-2 transition-all duration-300">
                   <div className="w-16 h-16 mx-auto bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-full flex items-center justify-center text-xl font-bold text-[#E6C875] mb-6 group-hover:scale-110 group-hover:bg-[#E6C875] group-hover:text-white transition-all duration-300">
                     {process.step}
                   </div>
