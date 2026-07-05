@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-24">
           <div className="md:col-span-2">
             <span className="text-3xl md:text-4xl font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
-              <img src="/favicon.png" alt="Ved Upskilling Logo" className="h-[80px] w-auto mr-5 object-contain" />
+              <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[80px] w-auto mr-[0.28em] object-contain" />
               Ved Upskilling
             </span>
             <p className="text-gray-600 dark:text-white/50 max-w-lg font-light text-xl leading-relaxed">
