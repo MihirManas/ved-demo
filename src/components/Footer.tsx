@@ -8,8 +8,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-24">
           <div className="md:col-span-2">
-            <span className="text-3xl md:text-4xl font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
-              <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[80px] w-auto mr-[0.11em] object-contain" />
+            <span className="text-[42px] font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
+              <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[80px] w-auto mr-[0.055em] object-contain" />
               Ved Upskilling
             </span>
             <p className="text-gray-600 dark:text-white/50 max-w-lg font-light text-xl leading-relaxed">
