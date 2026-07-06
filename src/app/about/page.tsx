@@ -34,7 +34,7 @@ export default async function About() {
         {/* Who We Are Section */}
         <ScrollReveal delay={100}>
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-40">
-            <div className="relative w-full aspect-square rounded-[4rem] overflow-hidden bg-white/5 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] p-8 shadow-2xl backdrop-blur-3xl">
+            <div className="relative w-full aspect-square rounded-[4rem] overflow-hidden bg-white/5 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] p-8 shadow-2xl backdrop-blur-3xl flex">
               <div className="absolute inset-0 bg-gradient-to-br from-[#E6C875]/20 to-transparent opacity-50"></div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
