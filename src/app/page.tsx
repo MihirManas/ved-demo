@@ -389,7 +389,7 @@ export default function Home() {
           <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12">
               <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
-                <p className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">25+</p>
+                <p className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">30+</p>
                 <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Emerging Domains</p>
               </div>
               <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
@@ -397,7 +397,7 @@ export default function Home() {
                 <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Industry Live Projects</p>
               </div>
               <div className="text-center md:border-r border-gray-200 dark:border-white/10 px-4">
-                <p className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">1200+</p>
+                <p className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter text-[#E6C875]">20k+</p>
                 <p className="text-gray-900 dark:text-white/80 text-sm md:text-base font-semibold mt-4 uppercase">Students Enrolled</p>
               </div>
               <div className="text-center px-4">
