@@ -32,9 +32,13 @@ export default async function CourseDetail({ params }: { params: { id: string } 
 
             <div className="flex flex-wrap gap-4 mt-12">
               {course.techs.map((tech: string) => (
-                <div key={tech} className="px-6 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/20 rounded-full text-sm font-bold uppercase tracking-[0.2em] text-gray-900 dark:text-white shadow-inner dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                <Link
+                  href={`/skills/${encodeURIComponent(tech)}`}
+                  key={tech} 
+                  className="px-6 py-3 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/20 rounded-full text-sm font-bold uppercase tracking-[0.2em] text-gray-900 dark:text-white shadow-inner dark:shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:bg-[#E6C875]/10 dark:hover:bg-[#E6C875]/10 hover:border-[#E6C875]/50 transition-all cursor-pointer"
+                >
                   {tech}
-                </div>
+                </Link>
               ))}
             </div>
           </div>

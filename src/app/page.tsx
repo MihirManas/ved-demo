@@ -13,11 +13,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { domainsData } from "@/constants/domainsData";
+import WebinarRegistrationModal from "@/components/WebinarRegistrationModal";
 
 export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isWebinarModalOpen, setIsWebinarModalOpen] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [siteContent, setSiteContent] = useState<Record<string, string>>({});
   const [featuredCourses, setFeaturedCourses] = useState<any[]>([]);
@@ -138,12 +140,12 @@ export default function Home() {
                     <span className="transition-all duration-500">{heroData[heroIndex].buttonText}</span>
                     <ArrowRight size={20} />
                   </Link>
-                  <Link
-                    href="/about"
+                  <button
+                    onClick={() => setIsWebinarModalOpen(true)}
                     className="flex justify-center bg-transparent text-gray-900 dark:text-white border border-gray-300 dark:border-white/20 px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1F3145]/5 dark:hover:bg-white/5 transition-colors duration-500 ease-out"
                   >
-                    Discover Our Method
-                  </Link>
+                    Register for Webinar
+                  </button>
                 </div>
 
                 <div className="mt-10 flex flex-wrap items-center gap-6 text-sm font-bold text-gray-900 dark:text-white/80">
@@ -260,7 +262,11 @@ export default function Home() {
 
                       <div className="flex flex-wrap gap-2 mb-8">
                         {course.techs.map((tech: string) => (
-                          <div key={tech} className="px-4 py-1.5 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-gray-600 dark:text-white/70 group-hover:border-[#E6C875]/30 transition-colors duration-500">
+                          <div 
+                            key={tech} 
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = `/skills/${encodeURIComponent(tech)}`; }}
+                            className="px-4 py-1.5 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-gray-600 dark:text-white/70 hover:border-[#E6C875]/50 hover:bg-[#E6C875]/10 dark:hover:bg-[#E6C875]/10 transition-colors duration-300 cursor-pointer"
+                          >
                             {tech}
                           </div>
                         ))}
@@ -573,6 +579,10 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </div>
+      <WebinarRegistrationModal 
+        isOpen={isWebinarModalOpen} 
+        onClose={() => setIsWebinarModalOpen(false)} 
+      />
     </div>
   );
 }
