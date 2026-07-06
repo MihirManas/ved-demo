@@ -34,13 +34,13 @@ export default async function About() {
         {/* Who We Are Section */}
         <ScrollReveal delay={100}>
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-40">
-            <div className="relative w-full aspect-square rounded-[4rem] overflow-hidden bg-white/5 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] p-8 shadow-2xl backdrop-blur-3xl flex">
+            <div className="relative w-full aspect-square rounded-[4rem] overflow-hidden bg-white/5 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] shadow-2xl backdrop-blur-3xl">
               <div className="absolute inset-0 bg-gradient-to-br from-[#E6C875]/20 to-transparent opacity-50"></div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="https://vedupskilling.in/wp-content/uploads/2025/01/who-are-you-e1736048697378.png" 
                 alt="Who We Are" 
-                className="w-full h-full object-cover rounded-3xl relative z-10"
+                className="absolute inset-8 w-[calc(100%-4rem)] h-[calc(100%-4rem)] object-cover rounded-3xl z-10"
               />
             </div>
             <div>
