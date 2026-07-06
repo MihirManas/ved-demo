@@ -13,7 +13,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/domains', label: 'Domains' },
-    { href: '/verify', label: 'Verifier' },
+    // { href: '/verify', label: 'Verifier' },
     { href: '/careers', label: 'Careers' },
     { href: '/contact', label: 'Contact' }
   ];

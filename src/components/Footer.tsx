@@ -21,7 +21,7 @@ export default function Footer() {
             <ul className="space-y-6 text-gray-600 dark:text-white/50 font-light text-lg">
               <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/about">About Mission</Link></li>
               <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/domains">Elite Domains</Link></li>
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/verify">Credential Verifier</Link></li>
+              {/* <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/verify">Credential Verifier</Link></li> */}
               <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/contact">Initiate Contact</Link></li>
             </ul>
           </div>
