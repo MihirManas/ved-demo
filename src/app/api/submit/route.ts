@@ -66,7 +66,7 @@ export async function POST(req: Request) {
     try {
       await sendWhatsAppTemplateMessage(
         data.phone, 
-        'HX62e26378bb8721ae22b37fd0e6f774ba', // Actual Student ContentSID
+        'HX750a8ebeae6dbe8c4e8bab4ade70524c', // Actual Student ContentSID
         JSON.stringify({"1": data.fullName, "2": data.program})
       );
 
