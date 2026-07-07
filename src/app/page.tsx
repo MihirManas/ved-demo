@@ -445,7 +445,7 @@ export default function Home() {
                           <img
                             src={college.src}
                             alt={college.name}
-                            className="max-h-full max-w-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300 mix-blend-multiply dark:mix-blend-normal"
+                            className="max-h-full max-w-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
                           />
                         </div>
                       ))}
