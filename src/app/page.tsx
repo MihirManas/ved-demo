@@ -421,6 +421,43 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Tied Up Colleges</p>
+              
+              <div 
+                className="w-full overflow-hidden relative"
+                style={{ 
+                  WebkitMaskImage: 'linear-gradient(to right, transparent, #1F3145 10%, #1F3145 90%, transparent)', 
+                  maskImage: 'linear-gradient(to right, transparent, #1F3145 10%, #1F3145 90%, transparent)' 
+                }}
+              >
+                <div className="flex w-max animate-marquee-reverse hover:[animation-play-state:paused] will-change-transform transform-gpu">
+                  {[...Array(2)].map((_, i) => (
+                    <div key={i} className="flex justify-around items-center gap-10 md:gap-20 px-5 md:px-10">
+                      {[
+                        { name: 'JAIN University', src: '/images/colleges/JAIN.webp' },
+                        { name: 'Bellary Business College', src: '/images/colleges/bellary-business-college.jpg' },
+                        { name: 'Sree Medha College', src: '/images/colleges/sree-medha-college.jpg' },
+                        { name: 'Sri Bhagawan Mahaveer Jain College', src: '/images/colleges/sri-bhagawan-mahaveer-jain-college.webp' },
+                        { name: 'Sri Raaja Raajan College of Education', src: '/images/colleges/sri-raaja-raajan-college-of-education.webp' },
+                        { name: 'Yavatmal Government Engineering College', src: '/images/colleges/yavatmal-government-engineering-college.webp' }
+                      ].map((college) => (
+                        <div key={`${i}-${college.name}`} className="relative group flex items-center justify-center w-32 h-16 md:w-48 md:h-24 bg-white dark:bg-[#f0f0f0] p-3 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 hover:-translate-y-1">
+                          <img
+                            src={college.src}
+                            alt={college.name}
+                            className="max-h-full max-w-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300 mix-blend-multiply dark:mix-blend-normal"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
               <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Ved Upskilling Candidates Are Working In</p>
               
               <div 
