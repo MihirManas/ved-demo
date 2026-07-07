@@ -25,67 +25,59 @@ async function getWikipediaData(skill: string) {
 export default async function SkillPage({ params }: { params: { skill: string } }) {
   const skillName = decodeURIComponent(params.skill);
   
-  // Wikipedia often struggles with just acronyms or tech names, so we can try multiple
-  let wikiData = await getWikipediaData(skillName);
+  const mappings: Record<string, string> = {
+    'Node.js': 'Node.js',
+    'React': 'React_(software)',
+    'ReactJS': 'React_(software)',
+    'MongoDB': 'MongoDB',
+    'Python': 'Python_(programming_language)',
+    'Django': 'Django_(web_framework)',
+    'REST APIs': 'REST',
+    'API': 'API',
+    'Express': 'Express.js',
+    'HTML5': 'HTML5',
+    'CSS3': 'CSS',
+    'JavaScript': 'JavaScript',
+    'Java': 'Java_(programming_language)',
+    'Spring': 'Spring_Framework',
+    'Spring Boot': 'Spring_Boot',
+    'PostgreSQL': 'PostgreSQL',
+    'MySQL': 'MySQL',
+    'SQL': 'SQL',
+    'NoSQL': 'NoSQL',
+    'AWS': 'Amazon_Web_Services',
+    'Azure': 'Microsoft_Azure',
+    'Kubernetes': 'Kubernetes',
+    'Docker': 'Docker_(software)',
+    'Pandas': 'Pandas_(software)',
+    'NumPy': 'NumPy',
+    'TensorFlow': 'TensorFlow',
+    'PyTorch': 'PyTorch',
+    'Scikit-Learn': 'Scikit-learn',
+    'Tableau': 'Tableau_Software',
+    'PowerBI': 'Microsoft_Power_BI',
+    'ROS': 'Robot_Operating_System',
+    'IoT': 'Internet_of_things',
+    'MQTT': 'MQTT',
+    'Verilog': 'Verilog',
+    'SystemVerilog': 'SystemVerilog',
+    'ASIC': 'Application-specific_integrated_circuit',
+    'FPGA': 'Field-programmable_gate_array',
+    'C/C++': 'C++',
+    'Kali Linux': 'Kali_Linux',
+    'Cryptography': 'Cryptography',
+    'Solidity': 'Solidity',
+    'Ethereum': 'Ethereum',
+    'Web3.js': 'Web3.js',
+    'Next.js': 'Next.js',
+    'Redux': 'Redux_(JavaScript_library)',
+    'Mongoose': 'Mongoose_(Node.js)'
+  };
   
-  // Some fallbacks for common problematic terms
-  if (!wikiData || wikiData.type === 'disambiguation' || wikiData.title === 'Not found.') {
-    const mappings: Record<string, string> = {
-      'Node.js': 'Node.js',
-      'React': 'React_(software)',
-      'ReactJS': 'React_(software)',
-      'MongoDB': 'MongoDB',
-      'Python': 'Python_(programming_language)',
-      'Django': 'Django_(web_framework)',
-      'REST APIs': 'REST',
-      'API': 'API',
-      'Express': 'Express.js',
-      'HTML5': 'HTML5',
-      'CSS3': 'CSS',
-      'JavaScript': 'JavaScript',
-      'Java': 'Java_(programming_language)',
-      'Spring': 'Spring_Framework',
-      'Spring Boot': 'Spring_Boot',
-      'PostgreSQL': 'PostgreSQL',
-      'MySQL': 'MySQL',
-      'SQL': 'SQL',
-      'NoSQL': 'NoSQL',
-      'AWS': 'Amazon_Web_Services',
-      'Azure': 'Microsoft_Azure',
-      'Kubernetes': 'Kubernetes',
-      'Docker': 'Docker_(software)',
-      'Pandas': 'Pandas_(software)',
-      'NumPy': 'NumPy',
-      'TensorFlow': 'TensorFlow',
-      'PyTorch': 'PyTorch',
-      'Scikit-Learn': 'Scikit-learn',
-      'Tableau': 'Tableau_Software',
-      'PowerBI': 'Microsoft_Power_BI',
-      'ROS': 'Robot_Operating_System',
-      'IoT': 'Internet_of_things',
-      'MQTT': 'MQTT',
-      'Verilog': 'Verilog',
-      'SystemVerilog': 'SystemVerilog',
-      'ASIC': 'Application-specific_integrated_circuit',
-      'FPGA': 'Field-programmable_gate_array',
-      'C/C++': 'C++',
-      'Kali Linux': 'Kali_Linux',
-      'Cryptography': 'Cryptography',
-      'Solidity': 'Solidity',
-      'Ethereum': 'Ethereum',
-      'Web3.js': 'Web3.js',
-      'Next.js': 'Next.js',
-      'Redux': 'Redux_(JavaScript_library)',
-      'Mongoose': 'Mongoose_(web_server)'
-    };
-    
-    // Find matching key case-insensitively just in case
-    const matchKey = Object.keys(mappings).find(key => key.toLowerCase() === skillName.toLowerCase());
-    
-    if (matchKey) {
-      wikiData = await getWikipediaData(mappings[matchKey]);
-    }
-  }
+  const matchKey = Object.keys(mappings).find(key => key.toLowerCase() === skillName.toLowerCase());
+  const searchName = matchKey ? mappings[matchKey] : skillName;
+  
+  let wikiData = await getWikipediaData(searchName);
 
   return (
     <div className="min-h-screen pt-32 pb-40 animate-in fade-in duration-1000 ease-out">
