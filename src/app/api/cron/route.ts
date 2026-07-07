@@ -22,7 +22,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ success: false, message: 'Twilio credentials missing' }, { status: 500 });
     }
 
-    const supportNumber = process.env.SUPPORT_WHATSAPP_NUMBER; // Must be formatted as whatsapp:+1234567890
+    const supportNumber = process.env.SUPPORT_TEAM_PHONE_NUMBER; // Must be formatted as whatsapp:+1234567890
 
     // Determine batch size based on how many have already been processed (Warm-up strategy)
     const processedCount = await prisma.campaignLead.count({
