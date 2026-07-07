@@ -22,6 +22,22 @@ export async function GET(request: Request) {
       return NextResponse.json({ success: false, message: 'Twilio credentials missing' }, { status: 500 });
     }
 
+    const supportNumber = process.env.SUPPORT_WHATSAPP_NUMBER; // Must be formatted as whatsapp:+1234567890
+
+    // Determine batch size based on how many have already been processed (Warm-up strategy)
+    const processedCount = await prisma.campaignLead.count({
+      where: { status: { not: 'PENDING' } }
+    });
+
+    let BATCH_SIZE = 50;
+    if (processedCount >= 300) {
+      BATCH_SIZE = 200; // 4th day and beyond
+    } else if (processedCount >= 150) {
+      BATCH_SIZE = 150; // 3rd day
+    } else if (processedCount >= 50) {
+      BATCH_SIZE = 100; // 2nd day
+    }
+
     // 1. Fetch the next batch of pending leads
     const leads = await prisma.campaignLead.findMany({
       where: { status: 'PENDING' },
@@ -34,7 +50,8 @@ export async function GET(request: Request) {
     }
 
     let sentCount = 0;
-    const templateSid = process.env.TWILIO_TEMPLATE_SID; // e.g. HX...
+    let failedCount = 0;
+    const templateSid = process.env.TWILIO_TEMPLATE_SID; 
 
     // 2. Loop through leads and send the template message
     for (const lead of leads) {
@@ -43,7 +60,7 @@ export async function GET(request: Request) {
           contentSid: templateSid,
           from: process.env.TWILIO_WHATSAPP_NUMBER,
           to: `whatsapp:+${lead.phone}`,
-          contentVariables: JSON.stringify({}) // If your template had {{1}} variables, put them here
+          contentVariables: JSON.stringify({})
         });
 
         // Update database status to SENT
@@ -53,18 +70,47 @@ export async function GET(request: Request) {
         });
 
         sentCount++;
+        
+        // Notify Support Team of Success
+        if (supportNumber) {
+          await client.messages.create({
+            body: `✅ *Success:* Message sent to +${lead.phone}.`,
+            from: process.env.TWILIO_WHATSAPP_NUMBER,
+            to: supportNumber
+          });
+        }
+
         // Small delay to prevent hitting Twilio's burst rate limits
         await new Promise(resolve => setTimeout(resolve, 50)); 
       } catch (err: any) {
         console.error(`Failed to send to ${lead.phone}:`, err.message);
-        // Optionally mark as FAILED if Twilio completely rejects the number
+        failedCount++;
+        
+        // Notify Support Team of Failure
+        if (supportNumber) {
+          await client.messages.create({
+            body: `❌ *Failed:* Could not send to +${lead.phone}.\n*Reason:* ${err.message}`,
+            from: process.env.TWILIO_WHATSAPP_NUMBER,
+            to: supportNumber
+          });
+        }
       }
+    }
+
+    // Optional: Send a summary to the support team
+    if (supportNumber) {
+        await client.messages.create({
+            body: `📊 *Daily Batch Complete*\nTarget: ${BATCH_SIZE}\nSent: ${sentCount}\nFailed: ${failedCount}`,
+            from: process.env.TWILIO_WHATSAPP_NUMBER,
+            to: supportNumber
+        });
     }
 
     return NextResponse.json({ 
       success: true, 
-      message: `Successfully processed batch. Sent: ${sentCount}/${leads.length}` 
+      message: `Successfully processed batch. Target: ${BATCH_SIZE}, Sent: ${sentCount}, Failed: ${failedCount}` 
     }, { status: 200 });
+
 
   } catch (error: any) {
     console.error('Cron error:', error);
