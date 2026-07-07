@@ -164,6 +164,7 @@ export default async function About() {
         </ScrollReveal>
 
         {/* Instructors */}
+        {false && (
         <ScrollReveal delay={100}>
           <div className="border-t border-gray-200 dark:border-white/5 pt-32 text-center">
             <h2 className="text-5xl md:text-7xl font-medium tracking-tight text-gray-900 dark:text-white mb-24">Meet Our Expert Instructors.</h2>
@@ -205,6 +206,7 @@ export default async function About() {
             </div>
           </div>
         </ScrollReveal>
+        )}
       </div>
     </div>
   );
