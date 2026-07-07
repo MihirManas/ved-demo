@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       if (supportTeamPhone) {
         await sendWhatsAppTextMessage(
           supportTeamPhone,
-          `💼 *New Job Application*\n\n*Name:* ${name}\n*Role:* ${job.title}\n*Phone:* ${phone}\n*Portfolio:* ${portfolioUrl || 'N/A'}`
+          `💼 *New Job Application*\n\n*Name:* ${name}\n*Role:* ${job.title}\n*Phone:* ${phone}\n*Portfolio:* ${githubUrl || 'N/A'}`
         );
       }
     } catch (err) {
