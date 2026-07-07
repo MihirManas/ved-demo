@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { sendWhatsAppTemplateMessage } from '@/lib/whatsapp';
+import { sendWhatsAppTemplateMessage, sendWhatsAppTextMessage } from '@/lib/whatsapp';
 
 export async function POST(req: Request) {
   try {
@@ -69,6 +69,15 @@ export async function POST(req: Request) {
         'HX62e26378bb8721ae22b37fd0e6f774ba', // Actual Student ContentSID
         JSON.stringify({"1": data.fullName, "2": data.program})
       );
+
+      // Alert the Support Team with the student's phone number
+      const supportTeamPhone = process.env.SUPPORT_TEAM_PHONE_NUMBER;
+      if (supportTeamPhone) {
+        await sendWhatsAppTextMessage(
+          supportTeamPhone,
+          `📝 *New Student Application*\n\n*Name:* ${data.fullName}\n*Program:* ${data.program}\n*Phone:* ${data.phone}\n*Score:* ${calculatedLeadScore}`
+        );
+      }
     } catch (err) {
       console.error("Non-fatal: Twilio student alert failed to send", err);
     }

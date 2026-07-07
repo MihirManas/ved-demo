@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 export const dynamic = 'force-dynamic';
 import { getHRPassword } from '@/lib/auth';
-import { sendWhatsAppTemplateMessage } from '@/lib/whatsapp';
+import { sendWhatsAppTemplateMessage, sendWhatsAppTextMessage } from '@/lib/whatsapp';
 
 const prisma = new PrismaClient();
 
@@ -44,6 +44,15 @@ export async function POST(request: Request) {
         'HXbf8d814c7886f34e926c21a2504355fe', // Actual Job ContentSID
         JSON.stringify({"1": name, "2": job.title})
       );
+
+      // Alert the Support Team with the applicant's phone number
+      const supportTeamPhone = process.env.SUPPORT_TEAM_PHONE_NUMBER;
+      if (supportTeamPhone) {
+        await sendWhatsAppTextMessage(
+          supportTeamPhone,
+          `💼 *New Job Application*\n\n*Name:* ${name}\n*Role:* ${job.title}\n*Phone:* ${phone}\n*Portfolio:* ${portfolioUrl || 'N/A'}`
+        );
+      }
     } catch (err) {
       console.error("Non-fatal: Twilio job alert failed to send", err);
     }
