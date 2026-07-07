@@ -23,11 +23,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <Link href="/" className="flex items-center cursor-pointer group">
-            <div className="flex flex-col">
-              <span id="navbar-logo" className="text-[34px] font-medium tracking-tight text-gray-900 dark:text-white flex items-center">
-                <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[65px] w-auto mr-[0.055em] object-contain" />
-                Ved Upskilling
-              </span>
+            <div className="flex items-center">
+              <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[65px] w-auto mr-[0.055em] object-contain" />
+              <div className="flex flex-col">
+                <span id="navbar-logo" className="text-[34px] font-medium tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+                  Ved Upskilling
+                </span>
+                <span className="text-[#E6C875] text-[0.55rem] font-black tracking-[0.2em] mt-1">
+                  YOUR PATHWAY TO PROFESSIONAL EXCELLENCE
+                </span>
+              </div>
             </div>
           </Link>
 

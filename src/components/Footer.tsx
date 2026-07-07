@@ -8,10 +8,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 md:gap-20 mb-16 md:mb-24">
           <div className="md:col-span-2">
-            <span className="text-[42px] font-medium tracking-tight text-gray-900 dark:text-white flex items-center mb-10">
+            <div className="flex items-center mb-10">
               <img src="/favicon.svg" alt="Ved Upskilling Logo" className="h-[80px] w-auto mr-[0.055em] object-contain" />
-              Ved Upskilling
-            </span>
+              <div className="flex flex-col">
+                <span className="text-[42px] font-medium tracking-tight text-gray-900 dark:text-white leading-[1.1]">
+                  Ved Upskilling
+                </span>
+                <span className="text-[#E6C875] text-[0.65rem] font-black tracking-[0.2em] mt-1">
+                  YOUR PATHWAY TO PROFESSIONAL EXCELLENCE
+                </span>
+              </div>
+            </div>
             <p className="text-gray-600 dark:text-white/50 max-w-lg font-light text-xl leading-relaxed">
               Elevating careers through precision engineering, rigorous curriculums, and real-world execution. The apex of technical education.
             </p>
