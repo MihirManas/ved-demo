@@ -81,3 +81,15 @@ model SiteContent {
   type      String   // 'TEXT' or 'IMAGE'
   updatedAt DateTime @updatedAt
 }
+
+model CampaignLead {
+  id                 Int      @id @default(autoincrement())
+  phone              String   @unique
+  status             String   @default("PENDING") // PENDING, SENT, REPLIED_YES, REPLIED_NO, FORM_FILLED
+  name               String?
+  email              String?
+  internshipInterest String?
+  lastContactedAt    DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
