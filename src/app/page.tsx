@@ -421,7 +421,7 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
-              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Ved Upskilled Candidates Are Working In</p>
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Ved Upskilling Candidates Are Working In</p>
               
               <div 
                 className="w-full overflow-hidden relative"
