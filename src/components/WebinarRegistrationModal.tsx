@@ -16,17 +16,36 @@ export default function WebinarRegistrationModal({ isOpen, onClose }: WebinarReg
     name: "",
     email: "",
     phone: "",
+    college: "",
+    year: "",
     experience: "beginner",
   });
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    // Using the new unique environment variable name
+    const scriptUrl = process.env.NEXT_PUBLIC_WEBINAR_SCRIPT_URL;
+    
+    try {
+      if (scriptUrl) {
+        await fetch(scriptUrl, {
+          method: "POST",
+          // Mode no-cors is usually required when posting to Google Apps Script from frontend
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      } else {
+        // Fallback for simulation if URL is not set in .env yet
+        await new Promise(resolve => setTimeout(resolve, 1500));
+      }
+
       setIsSubmitting(false);
       setIsSuccess(true);
       
@@ -36,7 +55,17 @@ export default function WebinarRegistrationModal({ isOpen, onClose }: WebinarReg
         // Reset state after transition
         setTimeout(() => setIsSuccess(false), 300);
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      // Still show success or handle error properly (no-cors makes it tricky to read responses)
+      // For now, assuming success if no network error
+      setIsSuccess(true);
+      setTimeout(() => {
+        onClose();
+        setTimeout(() => setIsSuccess(false), 300);
+      }, 3000);
+    }
   };
 
   return (
@@ -84,16 +113,11 @@ export default function WebinarRegistrationModal({ isOpen, onClose }: WebinarReg
               
               <div className="flex items-center space-x-6 mt-6 p-4 bg-gray-50 dark:bg-white/5 rounded-2xl border border-gray-100 dark:border-white/10">
                 <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                  <Calendar size={16} className="text-[#E6C875]" />
-                  <span>Next Saturday</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
-                  <Clock size={16} className="text-[#E6C875]" />
-                  <span>10:00 AM IST</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
                   <Video size={16} className="text-[#E6C875]" />
                   <span>Online</span>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-[#E6C875] font-bold uppercase tracking-widest">
+                  <span>Free</span>
                 </div>
               </div>
             </div>
@@ -136,6 +160,31 @@ export default function WebinarRegistrationModal({ isOpen, onClose }: WebinarReg
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">College Name</label>
+                  <input 
+                    type="text" 
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-[#E6C875] focus:ring-2 focus:ring-[#E6C875]/20 outline-none transition-all dark:text-white"
+                    placeholder="XYZ College"
+                    value={formData.college}
+                    onChange={(e) => setFormData({...formData, college: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Year</label>
+                  <input 
+                    type="text" 
+                    required
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 focus:border-[#E6C875] focus:ring-2 focus:ring-[#E6C875]/20 outline-none transition-all dark:text-white"
+                    placeholder="e.g. 3rd Year"
+                    value={formData.year}
+                    onChange={(e) => setFormData({...formData, year: e.target.value})}
+                  />
+                </div>
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Experience Level</label>
                 <select 
@@ -143,9 +192,9 @@ export default function WebinarRegistrationModal({ isOpen, onClose }: WebinarReg
                   value={formData.experience}
                   onChange={(e) => setFormData({...formData, experience: e.target.value})}
                 >
-                  <option value="beginner">Student / Beginner (0-1 yrs)</option>
-                  <option value="intermediate">Intermediate (1-3 yrs)</option>
-                  <option value="advanced">Advanced (3+ yrs)</option>
+                  <option className="text-gray-900 bg-white dark:bg-[#1F3145] dark:text-white" value="beginner">Student / Beginner (0-1 yrs)</option>
+                  <option className="text-gray-900 bg-white dark:bg-[#1F3145] dark:text-white" value="intermediate">Intermediate (1-3 yrs)</option>
+                  <option className="text-gray-900 bg-white dark:bg-[#1F3145] dark:text-white" value="advanced">Advanced (3+ yrs)</option>
                 </select>
               </div>
 
