@@ -7,9 +7,6 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = accountSid && authToken ? twilio(accountSid, authToken) : null;
 
-// BATCH_SIZE is the number of messages to send per day
-const BATCH_SIZE = 500;
-
 export async function GET(request: Request) {
   try {
     // Vercel Cron sends an authorization header. Verify it to secure the endpoint.
