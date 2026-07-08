@@ -70,11 +70,15 @@ export async function GET(request: Request) {
         
         // Notify Support Team of Success
         if (supportNumber) {
-          await client.messages.create({
-            body: `✅ *Success:* Message sent to +${lead.phone}.`,
-            from: process.env.TWILIO_WHATSAPP_NUMBER,
-            to: supportNumber
-          });
+          try {
+            await client.messages.create({
+              body: `✅ *Success:* Message sent to +${lead.phone}.`,
+              from: process.env.TWILIO_WHATSAPP_NUMBER,
+              to: supportNumber
+            });
+          } catch (e) {
+            console.error("Non-fatal: Failed to send success notification to support", e);
+          }
         }
 
         // Small delay to prevent hitting Twilio's burst rate limits
@@ -85,22 +89,30 @@ export async function GET(request: Request) {
         
         // Notify Support Team of Failure
         if (supportNumber) {
-          await client.messages.create({
-            body: `❌ *Failed:* Could not send to +${lead.phone}.\n*Reason:* ${err.message}`,
-            from: process.env.TWILIO_WHATSAPP_NUMBER,
-            to: supportNumber
-          });
+          try {
+            await client.messages.create({
+              body: `❌ *Failed:* Could not send to +${lead.phone}.\n*Reason:* ${err.message}`,
+              from: process.env.TWILIO_WHATSAPP_NUMBER,
+              to: supportNumber
+            });
+          } catch (e) {
+            console.error("Non-fatal: Failed to send failure notification to support", e);
+          }
         }
       }
     }
 
     // Optional: Send a summary to the support team
     if (supportNumber) {
+      try {
         await client.messages.create({
             body: `📊 *Daily Batch Complete*\nTarget: ${BATCH_SIZE}\nSent: ${sentCount}\nFailed: ${failedCount}`,
             from: process.env.TWILIO_WHATSAPP_NUMBER,
             to: supportNumber
         });
+      } catch (e) {
+        console.error("Non-fatal: Failed to send summary to support", e);
+      }
     }
 
     return NextResponse.json({ 
