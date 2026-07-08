@@ -53,10 +53,12 @@ export async function GET(request: Request) {
     // 2. Loop through leads and send the template message
     for (const lead of leads) {
       try {
+        const cleanPhone = lead.phone.replace('+', ''); // Remove any existing '+' just to be safe
+        
         await client.messages.create({
           contentSid: templateSid,
           from: process.env.TWILIO_WHATSAPP_NUMBER,
-          to: `whatsapp:+${lead.phone}`,
+          to: `whatsapp:+${cleanPhone}`,
           contentVariables: JSON.stringify({})
         });
 
