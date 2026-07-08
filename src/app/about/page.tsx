@@ -53,10 +53,10 @@ export default async function About() {
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center text-lg text-gray-700 dark:text-white/80">
-                  <Star className="text-[#E6C875] w-6 h-6 mr-4 flex-shrink-0" /> Dramatically re-engineer value added systems via mission
+                  <Star className="text-[#E6C875] w-6 h-6 mr-4 flex-shrink-0" /> Dramatically accelerate your career with industry-relevant skills
                 </li>
                 <li className="flex items-center text-lg text-gray-700 dark:text-white/80">
-                  <BookOpen className="text-[#E6C875] w-6 h-6 mr-4 flex-shrink-0" /> Access more than 100K online courses
+                  <BookOpen className="text-[#E6C875] w-6 h-6 mr-4 flex-shrink-0" /> Access expert-led curriculums in emerging tech domains
                 </li>
                 <li className="flex items-center text-lg text-gray-700 dark:text-white/80">
                   <Award className="text-[#E6C875] w-6 h-6 mr-4 flex-shrink-0" /> Learn the high-impact skills that top companies want

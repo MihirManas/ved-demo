@@ -26,16 +26,16 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 dark:text-white font-bold tracking-[0.2em] uppercase text-sm mb-10">Architecture</h4>
             <ul className="space-y-6 text-gray-600 dark:text-white/50 font-light text-lg">
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/about">About Mission</Link></li>
+              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/about">About Us</Link></li>
               <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/domains">Elite Domains</Link></li>
               {/* <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/verify">Credential Verifier</Link></li> */}
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/contact">Initiate Contact</Link></li>
+              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/contact">Contact Us</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-gray-900 dark:text-white font-bold tracking-[0.2em] uppercase text-sm mb-10">Legal Ledger</h4>
+            <h4 className="text-gray-900 dark:text-white font-bold tracking-[0.2em] uppercase text-sm mb-10">Legal</h4>
             <ul className="space-y-6 text-gray-600 dark:text-white/50 font-light text-lg">
-              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/privacy">Privacy Protocol</Link></li>
+              <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/privacy">Privacy Policy</Link></li>
               <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/terms">Terms of Service</Link></li>
               <li className="hover:text-gray-900 dark:hover:text-white hover:translate-x-2 transform transition-all cursor-pointer"><Link href="/refund">Refund Policy</Link></li>
             </ul>

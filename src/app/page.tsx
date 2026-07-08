@@ -63,7 +63,7 @@ export default function Home() {
       route: "/domains"
     },
     {
-      fullText: "At Ved Upskilling, we believe that learning never stops. Experience real classroom.",
+      fullText: "At Ved Upskilling, we believe that learning never stops. Experience a real classroom environment.",
       highlight: "learning never stops",
       buttonText: "Explore Courses",
       route: "/domains"
@@ -199,7 +199,7 @@ export default function Home() {
           <ScrollReveal delay={100}>
             <div>
               <h2 className="text-5xl font-medium tracking-tight text-gray-900 dark:text-white mb-6">
-                {siteContent["homepage_hero_title"] || "Who We Are ?"}
+                {siteContent["homepage_hero_title"] || "Who We Are?"}
               </h2>
               <p className="text-xl text-gray-600 dark:text-white/70 font-light leading-relaxed mb-6 whitespace-pre-wrap">
                 {siteContent["about_section_text"] || "Ved Upskilling is more than just an edu-tech platform. We are a community of learners, mentors, and industry leaders committed to creating meaningful career transformations.\n\nOur programs provide immersive, practical learning guided by industry professionals with 8-10 years of expertise. Students receive tailored support through one-on-one doubt-solving sessions and gain real-world experience by working on projects sourced from leading multinational companies."}
@@ -421,7 +421,7 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
-              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Tied Up Colleges</p>
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Partnered Colleges</p>
               
               <div 
                 className="w-full overflow-hidden relative"
@@ -458,7 +458,7 @@ export default function Home() {
 
           <ScrollReveal>
             <div className="bg-gray-50/50 dark:bg-white/[0.02] backdrop-blur-xl border border-gray-200 dark:border-white/[0.05] rounded-3xl md:rounded-[3rem] p-6 md:p-12 mb-16 md:mb-24 flex flex-col items-center shadow-sm dark:shadow-none">
-              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Ved Upskilling Candidates Are Working In</p>
+              <p className="text-gray-500 dark:text-white/50 text-sm uppercase tracking-[0.2em] mb-10 font-semibold text-center">Our Alumni Work At</p>
               
               <div 
                 className="w-full overflow-hidden relative"
