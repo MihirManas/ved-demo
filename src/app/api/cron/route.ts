@@ -53,8 +53,13 @@ export async function GET(request: Request) {
     // 2. Loop through leads and send the template message
     for (const lead of leads) {
       try {
-        const cleanPhone = lead.phone.replace('+', ''); // Remove any existing '+' just to be safe
+        let cleanPhone = lead.phone.replace('+', ''); // Remove any existing '+' just to be safe
         
+        // If the number is exactly 10 digits (missing country code), add India's '91'
+        if (cleanPhone.length === 10) {
+            cleanPhone = '91' + cleanPhone;
+        }
+
         await client.messages.create({
           contentSid: templateSid,
           from: process.env.TWILIO_WHATSAPP_NUMBER,
